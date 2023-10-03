@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MiCamion2</string>
+    <string name="title_activity_func_af">FuncAF</string>
 </resources>

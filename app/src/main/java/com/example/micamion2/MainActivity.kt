@@ -45,5 +45,12 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+
+        val buttonClick = findViewById<Button>(R.id.botonMapa)
+        buttonClick.setOnClickListener {
+            val intent = Intent(this, FuncAF::class.java)
+            startActivity(intent)
+        }
+
     }
 }
