@@ -3,9 +3,9 @@ package com.example.micamion2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class MainPage : AppCompatActivity() {
+class ServicesCompanyPersona : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_page)
+        setContentView(R.layout.activity_services_company_persona)
     }
 }

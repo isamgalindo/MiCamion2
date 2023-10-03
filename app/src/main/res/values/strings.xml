@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MiCamion2</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="create_an_account_string">Create an account</string>
+    <string name="email_string">Name</string>
+    <string name="email_ek1_string">Email</string>
+    <string name="email_ek2_string">Phone number</string>
+    <string name="email_ek3_string">Password</string>
+    <string name="email_ek4_string">Confirm password</string>
+    <string name="log_in_string">Sign up</string>
+    <string name="already_have_an_account__sign_in_string">Already have an account? Sign In</string>
 </resources>
