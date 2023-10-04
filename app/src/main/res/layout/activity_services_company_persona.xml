@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/tripshistory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Welcome!"
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Send"
-                android:id="@+id/send"
+                android:id="@+id/tripid"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Have a truck deliver a load"
-                android:id="@+id/descriptionSend"
+                android:id="@+id/startdate"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="normal"
