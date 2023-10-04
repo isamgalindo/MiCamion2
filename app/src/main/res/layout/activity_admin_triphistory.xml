@@ -20,7 +20,7 @@
             android:paddingTop="15dp"
             android:paddingEnd="16dp"
             android:paddingBottom="20dp"
-            android:text="My Trips History"
+            android:text="Company Trips History"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
