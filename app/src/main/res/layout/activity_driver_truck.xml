@@ -100,6 +100,15 @@
 
         </androidx.cardview.widget.CardView>
 
+        <Button
+            android:id="@+id/triphistorybutton"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/Deepblue"
+            android:text="My trip history"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -107,5 +116,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
+        app:layout_constraintGuide_begin="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

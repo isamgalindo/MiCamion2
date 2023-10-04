@@ -8,17 +8,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 
-
-class DriverTripHistory: AppCompatActivity() {
+class AdminTrucks: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_driver_truck)
+        setContentView(R.layout.activity_admin_trucks)
 
-        val buttonLogin = findViewById<Button>(R.id.triphistorybutton)
+        val buttonLogin = findViewById<Button>(R.id.triphistorybutton2
+        )
         buttonLogin.setOnClickListener {
-            val intent = Intent(this, DriverTripHistory::class.java)
+            val intent = Intent(this, AdminTrucks::class.java)
             startActivity(intent)
         }
 
     }
+
 }

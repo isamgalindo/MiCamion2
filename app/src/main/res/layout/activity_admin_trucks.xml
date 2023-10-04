@@ -27,6 +27,15 @@
             android:textStyle="bold" />
 
 
+        <Button
+            android:id="@+id/triphistorybutton2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/Deepblue"
+            android:text="Company Trip History"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
