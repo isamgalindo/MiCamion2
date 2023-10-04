@@ -16,6 +16,8 @@ class LoginPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_page)
 
+
+
         val buttonLogin = findViewById<Button>(R.id.loginButton)
         buttonLogin.setOnClickListener {
             val intent = Intent(this, ServicesCompanyPersona::class.java)
@@ -32,5 +34,17 @@ class LoginPage : AppCompatActivity() {
             forgotpasswordtextview.movementMethod = LinkMovementMethod.getInstance();
 
         }
+
+        val createanaccountview = findViewById<TextView>(R.id.createAccountLink)
+
+        createanaccountview.setOnClickListener {
+
+            val myIntent = Intent(this, CreateAccount::class.java)
+            startActivity(myIntent)
+
+            createanaccountview.movementMethod = LinkMovementMethod.getInstance();
+
+        }
+
     }
 }
