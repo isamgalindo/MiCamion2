@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-        val buttonClick = findViewById<Button>(R.id.botonMapa)
-        buttonClick.setOnClickListener {
+        val buttonClick2 = findViewById<Button>(R.id.botonMapa)
+        buttonClick2.setOnClickListener {
             val intent = Intent(this, FuncAF::class.java)
             startActivity(intent)
         }
