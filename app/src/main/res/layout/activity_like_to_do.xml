@@ -31,67 +31,41 @@
         app:cardElevation="20dp"
 
         >
+
+        <ImageView
+            android:id="@+id/searchIcon1"
+            android:layout_height="117dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="100dp"
+            android:src="@drawable/box" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp"
-            >
+            android:padding="24dp">
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Send packages"
                 android:id="@+id/senPackages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="70dp"
+                android:paddingEnd="8dp"
+                android:text="Send packages"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
 
-              />
+
+                />
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Get your loads delivered by our trucks"
                 android:id="@+id/descriptionSendPackages"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="normal"
-
-                />
-
-        </LinearLayout>
-
-   </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardElevation="20dp"
-
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="24dp"
-            >
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Earn by delivering"
-                android:id="@+id/earnByDelivering"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold"
-
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Become one of our drivers"
-                android:id="@+id/descriptionEarnByDelivering"
+                android:paddingStart="70dp"
+                android:text="Get your loads delivered by our trucks"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="normal"
@@ -109,6 +83,59 @@
         app:cardElevation="20dp"
 
         >
+        <ImageView
+            android:id="@+id/IconEarn"
+            android:layout_height="117dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="100dp"
+            android:src="@drawable/person" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Earn by delivering"
+                android:id="@+id/earnByDelivering"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingStart="70dp"
+
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Become one of our drivers"
+                android:id="@+id/descriptionEarnByDelivering"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                android:paddingStart="70dp"
+
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:cardElevation="20dp"
+
+        >
+        <ImageView
+            android:id="@+id/IconRent"
+            android:layout_height="117dp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="100dp"
+            android:src="@drawable/truck" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,6 +151,7 @@
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
+                android:paddingStart="70dp"
 
                 />
             <TextView
@@ -134,6 +162,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="normal"
+                android:paddingStart="70dp"
 
                 />
 
