@@ -18,31 +18,38 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="36sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/custom_edittext"
         android:drawablePadding="8dp"
         android:hint="Username"
         android:padding="8dp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/Placeholder"
+        android:backgroundTint="@color/LightGray"
+        />
 
 
     <EditText
         android:id="@+id/password"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/custom_edittext"
         android:drawablePadding="8dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="8dp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textColorHint="@color/Placeholder"
+        android:backgroundTint="@color/LightGray"
+        />
 
     <Button
         android:id="@+id/loginButton"

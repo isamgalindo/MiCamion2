@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".AdminTrucks">
 
     <LinearLayout
-        tools:context=".ServicesCompanyPersona"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="-48dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -52,7 +53,7 @@
                 android:padding="24dp">
 
                 <TextView
-                    android:id="@+id/tripid"
+                    android:id="@+id/tripId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="ABS342"
@@ -63,7 +64,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/startdate"
+                    android:id="@+id/brand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Brand: Volskwagen"
@@ -85,7 +86,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/descriptionSend3"
+                    android:id="@+id/LoadCapacity1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Load Capacity: 3 tons"
@@ -95,7 +96,7 @@
                     android:textStyle="normal" />
 
                 <TextView
-                    android:id="@+id/descriptionSend4"
+                    android:id="@+id/Insurance1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Insurance Expiration: Aug-03-2023"
@@ -146,7 +147,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/model"
+                    android:id="@+id/model2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Model: Delivery 2.340"
@@ -157,7 +158,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/descriptionSend3"
+                    android:id="@+id/LoadCapacity2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Load Capacity: 5 tons"
@@ -167,7 +168,7 @@
                     android:textStyle="normal" />
 
                 <TextView
-                    android:id="@+id/descriptionSend4"
+                    android:id="@+id/Insurance2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Insurance Expiration: Dic-08-2024"
@@ -196,7 +197,7 @@
                 android:padding="24dp">
 
                 <TextView
-                    android:id="@+id/tripid"
+                    android:id="@+id/tripid2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="EDS990"
@@ -207,7 +208,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/startdate"
+                    android:id="@+id/startdate2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Brand: Nissan"
@@ -218,7 +219,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/model"
+                    android:id="@+id/model3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Model: Cargo MS10"
@@ -253,4 +254,4 @@
         </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
