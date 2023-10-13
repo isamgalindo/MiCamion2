@@ -12,7 +12,7 @@ class CreateAccount : AppCompatActivity() {
 
         val buttonSignUp = findViewById<Button>(R.id.SignUpButton)
         buttonSignUp.setOnClickListener {
-            val intent = Intent(this, LikeToDo::class.java)
+            val intent = Intent(this, ServicesCompanyPersona::class.java)
             startActivity(intent)
         }
     }

@@ -4,7 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
     <color name="Deepblue">#2E85FF</color>
-
+    <color name="Gray">#999999</color>
+    <color name="LightGray">#EFEBEB</color>
+    <color name="Placeholder">#444444</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
