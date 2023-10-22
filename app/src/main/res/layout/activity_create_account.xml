@@ -32,6 +32,18 @@
         android:textColorHint="@color/Placeholder"
         android:backgroundTint="@color/LightGray"
         android:textColor="@color/black" />
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/custom_edittext"
+        android:drawablePadding="8dp"
+        android:hint="Last Name"
+        android:padding="8dp"
+        android:textColorHint="@color/Placeholder"
+        android:backgroundTint="@color/LightGray"
+        android:textColor="@color/black" />
 
 
     <EditText
