@@ -8,18 +8,34 @@ import android.view.View
 
 
 class LikeToDo : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_like_to_do)
 
         // Find the CardView by its ID
-        val cardView = findViewById<CardView>(R.id.CompanyOwner)
+        val loadOwner = findViewById<CardView>(R.id.LoadOwner)
+        val driver = findViewById<CardView>(R.id.Driver)
+        val trailerOwner = findViewById<CardView>(R.id.TrailerOwner)
 
         // Set an OnClickListener
-        cardView.setOnClickListener {
+        loadOwner.setOnClickListener {
             val intent = Intent(this, CreateAccount::class.java)
             // If you need to pass data to the new view, you can use intent.putExtra()
-            // intent.putExtra("key", value)
+            intent.putExtra("User Type", "LO")
+            startActivity(intent)
+        }
+        driver.setOnClickListener {
+            val intent = Intent(this, CreateAccount::class.java)
+            // If you need to pass data to the new view, you can use intent.putExtra()
+            intent.putExtra("User Type", "DR")
+            startActivity(intent)
+        }
+        trailerOwner.setOnClickListener {
+            val intent = Intent(this, CreateAccount::class.java)
+            // If you need to pass data to the new view, you can use intent.putExtra()
+            intent.putExtra("User Type", "TO")
             startActivity(intent)
         }
     }
