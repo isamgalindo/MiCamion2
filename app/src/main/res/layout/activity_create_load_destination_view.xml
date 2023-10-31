@@ -160,7 +160,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="44dp"
         style="@style/Buttons"
-        android:text="Send"
+        android:text="Next"
         android:textSize="18sp"
         app:cornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
