@@ -19,7 +19,7 @@
         android:paddingTop="15dp"
         android:paddingEnd="16dp"
         android:paddingBottom="20dp"
-        android:textColor="@color/black"
+        style="@style/Texts"
         />
 
 
@@ -43,16 +43,17 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp"
+            style="@style/Cards"
             >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Send"
                 android:id="@+id/tripid"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
             <TextView
@@ -60,10 +61,10 @@
                 android:layout_height="wrap_content"
                 android:text="Have a truck deliver a load"
                 android:id="@+id/startdate"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
 
@@ -91,16 +92,17 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp"
+            style="@style/Cards"
             >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Schedule"
                 android:id="@+id/schedule"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
             <TextView
@@ -108,10 +110,10 @@
                 android:layout_height="wrap_content"
                 android:text="Use your preferred time"
                 android:id="@+id/descriptionSchedule"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
 
@@ -138,16 +140,17 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp"
+            style="@style/Cards"
             >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Track"
                 android:id="@+id/track"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
             <TextView
@@ -155,10 +158,10 @@
                 android:layout_height="wrap_content"
                 android:text="Sent your status of an active shipmen"
                 android:id="@+id/descriptionRentYourTruck"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
 

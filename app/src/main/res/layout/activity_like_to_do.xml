@@ -51,7 +51,7 @@
                 android:id="@+id/senPackages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="80dp"
+                android:paddingStart="90dp"
                 android:paddingEnd="8dp"
                 android:text="Send packages"
                 style="@style/Texts"
@@ -65,7 +65,7 @@
                 android:id="@+id/descriptionSendPackages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="80dp"
+                android:paddingStart="90dp"
                 android:text="Get your loads delivered by our trucks"
                 style="@style/Texts"
                 android:textSize="18sp"
@@ -106,7 +106,7 @@
                 style="@style/Texts"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="80dp"
+                android:paddingStart="90dp"
 
                 />
             <TextView
@@ -117,7 +117,7 @@
                 style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="80dp"
+                android:paddingStart="90dp"
 
                 />
 
@@ -155,7 +155,7 @@
                 android:id="@+id/rentYourTruck"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="80dp"
+                android:paddingStart="90dp"
                 style="@style/Texts"
 
 
@@ -168,7 +168,7 @@
                 style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="80dp"
+                android:paddingStart="90dp"
 
                 />
 
