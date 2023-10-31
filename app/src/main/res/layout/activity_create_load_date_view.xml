@@ -61,8 +61,10 @@
             android:scaleY="2"
             android:theme="@style/ProgressBarStyle" />
 
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/loadName"
+            android:id="@+id/pickUpDate"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="40dp"
@@ -72,11 +74,28 @@
             android:hint="Pick up date"
             android:padding="8dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/Placeholder" />
+            android:textColorHint="@color/Placeholder"
+            android:paddingStart="40dp"
+            />
+            <ImageView
+                android:id="@+id/pickUpDateIcon"
+                android:layout_width="40dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:layout_alignStart="@id/pickUpDate"
+                android:layout_alignTop="@id/pickUpDate"
+                android:layout_alignBottom="@id/pickUpDate"
+                android:src="@drawable/baseline_calendar_month_24"
+                android:clickable="true"
+                android:contentDescription="Search"
+                android:padding="8dp" />
+        </RelativeLayout>
 
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/loadType"
+            android:id="@+id/deliveryDate"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="20dp"
@@ -86,8 +105,22 @@
             android:hint="Delivery date"
             android:padding="8dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/Placeholder" />
-
+            android:textColorHint="@color/Placeholder"
+            android:paddingStart="40dp"
+            />
+    <ImageView
+        android:id="@+id/deliveryDateIcon"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_vertical"
+        android:layout_alignStart="@id/deliveryDate"
+        android:layout_alignTop="@id/deliveryDate"
+        android:layout_alignBottom="@id/deliveryDate"
+        android:src="@drawable/baseline_calendar_month_24"
+        android:clickable="true"
+        android:contentDescription="Search"
+        android:padding="8dp" />
+</RelativeLayout>
     </LinearLayout>
 
     <Button

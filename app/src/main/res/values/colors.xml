@@ -15,6 +15,8 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="dark_gray">#3a3a3b</color>
+
 
     <color name="_bg__sign_in_ek2_color">#FFFFFF</color>
     <color name="create_an_account_color">#232323</color>

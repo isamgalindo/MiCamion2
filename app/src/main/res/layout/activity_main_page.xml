@@ -16,7 +16,6 @@
         android:layout_marginTop="20dp"
         android:text="Welcome back!"
         android:textAlignment="center"
-        android:textColor="@color/black"
         android:textSize="36sp"
         android:textStyle="bold"
         />
@@ -30,9 +29,7 @@
         android:drawablePadding="8dp"
         android:hint="Username"
         android:padding="8dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/Placeholder"
-        android:backgroundTint="@color/LightGray"
+        style="@style/EditTexts"
         />
 
 
@@ -46,9 +43,7 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="8dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/Placeholder"
-        android:backgroundTint="@color/LightGray"
+        style="@style/EditTexts"
         />
 
     <Button
@@ -56,7 +51,7 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
-        android:backgroundTint="@color/Deepblue"
+        style="@style/Buttons"
         android:text="Log in"
         android:textSize="18sp"
         app:cornerRadius="30dp"

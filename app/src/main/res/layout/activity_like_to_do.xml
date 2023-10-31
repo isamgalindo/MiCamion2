@@ -19,7 +19,7 @@
         android:paddingTop="15dp"
         android:paddingEnd="16dp"
         android:paddingBottom="20dp"
-        android:textColor="@color/black"
+        style="@style/Texts"
         />
 
 
@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         app:cardElevation="20dp"
-
         >
 
         <ImageView
@@ -44,16 +43,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="24dp"
+            style="@style/Cards"
+            >
 
             <TextView
                 android:id="@+id/senPackages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="70dp"
+                android:paddingStart="80dp"
                 android:paddingEnd="8dp"
                 android:text="Send packages"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="25sp"
                 android:textStyle="bold"
 
@@ -64,9 +65,9 @@
                 android:id="@+id/descriptionSendPackages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="70dp"
+                android:paddingStart="80dp"
                 android:text="Get your loads delivered by our trucks"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
 
@@ -102,10 +103,10 @@
                 android:layout_height="wrap_content"
                 android:text="Earn by delivering"
                 android:id="@+id/earnByDelivering"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="70dp"
+                android:paddingStart="80dp"
 
                 />
             <TextView
@@ -113,10 +114,10 @@
                 android:layout_height="wrap_content"
                 android:text="Become one of our drivers"
                 android:id="@+id/descriptionEarnByDelivering"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="70dp"
+                android:paddingStart="80dp"
 
                 />
 
@@ -137,7 +138,9 @@
             android:layout_height="117dp"
             android:layout_gravity="center_vertical"
             android:layout_width="100dp"
-            android:src="@drawable/truck" />
+            android:src="@drawable/truck"
+
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,10 +153,11 @@
                 android:layout_height="wrap_content"
                 android:text="Rent your truck"
                 android:id="@+id/rentYourTruck"
-                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="70dp"
+                android:paddingStart="80dp"
+                style="@style/Texts"
+
 
                 />
             <TextView
@@ -161,10 +165,10 @@
                 android:layout_height="wrap_content"
                 android:text="Earn by letting someone else drive"
                 android:id="@+id/descriptionRentYourTruck"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="70dp"
+                android:paddingStart="80dp"
 
                 />
 
