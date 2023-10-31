@@ -23,7 +23,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="20dp"
             android:text="Send"
-            android:textColor="@color/black"
+            style="@style/Texts"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -32,7 +32,7 @@
             android:id="@+id/createLoadButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:backgroundTint="@color/Deepblue"
+            style="@style/Buttons"
             android:text="Create load"
             android:textSize="18sp"
             app:cornerRadius="30dp" />
@@ -47,7 +47,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="20dp"
             android:text="OR"
-            android:textColor="@color/black"
+            style="@style/Texts"
             android:textSize="20sp"
             android:textStyle="normal" />
 
@@ -66,7 +66,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             app:cardElevation="20dp"
-
             >
 
             <LinearLayout
@@ -74,16 +73,19 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:padding="24dp"
+                style="@style/Cards"
+
+                >
 
                 <TextView
                     android:id="@+id/Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Frozen fruit pulp"
-                    android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold"
+                    style="@style/Texts"
 
                     />
 
@@ -92,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="200kg - 200lts"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
                     android:textStyle="normal"
 
@@ -114,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="15/09/2023"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
 
                     android:textStyle="normal" />
@@ -124,7 +126,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Carrera 10 #20-78, Bogotá"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
 
                     android:textStyle="normal" />
@@ -144,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="20/09/2023"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
 
                     android:textStyle="normal" />
@@ -154,7 +156,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Carrera 20 #53-23, Tunja"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
 
                     android:textStyle="normal" />
@@ -176,14 +178,16 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:padding="24dp"
+                style="@style/Cards"
+                >
 
                 <TextView
                     android:id="@+id/Name2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Frozen fruit pulp"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="25sp"
                     android:textStyle="bold"
 
@@ -194,7 +198,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="1000kg - 200lts"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
                     android:textStyle="normal"
 
@@ -216,9 +220,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="15/09/2023"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
-
                     android:textStyle="normal" />
 
                 <TextView
@@ -226,7 +229,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Carrera 10 #20-78, Bogotá"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
 
                     android:textStyle="normal" />
@@ -246,7 +249,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="20/09/2023"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
 
                     android:textStyle="normal" />
@@ -256,7 +259,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Carrera 20 #53-23, Tunja"
-                    android:textColor="@color/black"
+                    style="@style/Texts"
                     android:textSize="18sp"
 
                     android:textStyle="normal" />
