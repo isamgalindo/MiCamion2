@@ -40,7 +40,9 @@
             android:text="Create Load"
             style="@style/Texts"
             android:textSize="36sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_bold"
+            />
 
         <TextView
             android:id="@+id/detailsText"
