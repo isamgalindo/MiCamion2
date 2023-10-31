@@ -31,7 +31,7 @@
         android:layout_marginTop="20dp"
         android:text="Effortless package deliveries at your fingertips"
         android:textAlignment="center"
-        style="@style/Texts"
+        style="@style/Titles"
         android:textSize="18sp"
         android:textStyle="normal"
         />

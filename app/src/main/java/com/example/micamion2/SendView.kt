@@ -11,6 +11,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.Locale
 
 class SendView : AppCompatActivity() {
@@ -20,6 +21,33 @@ class SendView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_view)
+
+
+        val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
+        bottomNavigation.selectedItemId = R.id.loadmenu
+        bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.loadmenu -> {
+                    true
+                }
+                R.id.home ->{
+                    val intent = Intent(this@SendView, ServicesCompanyPersona::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                R.id.profile ->{
+                    val intent = Intent(this@SendView, LoadCompleteDetailsView::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+                // Add other menu items here...
+                else -> false
+            }
+        }
+
+
 
         val button = findViewById<Button>(R.id.createLoadButton)
         button.setOnClickListener {
@@ -42,6 +70,9 @@ class SendView : AppCompatActivity() {
                 return true
             }
         })
+
+
+
     }
 
     private fun findAllCardViews(view: View): List<CardView> {
@@ -82,4 +113,5 @@ class SendView : AppCompatActivity() {
 
         return textViews
     }
+
 }

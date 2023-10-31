@@ -11,9 +11,13 @@
         <item name="android:fontFamily">@font/montserrat_bold</item>
 
     </style>
-    <style name="Texts">
+    <style name="Titles">
         <item name="android:textColor">@color/white</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+    <style name="Texts">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
     <style name="EditTexts">
         <item name="android:textColor">@color/white</item>

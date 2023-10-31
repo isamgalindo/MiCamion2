@@ -10,8 +10,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height= "0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+       >
 
 
         <TextView
@@ -23,7 +25,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="20dp"
             android:text="Send"
-            style="@style/Texts"
+            style="@style/Titles"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -85,7 +87,7 @@
                     android:text="Frozen fruit pulp"
                     android:textSize="25sp"
                     android:textStyle="bold"
-                    style="@style/Texts"
+                    style="@style/Titles"
 
                     />
 
@@ -107,7 +109,7 @@
                     android:text="Pickup"
                     android:textColor="@color/Gray"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
 
                     />
 
@@ -137,7 +139,7 @@
                     android:text="Destination"
                     android:textColor="@color/Gray"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
 
                     />
 
@@ -187,7 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Frozen fruit pulp"
-                    style="@style/Texts"
+                    style="@style/Titles"
                     android:textSize="25sp"
                     android:textStyle="bold"
 
@@ -211,7 +213,7 @@
                     android:text="Pickup"
                     android:textColor="@color/Gray"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
 
                     />
 
@@ -240,7 +242,7 @@
                     android:text="Destination"
                     android:textColor="@color/Gray"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
 
                     />
 
@@ -270,4 +272,11 @@
 
 
     </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_navigation_menu" />
+
 </LinearLayout>
