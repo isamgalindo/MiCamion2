@@ -38,7 +38,7 @@ class CreateLoadDestinationView : AppCompatActivity() {
             // You can open a search dialog or perform any action when the icon is clicked
         }
 
-        searchIcon.setOnClickListener {
+        searchIcon2.setOnClickListener {
             val intent = Intent(this, FuncAF::class.java)
             startActivity(intent)
             // Handle the click on the icon here

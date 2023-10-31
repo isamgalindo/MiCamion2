@@ -66,7 +66,7 @@
         <RelativeLayout android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/pickUpDestination"
+            android:id="@+id/pickUpLocation"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="40dp"
@@ -85,9 +85,9 @@
             android:layout_width="40dp"
             android:layout_height="32dp"
             android:layout_gravity="center_vertical"
-            android:layout_alignStart="@id/pickUpDestination"
-            android:layout_alignTop="@id/pickUpDestination"
-            android:layout_alignBottom="@id/pickUpDestination"
+            android:layout_alignStart="@id/pickUpLocation"
+            android:layout_alignTop="@id/pickUpLocation"
+            android:layout_alignBottom="@id/pickUpLocation"
             android:src="@drawable/baseline_search_24"
             android:clickable="true"
             android:contentDescription="Search"
