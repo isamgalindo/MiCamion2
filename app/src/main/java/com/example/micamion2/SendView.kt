@@ -37,7 +37,7 @@ class SendView : AppCompatActivity() {
                     true
                 }
                 R.id.profile ->{
-                    val intent = Intent(this@SendView, LoadCompleteDetailsView::class.java)
+                    val intent = Intent(this@SendView, ProfileView::class.java)
                     startActivity(intent)
                     finish()
                     true
