@@ -93,17 +93,36 @@
                 style="@style/Cards"
 
                 >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/Name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Frozen fruit pulp"
+                    android:layout_weight="1"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     style="@style/Titles"
 
                     />
+                <TextView
+                    android:id="@+id/widget"
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_state"
+                    android:backgroundTint="@color/yellow"
+                    android:paddingStart="20dp"
+                    android:text="Pending"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
 
                 <TextView
                     android:id="@+id/weight"
@@ -198,16 +217,34 @@
                 style="@style/Cards"
                 >
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/Name2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Frozen fruit pulp"
                     style="@style/Titles"
+                    android:layout_weight="1"
                     android:textSize="25sp"
                     android:textStyle="bold"
-
                     />
+
+                <TextView
+                    android:id="@+id/widget2"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_state"
+                    android:backgroundTint="@color/green"
+                    android:paddingStart="10dp"
+                    android:text="On Shipping"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
                 <TextView
                     android:id="@+id/weight2"
