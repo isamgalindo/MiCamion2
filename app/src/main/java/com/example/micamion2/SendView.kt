@@ -3,6 +3,7 @@ package com.example.micamion2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -12,6 +13,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.Locale
 
 class SendView : AppCompatActivity() {
@@ -23,6 +27,7 @@ class SendView : AppCompatActivity() {
     private var userType =""
     private var lastName =""
     private var phone =""
+    private val userService = RetrofitInstance.apiUsuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_view)
@@ -33,6 +38,7 @@ class SendView : AppCompatActivity() {
         userType = intent.getStringExtra("User Type").toString()
         lastName = intent.getStringExtra("Last Name").toString()
         phone = intent.getStringExtra("Phone").toString()
+
 
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
@@ -93,9 +99,46 @@ class SendView : AppCompatActivity() {
             }
         })
 
+        userService.getAllTrips().enqueue(object : Callback<List<Trip>> {
 
+            override fun onResponse(call: Call<List<Trip>>, response: Response<List<Trip>>) {
+                if (response.isSuccessful) {
+                    val trips = response.body()
+                    if (trips != null) {
+                        // Get reference to the LinearLayout container
+                        val container = findViewById<LinearLayout>(R.id.linearLayout) // Replace with actual ID
+
+                        // Loop through each trip and create a CardView
+                        for (trip in trips) {
+                            // Inflate the card view
+                            val inflater = LayoutInflater.from(this@SendView) // Replace 'YourActivityName' with the name of your activity
+                            val tripCard = inflater.inflate(R.layout.trip_card, container, false)
+
+                            // Populate card data
+                            tripCard.findViewById<TextView>(R.id.Name).text = trip.loadOwner.toString() // Assuming 'productName' is a field in the 'Trip' class
+                            tripCard.findViewById<TextView>(R.id.weight).text = trip.trailer.toString()// Adapt as per your Trip class
+                            tripCard.findViewById<TextView>(R.id.pickUpDate).text = trip.status
+                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = trip.pickUp.toString()
+                            tripCard.findViewById<TextView>(R.id.dropOffDate).text = trip.dropOff.toString()
+
+                            // Add the populated card view to the container
+                            container.addView(tripCard)
+                        }
+
+                        Toast.makeText(applicationContext, "Succesful", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Trip>>, t: Throwable) {
+                Toast.makeText(applicationContext, "Failure: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
 
     }
+
 
     private fun findAllCardViews(view: View): List<CardView> {
         val cardViews = mutableListOf<CardView>()

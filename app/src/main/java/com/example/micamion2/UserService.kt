@@ -28,4 +28,7 @@ interface UserService {
 
     @GET("/users/email/{email}")
     fun getUserByEmail(@Path("email") email: String): Call<User>
+
+    @GET("/trips")
+    fun getAllTrips(): Call<List<Trip>>
 }

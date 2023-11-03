@@ -72,6 +72,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -116,7 +117,6 @@
                     android:background="@drawable/custom_state"
                     android:backgroundTint="@color/yellow"
                     android:paddingStart="20dp"
-                    android:text="Pending"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -128,7 +128,6 @@
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="200kg - 200lts"
                     style="@style/Texts"
                     android:textSize="18sp"
                     android:textStyle="normal"
@@ -150,7 +149,7 @@
                     android:id="@+id/pickUpDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="15/09/2023"
+
                     style="@style/Texts"
                     android:textSize="18sp"
 
@@ -180,7 +179,6 @@
                     android:id="@+id/dropOffDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="20/09/2023"
                     style="@style/Texts"
                     android:textSize="18sp"
 
