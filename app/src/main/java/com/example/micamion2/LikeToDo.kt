@@ -9,7 +9,6 @@ import android.view.View
 
 class LikeToDo : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_like_to_do)
@@ -24,6 +23,7 @@ class LikeToDo : AppCompatActivity() {
             val intent = Intent(this, CreateAccount::class.java)
             // If you need to pass data to the new view, you can use intent.putExtra()
             intent.putExtra("User Type", "LO")
+
             startActivity(intent)
         }
         driver.setOnClickListener {
