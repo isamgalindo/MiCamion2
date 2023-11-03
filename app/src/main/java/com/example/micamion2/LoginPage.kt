@@ -106,13 +106,24 @@ class LoginPage : AppCompatActivity() {
                                     val user = response.body()
                                     if (user != null) {
                                         val userType = user.userType
+                                        val name = user.name
+                                        val email = user.email
+                                        val lastName = user.lastName
+                                        val phone = user.phone
                                         if (userType == "LO"){
                                             val intent = Intent(this@LoginPage, ServicesCompanyPersona::class.java)
+                                            intent.putExtra("Name", name)
+                                            intent.putExtra("Email", email)
+                                            intent.putExtra("User Type", userType)
+                                            intent.putExtra("Last Name", lastName)
+                                            intent.putExtra("Phone", phone)
                                             startActivity(intent)
                                         }
                                         if (userType == "TO"){
                                             val intent = Intent(this@LoginPage, ServicesTruckOwner::class.java)
+                                            intent.putExtra("Name", name)
                                             startActivity(intent)
+
                                         }
                                         else{
                                             Toast.makeText(applicationContext, "Truck driver view", Toast.LENGTH_SHORT).show()

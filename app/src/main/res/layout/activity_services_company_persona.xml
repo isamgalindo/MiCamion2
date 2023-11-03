@@ -14,10 +14,9 @@
         android:orientation="vertical">
 
     <TextView
-        android:id="@+id/trucks"
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome!"
         android:textSize="30sp"
         android:textStyle="bold"
         android:paddingStart="20dp"

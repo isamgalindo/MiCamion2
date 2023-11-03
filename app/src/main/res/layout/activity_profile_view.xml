@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/ForgotPasswordText"
+        android:id="@+id/profilePhoto"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/baseline_person_24"
@@ -25,23 +25,38 @@
          />
 
     <TextView
-        android:id="@+id/message"
+        android:id="@+id/emailProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="isa@gmail.com"
         android:textAlignment="center"
         style="@style/Texts"
         android:textSize="25sp" />
     <TextView
-        android:id="@+id/role"
+        android:id="@+id/roleProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Load owner"
         android:textAlignment="center"
         style="@style/Texts"
         android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/nameProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            style="@style/Texts"
+            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/phoneProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            style="@style/Texts"
+            android:textSize="25sp" />
 
 
     </LinearLayout>
