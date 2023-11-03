@@ -10,6 +10,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     app:cardElevation="20dp"
+    android:tag="uniqueTag"
     >
 
     <LinearLayout
@@ -38,12 +39,12 @@
 
                 />
             <TextView
-                android:id="@+id/widget"
-                android:layout_width="105dp"
+                android:id="@+id/status"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_state"
                 android:backgroundTint="@color/yellow"
-                android:paddingStart="20dp"
+                android:paddingStart="25dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -86,7 +87,6 @@
             android:id="@+id/pickUpAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Carrera 10 #20-78, Bogotá"
             style="@style/Texts"
             android:textSize="18sp"
 
@@ -115,7 +115,6 @@
             android:id="@+id/dropOffAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Carrera 20 #53-23, Tunja"
             style="@style/Texts"
             android:textSize="18sp"
 

@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.micamion2"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -51,6 +51,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2") // ViewModel
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")  // LiveData
     implementation("androidx.work:work-runtime-ktx:2.9.0-rc01")
+    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
     implementation("com.google.android.gms:play-services-maps:17.0.0")
     implementation("com.google.android.gms:play-services-location:18.0.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")

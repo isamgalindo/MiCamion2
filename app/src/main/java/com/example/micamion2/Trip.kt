@@ -14,15 +14,15 @@ class Trip {
 
     }
 
-    var loadOwner: Int = 0
-    var trailer: Int = 0
-    var load: Int = 0
-    var pickUp: Int = 0
-    var dropOff: Int = 0
+    var loadOwner: Int = -1
+    var trailer: Int = -1
+    var load: Int = -1
+    var pickup: Int = -1
+    var dropoff: Int = -1
     @Status
     var status: String = TOASSIGN
 
     override fun toString(): String {
-        return "$loadOwner $trailer $load $pickUp $dropOff $status"
+        return "$loadOwner $trailer $load $pickup $dropoff $status"
     }
 }
