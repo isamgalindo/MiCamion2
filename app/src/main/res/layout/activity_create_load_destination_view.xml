@@ -130,7 +130,7 @@
 
 
             <EditText
-                android:id="@+id/Weight"
+                android:id="@+id/recipientName"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="20dp"
@@ -142,7 +142,7 @@
                  />
 
             <EditText
-                android:id="@+id/Volume"
+                android:id="@+id/recipientPhone"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
                 android:layout_marginTop="20dp"

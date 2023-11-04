@@ -1,5 +1,6 @@
 package com.example.micamion2
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
@@ -23,6 +24,25 @@ class CreateLoadDestinationView : AppCompatActivity() {
         progressbar.max = 100
         val buttonNext = findViewById<Button>(R.id.nextButton)
         buttonNext.setOnClickListener {
+            val pickUpEditText = findViewById<EditText>(R.id.pickUpLocation)
+            val dropOffEditText = findViewById<EditText>(R.id.destination)
+            val recipientNameEditText = findViewById<EditText>(R.id.recipientName)
+            val recipientPhoneEditText = findViewById<EditText>(R.id.recipientPhone)
+
+            val pickUpLocation = pickUpEditText.text.toString()
+            val dropOffLocation = dropOffEditText.text.toString()
+            val recipientName = recipientNameEditText.text.toString()
+            val recipientPhone = recipientPhoneEditText.text.toString()
+
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("pickUpLocation", pickUpLocation)
+            editor.putString("dropOffLocation", dropOffLocation)
+            editor.putString("recipientName", recipientName)
+            editor.putString("recipientPhone", recipientPhone)
+            editor.apply()
+
+
             val intent = Intent(this, CreateLoadDateView::class.java)
             startActivity(intent)
         }
