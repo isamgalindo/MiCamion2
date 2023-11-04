@@ -79,7 +79,11 @@ class LoginPage : AppCompatActivity() {
 
         }
 
+
     }
+
+
+
 
     private fun authenticateUser(username: String, password: String) {
 
@@ -96,8 +100,48 @@ class LoginPage : AppCompatActivity() {
                         // Save the token or handle authentication success
                         // For example, you can save it to SharedPreferences for later use
                         // Then proceed to the next screen
-                        val intent = Intent(this@LoginPage, ServicesCompanyPersona::class.java)
-                        startActivity(intent)
+                        userService.getUserByEmail(username).enqueue(object : Callback<User> {
+                            override fun onResponse(call: Call<User>, response: Response<User>) {
+                                if (response.isSuccessful) {
+                                    val user = response.body()
+                                    if (user != null) {
+                                        val userType = user.userType
+                                        val name = user.name
+                                        val email = user.email
+                                        val lastName = user.lastName
+                                        val phone = user.phone
+                                        if (userType == "LO"){
+                                            val intent = Intent(this@LoginPage, ServicesCompanyPersona::class.java)
+                                            intent.putExtra("Name", name)
+                                            intent.putExtra("Email", email)
+                                            intent.putExtra("User Type", userType)
+                                            intent.putExtra("Last Name", lastName)
+                                            intent.putExtra("Phone", phone)
+                                            startActivity(intent)
+                                        }
+                                        if (userType == "TO"){
+                                            val intent = Intent(this@LoginPage, ServicesTruckOwner::class.java)
+                                            intent.putExtra("Name", name)
+                                            startActivity(intent)
+
+                                        }
+                                        else{
+                                            Toast.makeText(applicationContext, "Truck driver view", Toast.LENGTH_SHORT).show()
+                                        }
+
+                                    } else {
+                                        Toast.makeText(applicationContext, "No user found with email: $username", Toast.LENGTH_SHORT).show()
+                                    }
+                                } else {
+                                    Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            override fun onFailure(call: Call<User>, t: Throwable) {
+                                Toast.makeText(applicationContext, "Failure: ${t.message}", Toast.LENGTH_SHORT).show()
+                            }
+                        })
+
                     } else {
                         Toast.makeText(this@LoginPage, "Authentication failed", Toast.LENGTH_SHORT).show()
                     }

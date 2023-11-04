@@ -8,10 +8,14 @@
     android:gravity="center"
     tools:context=".SendView">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height= "0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+       >
 
 
         <TextView
@@ -23,7 +27,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="20dp"
             android:text="Send"
-            android:textColor="@color/black"
+            style="@style/Titles"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -32,7 +36,7 @@
             android:id="@+id/createLoadButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:backgroundTint="@color/Deepblue"
+            style="@style/Buttons"
             android:text="Create load"
             android:textSize="18sp"
             app:cornerRadius="30dp" />
@@ -47,7 +51,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="20dp"
             android:text="OR"
-            android:textColor="@color/black"
+            style="@style/Texts"
             android:textSize="20sp"
             android:textStyle="normal" />
 
@@ -61,210 +65,30 @@
             app:iconifiedByDefault="false"
             app:queryHint="Search..." />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardElevation="20dp"
 
-            >
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <TextView
-                    android:id="@+id/Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Frozen fruit pulp"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-
-                    />
-
-                <TextView
-                    android:id="@+id/weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="200kg - 200lts"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="normal"
-
-                    />
-
-                <TextView
-                    android:id="@+id/pickUp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pickup"
-                    android:textColor="@color/Gray"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-
-                    />
-
-                <TextView
-                    android:id="@+id/pickUpDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="15/09/2023"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/pickUpAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Carrera 10 #20-78, Bogotá"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
-                <TextView
-                    android:id="@+id/destination"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Destination"
-                    android:textColor="@color/Gray"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-
-                    />
-
-                <TextView
-                    android:id="@+id/dropOffDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="20/09/2023"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/dropOffAddress"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Carrera 20 #53-23, Tunja"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+        </androidx.core.widget.NestedScrollView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:cardElevation="20dp"
-
-            >
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <TextView
-                    android:id="@+id/Name2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Frozen fruit pulp"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold"
-
-                    />
-
-                <TextView
-                    android:id="@+id/weight2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="1000kg - 200lts"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="normal"
-
-                    />
-
-                <TextView
-                    android:id="@+id/pickUp2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Pickup"
-                    android:textColor="@color/Gray"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-
-                    />
-
-                <TextView
-                    android:id="@+id/pickUpDate2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="15/09/2023"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/pickUpAddress2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Carrera 10 #20-78, Bogotá"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
-                <TextView
-                    android:id="@+id/destination2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Destination"
-                    android:textColor="@color/Gray"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-
-                    />
-
-                <TextView
-                    android:id="@+id/dropOffDate2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="20/09/2023"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/dropOffAddress2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Carrera 20 #53-23, Tunja"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
 
 
     </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_navigation_menu" />
+
 </LinearLayout>

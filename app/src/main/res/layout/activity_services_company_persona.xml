@@ -7,19 +7,23 @@
     android:orientation="vertical"
     tools:context=".ServicesCompanyPersona">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
     <TextView
-        android:id="@+id/trucks"
+        android:id="@+id/welcome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome!"
         android:textSize="30sp"
         android:textStyle="bold"
         android:paddingStart="20dp"
         android:paddingTop="15dp"
         android:paddingEnd="16dp"
         android:paddingBottom="20dp"
-        android:textColor="@color/black"
+        style="@style/Titles"
         />
 
 
@@ -43,16 +47,17 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp"
+            style="@style/Cards"
             >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Send"
                 android:id="@+id/tripid"
-                android:textColor="@color/black"
+                style="@style/Titles"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
             <TextView
@@ -60,10 +65,10 @@
                 android:layout_height="wrap_content"
                 android:text="Have a truck deliver a load"
                 android:id="@+id/startdate"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
 
@@ -71,53 +76,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardElevation="20dp"
 
-        >
-        <ImageView
-            android:id="@+id/scheduleIcon"
-            android:layout_height="117dp"
-            android:layout_gravity="center_vertical"
-            android:layout_width="100dp"
-            android:src="@drawable/calendar"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="24dp"
-            >
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Schedule"
-                android:id="@+id/schedule"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:paddingStart="70dp"
-
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Use your preferred time"
-                android:id="@+id/descriptionSchedule"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="normal"
-                android:paddingStart="70dp"
-
-                />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -138,16 +97,17 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="24dp"
+            style="@style/Cards"
             >
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Track"
                 android:id="@+id/track"
-                android:textColor="@color/black"
+                style="@style/Titles"
                 android:textSize="25sp"
                 android:textStyle="bold"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
             <TextView
@@ -155,15 +115,23 @@
                 android:layout_height="wrap_content"
                 android:text="Sent your status of an active shipmen"
                 android:id="@+id/descriptionRentYourTruck"
-                android:textColor="@color/black"
+                style="@style/Texts"
                 android:textSize="18sp"
                 android:textStyle="normal"
-                android:paddingStart="70dp"
+                android:paddingStart="90dp"
 
                 />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/bottom_navigation_menu" />
 
 </LinearLayout>

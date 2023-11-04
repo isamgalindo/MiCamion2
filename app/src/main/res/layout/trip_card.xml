@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardElevation="20dp"
+    android:tag="uniqueTag"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp"
+        style="@style/Cards"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Frozen fruit pulp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                style="@style/Titles"
+
+                />
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_state"
+                android:backgroundTint="@color/yellow"
+                android:paddingStart="25dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Texts"
+            android:textSize="18sp"
+            android:textStyle="normal"
+
+            />
+
+        <TextView
+            android:id="@+id/pickUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pickup"
+            android:textColor="@color/Gray"
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_bold"
+
+            />
+
+        <TextView
+            android:id="@+id/pickUpDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            style="@style/Texts"
+            android:textSize="18sp"
+
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/pickUpAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Texts"
+            android:textSize="18sp"
+
+            android:textStyle="normal" />
+        <TextView
+            android:id="@+id/destination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Destination"
+            android:textColor="@color/Gray"
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_bold"
+
+            />
+
+        <TextView
+            android:id="@+id/dropOffDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Texts"
+            android:textSize="18sp"
+
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/dropOffAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Texts"
+            android:textSize="18sp"
+
+            android:textStyle="normal" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+    </LinearLayout>

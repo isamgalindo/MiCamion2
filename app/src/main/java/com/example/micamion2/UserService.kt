@@ -22,4 +22,21 @@ interface UserService {
 
     @DELETE("auth/{id}/")
     fun deleteUser(@Path("id") id: Int): Call<Void>
+
+    @GET("/users/{id}/")
+    fun getUserType(@Query("userType") userType: String): Call<User>
+
+    @GET("/users/email/{email}")
+    fun getUserByEmail(@Path("email") email: String): Call<User>
+
+    @GET("/trips")
+    fun getAllTrips(): Call<List<Trip>>
+
+    @GET("loads/{id}")
+    fun getLoadById(@Path("id") id: Int): Call<Load>
+    @GET("accesspoints/{id}")
+    fun getAccessPointById(@Path("id") id: Int): Call<AccessPoint>
+
+    @GET("accesspoints")
+    fun getAllAccessPoints(): Call<List<AccessPoint>>
 }

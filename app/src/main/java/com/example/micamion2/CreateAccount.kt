@@ -80,7 +80,9 @@ class CreateAccount : AppCompatActivity() {
 
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this@CreateAccount, "Error creating user", Toast.LENGTH_SHORT).show()
+                        val errorBody = response.errorBody()?.string()
+                        println("$errorBody")
+                        Toast.makeText(this@CreateAccount, "Error creating user, $errorBody", Toast.LENGTH_SHORT).show()
                     }
                 }
 
