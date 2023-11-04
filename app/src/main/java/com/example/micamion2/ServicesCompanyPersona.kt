@@ -1,5 +1,6 @@
 package com.example.micamion2
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,21 +9,12 @@ import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ServicesCompanyPersona : AppCompatActivity() {
-    private var name =""
-    private var email =""
-    private var userType =""
-    private var lastName =""
-    private var phone =""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services_company_persona)
 
-        val intent = intent
-        name = intent.getStringExtra("Name").toString()
-        email = intent.getStringExtra("Email").toString()
-        userType = intent.getStringExtra("User Type").toString()
-        lastName = intent.getStringExtra("Last Name").toString()
-        phone = intent.getStringExtra("Phone").toString()
+        val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val name = sharedPref.getString("name", "DefaultName")
 
         // Get the TextView reference
         val textView: TextView = findViewById(R.id.welcome)
@@ -38,23 +30,12 @@ class ServicesCompanyPersona : AppCompatActivity() {
                 }
                 R.id.loadmenu ->{
                     val intent = Intent(this@ServicesCompanyPersona, SendView::class.java)
-                    intent.putExtra("Name", name)
-                    intent.putExtra("Email", email)
-                    intent.putExtra("User Type", userType)
-                    intent.putExtra("Last Name", lastName)
-                    intent.putExtra("Phone", phone)
                     startActivity(intent)
                     finish()
                     true
                 }
                 R.id.profile ->{
                     val intent = Intent(this@ServicesCompanyPersona, ProfileView::class.java)
-                    intent.putExtra("Name", name)
-                    intent.putExtra("Name", name)
-                    intent.putExtra("Email", email)
-                    intent.putExtra("User Type", userType)
-                    intent.putExtra("Last Name", lastName)
-                    intent.putExtra("Phone", phone)
                     startActivity(intent)
                     finish()
                     true
