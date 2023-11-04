@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.Toast
@@ -31,16 +32,11 @@ class CreateLoadDetailsView : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val buttonNext = findViewById<Button>(R.id.nextButton)
-        buttonNext.setOnClickListener {
-            val intent = Intent(this, CreateLoadDestinationView::class.java)
-            startActivity(intent)
-        }
-
         val items = arrayOf("Kg", "g", "Lb","Tons")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
         val spinner: Spinner = findViewById(R.id.weightSpinner)
         spinner.adapter = adapter
+
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
@@ -52,6 +48,14 @@ class CreateLoadDetailsView : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
+        }
+
+
+        val buttonNext = findViewById<Button>(R.id.nextButton)
+        buttonNext.setOnClickListener {
+
+            val intent = Intent(this, CreateLoadDestinationView::class.java)
+            startActivity(intent)
         }
 
         val itemsVol = arrayOf("Lt", "cm3", "m3")
