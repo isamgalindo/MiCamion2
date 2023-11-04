@@ -1,5 +1,6 @@
 package com.example.micamion2
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.Toast
@@ -33,6 +35,25 @@ class CreateLoadDetailsView : AppCompatActivity() {
 
         val buttonNext = findViewById<Button>(R.id.nextButton)
         buttonNext.setOnClickListener {
+            val nameLoadEditText = findViewById<EditText>(R.id.loadName)
+            val typeLoadEditText = findViewById<EditText>(R.id.loadType)
+            val weightTypeEditText = findViewById<EditText>(R.id.Weight)
+            val volumeTypeEditText = findViewById<EditText>(R.id.Volume)
+
+            val nameLoad = nameLoadEditText.text.toString()
+            val typeLoad = typeLoadEditText.text.toString()
+            val weightLoad = weightTypeEditText.text.toString()
+            val volumeLoad = volumeTypeEditText.text.toString()
+
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+                editor.putString("nameLoad", nameLoad)
+                editor.putString("typeLoad", typeLoad)
+                editor.putString("weightLoad", weightLoad)
+                editor.putString("volumeLoad", volumeLoad)
+                editor.apply()  // Or use commit() if you need synchronous storage
+
+
             val intent = Intent(this, CreateLoadDestinationView::class.java)
             startActivity(intent)
         }
