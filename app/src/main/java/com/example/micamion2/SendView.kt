@@ -99,7 +99,7 @@ class SendView : AppCompatActivity() {
             }
         })
 
-        userService.getAllTrips().enqueue(object : Callback<List<Trip>> {
+        userService.getTripsByLoadOwner("1").enqueue(object : Callback<List<Trip>> {
 
             override fun onResponse(call: Call<List<Trip>>, response: Response<List<Trip>>) {
                 if (response.isSuccessful) {

@@ -31,4 +31,7 @@ interface UserService {
 
     @GET("/trips")
     fun getAllTrips(): Call<List<Trip>>
+
+    @GET("/trips")
+    fun getTripsByLoadOwner(@Query("loadOwnerId") loadOwnerId: String): Call<List<Trip>>
 }

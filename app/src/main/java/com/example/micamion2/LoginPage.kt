@@ -91,6 +91,7 @@ class LoginPage : AppCompatActivity() {
 
         val request = call.request()
         val url = request.url().toString()
+        Log.e("URL",url)
         call.enqueue(object : Callback<AuthenticationResponse> {
             override fun onResponse(call: Call<AuthenticationResponse>, response: Response<AuthenticationResponse>) {
                 if (response.isSuccessful) {
@@ -151,7 +152,7 @@ class LoginPage : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<AuthenticationResponse>, t: Throwable) {
-                Toast.makeText(this@LoginPage, "Authentication failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginPage, "Error connecting to the server", Toast.LENGTH_SHORT).show()
             }
         })
     }
