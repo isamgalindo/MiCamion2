@@ -41,11 +41,11 @@ class CreateLoadDetailsView : AppCompatActivity() {
 
             val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-                editor.putString("nameLoad", nameLoad)
-                editor.putString("typeLoad", typeLoad)
-                editor.putString("weightLoad", weightLoad)
-                editor.putString("volumeLoad", volumeLoad)
-                editor.apply()  // Or use commit() if you need synchronous storage
+            editor.putString("nameLoad", nameLoad)
+            editor.putString("typeLoad", typeLoad)
+            editor.putString("weightLoad", weightLoad)
+            editor.putString("volumeLoad", volumeLoad)
+            editor.apply()  // Or use commit() if you need synchronous storage
 
 
             val intent = Intent(this, CreateLoadDestinationView::class.java)
