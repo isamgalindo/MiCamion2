@@ -1,5 +1,6 @@
 package com.example.micamion2
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,6 +33,31 @@ class CreateLoadDetailsView : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val buttonNext = findViewById<Button>(R.id.nextButton)
+        buttonNext.setOnClickListener {
+            val nameLoadEditText = findViewById<EditText>(R.id.loadName)
+            val typeLoadEditText = findViewById<EditText>(R.id.loadType)
+            val weightTypeEditText = findViewById<EditText>(R.id.Weight)
+            val volumeTypeEditText = findViewById<EditText>(R.id.Volume)
+
+            val nameLoad = nameLoadEditText.text.toString()
+            val typeLoad = typeLoadEditText.text.toString()
+            val weightLoad = weightTypeEditText.text.toString()
+            val volumeLoad = volumeTypeEditText.text.toString()
+
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+                editor.putString("nameLoad", nameLoad)
+                editor.putString("typeLoad", typeLoad)
+                editor.putString("weightLoad", weightLoad)
+                editor.putString("volumeLoad", volumeLoad)
+                editor.apply()  // Or use commit() if you need synchronous storage
+
+
+            val intent = Intent(this, CreateLoadDestinationView::class.java)
+            startActivity(intent)
+        }
+
         val items = arrayOf("Kg", "g", "Lb","Tons")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
         val spinner: Spinner = findViewById(R.id.weightSpinner)
@@ -48,14 +74,6 @@ class CreateLoadDetailsView : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }
-
-
-        val buttonNext = findViewById<Button>(R.id.nextButton)
-        buttonNext.setOnClickListener {
-
-            val intent = Intent(this, CreateLoadDestinationView::class.java)
-            startActivity(intent)
         }
 
         val itemsVol = arrayOf("Lt", "cm3", "m3")

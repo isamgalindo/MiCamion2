@@ -22,23 +22,10 @@ class SendView : AppCompatActivity() {
     private lateinit var searchView: SearchView
     private lateinit var container: LinearLayout
     private lateinit var allCardViews: List<CardView>
-    private var name =""
-    private var email =""
-    private var userType =""
-    private var lastName =""
-    private var phone =""
     private val userService = RetrofitInstance.apiUsuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_view)
-
-        val intent = intent
-        name = intent.getStringExtra("Name").toString()
-        email = intent.getStringExtra("Email").toString()
-        userType = intent.getStringExtra("User Type").toString()
-        lastName = intent.getStringExtra("Last Name").toString()
-        phone = intent.getStringExtra("Phone").toString()
-
 
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
@@ -50,22 +37,12 @@ class SendView : AppCompatActivity() {
                 }
                 R.id.home ->{
                     val intent = Intent(this@SendView, ServicesCompanyPersona::class.java)
-                    intent.putExtra("Name", name)
-                    intent.putExtra("Email", email)
-                    intent.putExtra("User Type", userType)
-                    intent.putExtra("Last Name", lastName)
-                    intent.putExtra("Phone", phone)
                     startActivity(intent)
                     finish()
                     true
                 }
                 R.id.profile ->{
                     val intent = Intent(this@SendView, ProfileView::class.java)
-                    intent.putExtra("Name", name)
-                    intent.putExtra("Email", email)
-                    intent.putExtra("User Type", userType)
-                    intent.putExtra("Last Name", lastName)
-                    intent.putExtra("Phone", phone)
                     startActivity(intent)
                     finish()
                     true
@@ -140,9 +117,8 @@ class SendView : AppCompatActivity() {
                                         val ap = response.body()
                                         if (ap != null) {
                                             tripCard.findViewById<TextView>(R.id.pickUpAddress).text = "${ap.address}, ${ap.city}, ${ap.country}"
-                                            Toast.makeText(applicationContext, "AP!", Toast.LENGTH_SHORT).show()
                                         } else {
-                                            Toast.makeText(applicationContext, "AP!", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(applicationContext, "AP vacio", Toast.LENGTH_SHORT).show()
                                         }
                                     } else {
                                         Toast.makeText(applicationContext, "${trip.pickup}: ${response.code()}", Toast.LENGTH_SHORT).show()
@@ -159,9 +135,8 @@ class SendView : AppCompatActivity() {
                                         val ap = response.body()
                                         if (ap != null) {
                                             tripCard.findViewById<TextView>(R.id.dropOffAddress).text = "${ap.address}, ${ap.city}, ${ap.country}"
-                                            Toast.makeText(applicationContext, "AP!", Toast.LENGTH_SHORT).show()
                                         } else {
-                                            Toast.makeText(applicationContext, "AP!", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(applicationContext, "AP vacio", Toast.LENGTH_SHORT).show()
                                         }
                                     } else {
                                         Toast.makeText(applicationContext, "${trip.dropoff}: ${response.code()}", Toast.LENGTH_SHORT).show()

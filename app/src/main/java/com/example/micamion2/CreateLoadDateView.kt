@@ -22,7 +22,7 @@ class CreateLoadDateView : AppCompatActivity() {
 
         val buttonNext = findViewById<Button>(R.id.saveButton)
         buttonNext.setOnClickListener {
-            val intent = Intent(this, CreateLoadDestinationView::class.java)
+            val intent = Intent(this, LoadCompleteDetailsView::class.java)
             startActivity(intent)
         }
 
