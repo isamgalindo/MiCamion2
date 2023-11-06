@@ -19,7 +19,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
 
         >
-
         <TextView
             android:id="@+id/createLoadText"
             style="@style/Titles"
@@ -28,7 +27,6 @@
             android:layout_marginTop="20dp"
             android:text="Load details"
             android:textSize="36sp" />
-
         <TextView
             android:id="@+id/detailsText"
             style="@style/Titles"
@@ -131,14 +129,15 @@
             android:textSize="18dp" />
 
 
+        <Button
+            android:id="@+id/okButton"
+            style="@style/Buttons"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="OK"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
+
     </LinearLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_navigation_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
