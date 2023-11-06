@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -43,6 +44,12 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         loadDropOffTextView.text = dropOff
         recipientNameTextView.text = recipientName
         recipientPhoneTextView.text = recipientPhone
+
+        val buttonOK = findViewById<Button>(R.id.okButton)
+        buttonOK.setOnClickListener {
+            val intent = Intent(this, SendView::class.java)
+            startActivity(intent)
+        }
 
 
     }
