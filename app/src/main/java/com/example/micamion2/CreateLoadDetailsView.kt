@@ -37,8 +37,8 @@ class CreateLoadDetailsView : AppCompatActivity() {
         buttonNext.setOnClickListener {
             val nameLoadEditText = findViewById<EditText>(R.id.loadName)
             val typeLoadEditText = findViewById<EditText>(R.id.loadType)
-            val weightTypeEditText = findViewById<EditText>(R.id.Weight)
-            val volumeTypeEditText = findViewById<EditText>(R.id.Volume)
+            val weightTypeEditText = findViewById<EditText>(R.id.loadWeight)
+            val volumeTypeEditText = findViewById<EditText>(R.id.loadVolume)
 
             val nameLoad = nameLoadEditText.text.toString()
             val typeLoad = typeLoadEditText.text.toString()
