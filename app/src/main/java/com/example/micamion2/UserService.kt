@@ -39,4 +39,7 @@ interface UserService {
 
     @GET("accesspoints")
     fun getAllAccessPoints(): Call<List<AccessPoint>>
+
+    @GET("trailers")
+    fun getAllTrailers(): Call<List<Trailer>>
 }
