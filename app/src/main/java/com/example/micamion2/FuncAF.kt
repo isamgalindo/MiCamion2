@@ -1,6 +1,7 @@
 package com.example.micamion2
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
@@ -43,12 +44,6 @@ class FuncAF : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
-        val buttonClick = findViewById<Button>(R.id.volver)
-        buttonClick.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
@@ -88,6 +83,12 @@ class FuncAF : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickL
                 val currentLatLng = LatLng(location.latitude, location.longitude)
                 placeMarkerOnMap(currentLatLng)
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng,12f))
+                val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+                with(sharedPreferences.edit()) {
+                    putFloat("location_lat", location.latitude.toFloat())
+                    putFloat("location_lng", location.longitude.toFloat())
+                    apply()
+                }
             }
 
         }
