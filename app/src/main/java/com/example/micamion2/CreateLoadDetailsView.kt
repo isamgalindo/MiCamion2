@@ -27,12 +27,6 @@ class CreateLoadDetailsView : AppCompatActivity() {
         progressbar.setProgress(currentprogress)
         progressbar.max = 100
 
-        val buttonBack = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        buttonBack.setOnClickListener {
-            val intent = Intent(this, SendView::class.java)
-            startActivity(intent)
-        }
-
         val buttonNext = findViewById<Button>(R.id.nextButton)
         buttonNext.setOnClickListener {
             val nameLoadEditText = findViewById<EditText>(R.id.loadName)
@@ -62,6 +56,7 @@ class CreateLoadDetailsView : AppCompatActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
         val spinner: Spinner = findViewById(R.id.weightSpinner)
         spinner.adapter = adapter
+
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
