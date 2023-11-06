@@ -1,6 +1,7 @@
 package com.example.micamion2
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,7 @@ class CreateTruckDate : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_truck_date)
 
+
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 100
         progressbar.setProgress(currentprogress)
@@ -22,6 +24,16 @@ class CreateTruckDate : AppCompatActivity() {
 
         val buttonSave = findViewById<Button>(R.id.saveButton)
         buttonSave.setOnClickListener {
+            val startDateEditText = findViewById<EditText>(R.id.startDate)
+            val endDateEditText = findViewById<EditText>(R.id.endDate)
+
+            val startDate = startDateEditText.text.toString()
+            val endDate = endDateEditText.text.toString()
+            val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("startDate", startDate)
+            editor.putString("endDate", endDate)
+            editor.apply()
             val intent = Intent(this, TruckCompleteDetails::class.java)
             startActivity(intent)
         }
@@ -51,6 +63,7 @@ class CreateTruckDate : AppCompatActivity() {
                 val selectedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
                 val dateEditText: EditText = findViewById(R.id.startDate)
                 dateEditText.setText(selectedDate)
+
             },
             year, month, day
         )
