@@ -3,6 +3,7 @@ package com.example.micamion2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.gson.JsonObject
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +25,7 @@ class SendView : AppCompatActivity() {
     private lateinit var searchView: SearchView
     private lateinit var container: LinearLayout
     private lateinit var allCardViews: List<CardView>
+    private var userId =""
     private var name =""
     private var email =""
     private var userType =""
@@ -38,6 +42,7 @@ class SendView : AppCompatActivity() {
         userType = intent.getStringExtra("User Type").toString()
         lastName = intent.getStringExtra("Last Name").toString()
         phone = intent.getStringExtra("Phone").toString()
+
 
 
 
@@ -99,9 +104,29 @@ class SendView : AppCompatActivity() {
             }
         })
 
-        userService.getTripsByLoadOwner("1").enqueue(object : Callback<List<Trip>> {
+
+
+        userService.getUserIdByEmail(email).enqueue(object : Callback<JsonObject> {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                if (response.isSuccessful) {
+                    val jsonResponse = response.body()
+                    if (jsonResponse != null) {
+
+                        userId= jsonResponse.get("id").toString()
+
+                    }
+                } else {
+                }
+            }
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+            }
+        })
+
+        userService.getTripsByLoadOwner(userId).enqueue(object : Callback<List<Trip>> {
+
 
             override fun onResponse(call: Call<List<Trip>>, response: Response<List<Trip>>) {
+                Log.e("Response",userId)
                 if (response.isSuccessful) {
                     val trips = response.body()
                     if (trips != null) {

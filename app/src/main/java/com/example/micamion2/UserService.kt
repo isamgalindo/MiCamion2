@@ -1,4 +1,5 @@
 package com.example.micamion2
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -29,9 +30,12 @@ interface UserService {
     @GET("/users/email/{email}")
     fun getUserByEmail(@Path("email") email: String): Call<User>
 
+    @GET("/users/email/{email}")
+    fun getUserIdByEmail(@Path("email") email: String): Call<JsonObject>
+
     @GET("/trips")
     fun getAllTrips(): Call<List<Trip>>
 
-    @GET("/trips")
-    fun getTripsByLoadOwner(@Query("loadOwnerId") loadOwnerId: String): Call<List<Trip>>
+    @GET("/trips/loadOwner/{loadOwnerId}")
+    fun getTripsByLoadOwner(@Path("loadOwnerId") loadOwnerId: String): Call<List<Trip>>
 }

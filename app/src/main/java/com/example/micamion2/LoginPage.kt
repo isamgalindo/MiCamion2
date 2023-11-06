@@ -89,9 +89,6 @@ class LoginPage : AppCompatActivity() {
 
         val call = userService.authenticate(username, password)
 
-        val request = call.request()
-        val url = request.url().toString()
-        Log.e("URL",url)
         call.enqueue(object : Callback<AuthenticationResponse> {
             override fun onResponse(call: Call<AuthenticationResponse>, response: Response<AuthenticationResponse>) {
                 if (response.isSuccessful) {
@@ -105,7 +102,9 @@ class LoginPage : AppCompatActivity() {
                             override fun onResponse(call: Call<User>, response: Response<User>) {
                                 if (response.isSuccessful) {
                                     val user = response.body()
+
                                     if (user != null) {
+
                                         val userType = user.userType
                                         val name = user.name
                                         val email = user.email
