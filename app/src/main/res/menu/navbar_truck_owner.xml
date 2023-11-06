@@ -5,9 +5,9 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Home"/>
     <item
-        android:id="@+id/loadmenu"
+        android:id="@+id/truckMenu"
         android:icon="@drawable/baseline_fire_truck_24"
-        android:title="Load"/>
+        android:title="Trucks"/>
     <item
         android:id="@+id/profile"
         android:icon="@drawable/baseline_person_24"

@@ -19,6 +19,21 @@
         android:theme="@style/Theme.MiCamion2"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileTruckOwner"
+            android:exported="false" />
+        <activity
+            android:name=".CreateTruckDate"
+            android:exported="false" />
+        <activity
+            android:name=".CreateTruckLocation"
+            android:exported="false" />
+        <activity
+            android:name=".CreateTruckDetails"
+            android:exported="false" />
+        <activity
+            android:name=".TrucksView"
+            android:exported="false" />
+        <activity
             android:name=".ManageTrucks"
             android:exported="false" />
         <activity
