@@ -15,6 +15,11 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.JsonObject
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -104,63 +109,11 @@ class SendView : AppCompatActivity() {
             }
         })
 
+        getUserID()
 
 
-        userService.getUserIdByEmail(email).enqueue(object : Callback<JsonObject> {
-            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
-                if (response.isSuccessful) {
-                    val jsonResponse = response.body()
-                    if (jsonResponse != null) {
-
-                        userId= jsonResponse.get("id").toString()
-
-                    }
-                } else {
-                }
-            }
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-            }
-        })
-
-        userService.getTripsByLoadOwner(userId).enqueue(object : Callback<List<Trip>> {
 
 
-            override fun onResponse(call: Call<List<Trip>>, response: Response<List<Trip>>) {
-                Log.e("Response",userId)
-                if (response.isSuccessful) {
-                    val trips = response.body()
-                    if (trips != null) {
-                        // Get reference to the LinearLayout container
-                        val container = findViewById<LinearLayout>(R.id.linearLayout) // Replace with actual ID
-
-                        // Loop through each trip and create a CardView
-                        for (trip in trips) {
-                            // Inflate the card view
-                            val inflater = LayoutInflater.from(this@SendView) // Replace 'YourActivityName' with the name of your activity
-                            val tripCard = inflater.inflate(R.layout.trip_card, container, false)
-
-                            // Populate card data
-                            tripCard.findViewById<TextView>(R.id.Name).text = trip.loadOwner.toString() // Assuming 'productName' is a field in the 'Trip' class
-                            tripCard.findViewById<TextView>(R.id.weight).text = trip.trailer.toString()// Adapt as per your Trip class
-                            tripCard.findViewById<TextView>(R.id.pickUpDate).text = trip.status
-                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = trip.pickUp.toString()
-                            tripCard.findViewById<TextView>(R.id.dropOffDate).text = trip.dropOff.toString()
-
-                            // Add the populated card view to the container
-                            container.addView(tripCard)
-                        }
-
-                        Toast.makeText(applicationContext, "Succesful", Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-
-            override fun onFailure(call: Call<List<Trip>>, t: Throwable) {
-                Toast.makeText(applicationContext, "Failure: ${t.message}", Toast.LENGTH_SHORT).show()
-            }
-        })
 
     }
 
@@ -202,6 +155,68 @@ class SendView : AppCompatActivity() {
         }
 
         return textViews
+    }
+
+
+    private fun getUserID() {
+        userService.getUserIdByEmail(email).enqueue(object : Callback<JsonObject> {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
+                if (response.isSuccessful) {
+                    val jsonResponse = response.body()
+                    if (jsonResponse != null) {
+                        val id = jsonResponse.get("id").toString()
+                        getTrips(id)
+                    }
+                } else {
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                // Handle failure
+            }
+        })
+    }
+
+    private fun getTrips(userId: String) {
+        userService.getTripsByLoadOwner(userId).enqueue(object : Callback<List<Trip>> {
+            override fun onResponse(call: Call<List<Trip>>, response: Response<List<Trip>>) {
+                if (response.isSuccessful) {
+                    val trips = response.body()
+                    if (trips != null) {
+                        // Get reference to the LinearLayout container
+                        val container = findViewById<LinearLayout>(R.id.linearLayout) // Replace with actual ID
+
+                        // Loop through each trip and create a CardView
+                        for (trip in trips) {
+                            // Inflate the card view
+                            val inflater = LayoutInflater.from(this@SendView) // Replace 'YourActivityName' with the name of your activity
+                            val tripCard = inflater.inflate(R.layout.trip_card, container, false)
+
+                            // Populate card data
+                            tripCard.findViewById<TextView>(R.id.Name).text = trip.loadOwner.toString() // Assuming 'productName' is a field in the 'Trip' class
+                            tripCard.findViewById<TextView>(R.id.weight).text = trip.trailer.toString()// Adapt as per your Trip class
+                            tripCard.findViewById<TextView>(R.id.pickUpDate).text = trip.status
+                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = trip.pickUp.toString()
+                            tripCard.findViewById<TextView>(R.id.dropOffDate).text = trip.dropOff.toString()
+
+                            // Add the populated card view to the container
+                            container.addView(tripCard)
+                        }
+
+                        Toast.makeText(applicationContext, "Succesful", Toast.LENGTH_SHORT).show()
+                    } else {
+                        // Handle unsuccessful response
+                    }
+                } else {
+                    // Handle unsuccessful response
+                }
+            }
+
+            override fun onFailure(call: Call<List<Trip>>, t: Throwable) {
+                // Handle failure
+            }
+        })
     }
 
 }
