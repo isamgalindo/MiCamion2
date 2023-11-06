@@ -33,7 +33,7 @@
 
 
         <Button
-            android:id="@+id/createLoadButton"
+            android:id="@+id/createTruckButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             style="@style/Buttons"

@@ -3,6 +3,7 @@ package com.example.micamion2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.cardview.widget.CardView
@@ -39,6 +40,12 @@ class TrucksView : AppCompatActivity() {
                 // Add other menu items here...
                 else -> false
             }
+        }
+
+        val button = findViewById<Button>(R.id.createTruckButton)
+        button.setOnClickListener {
+            val intent = Intent(this, CreateTruckDetails::class.java)
+            startActivity(intent)
         }
     }
 }

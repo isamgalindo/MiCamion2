@@ -21,7 +21,7 @@
     >
 
         <TextView
-            android:id="@+id/createLoadText"
+            android:id="@+id/createTruckText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -107,7 +107,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/loadWeight"
+                android:id="@+id/truckWeight"
                 android:layout_width="270dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="20dp"
@@ -142,7 +142,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/loadVolume"
+                android:id="@+id/truckVolume"
                 android:layout_width="270dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="20dp"
@@ -172,10 +172,20 @@
                 />
 
         </LinearLayout>
+        <TextView
+            android:id="@+id/label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Type"
+            style="@style/Texts"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
         <Spinner
             android:id="@+id/typeSpinner"
             style="@style/EditTexts"
-            android:layout_marginTop="20dp"
+
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:background="@drawable/custom_edittext"
@@ -194,7 +204,7 @@
             android:background="@drawable/custom_edittext"
             style="@style/EditTexts"
             android:drawablePadding="8dp"
-            android:hint="Model"
+            android:hint="Driver"
             android:padding="8dp"
             />
 
