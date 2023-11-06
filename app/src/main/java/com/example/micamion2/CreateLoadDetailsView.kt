@@ -27,12 +27,6 @@ class CreateLoadDetailsView : AppCompatActivity() {
         progressbar.setProgress(currentprogress)
         progressbar.max = 100
 
-        val buttonBack = findViewById<FloatingActionButton>(R.id.floatingActionButton)
-        buttonBack.setOnClickListener {
-            val intent = Intent(this, SendView::class.java)
-            startActivity(intent)
-        }
-
         val buttonNext = findViewById<Button>(R.id.nextButton)
         buttonNext.setOnClickListener {
             val nameLoadEditText = findViewById<EditText>(R.id.loadName)
