@@ -31,7 +31,6 @@
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Frozen fruit pulp"
                 android:layout_weight="1"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -40,7 +39,7 @@
                 />
             <TextView
                 android:id="@+id/status"
-                android:layout_width="80dp"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custom_state"
                 android:backgroundTint="@color/yellow"
