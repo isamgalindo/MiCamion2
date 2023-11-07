@@ -1,6 +1,7 @@
 package com.example.micamion2
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,15 @@ class CreateLoadDateView : AppCompatActivity() {
 
         val buttonNext = findViewById<Button>(R.id.saveButton)
         buttonNext.setOnClickListener {
+            val startDateEditText = findViewById<EditText>(R.id.pickUpDate)
+            val endDateEditText = findViewById<EditText>(R.id.deliveryDate)
+            val startDate = startDateEditText.text.toString()
+            val endDate = endDateEditText.text.toString()
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("pickUpDate", startDate)
+            editor.putString("dropOffDate", endDate)
+            editor.apply()
             val intent = Intent(this, LoadCompleteDetailsView::class.java)
             startActivity(intent)
         }
