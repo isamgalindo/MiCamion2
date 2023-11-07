@@ -179,8 +179,8 @@ class SendView : AppCompatActivity() {
                             tripCard.findViewById<TextView>(R.id.Name).text = trip.loadOwner.toString() // Assuming 'productName' is a field in the 'Trip' class
                             tripCard.findViewById<TextView>(R.id.weight).text = trip.trailer.toString()// Adapt as per your Trip class
                             tripCard.findViewById<TextView>(R.id.pickUpDate).text = trip.status
-                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = trip.pickUp.toString()
-                            tripCard.findViewById<TextView>(R.id.dropOffDate).text = trip.dropOff.toString()
+                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = trip.pickup.toString()
+                            tripCard.findViewById<TextView>(R.id.dropOffDate).text = trip.dropoff.toString()
 
                             // Add the populated card view to the container
                             container.addView(tripCard)

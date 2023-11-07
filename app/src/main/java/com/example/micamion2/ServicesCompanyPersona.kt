@@ -17,12 +17,12 @@ class ServicesCompanyPersona : AppCompatActivity() {
         val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
         val intent = intent
-        name = intent.getStringExtra("Name").toString()
-        email = intent.getStringExtra("Email").toString()
 
-        userType = intent.getStringExtra("User Type").toString()
-        lastName = intent.getStringExtra("Last Name").toString()
-        phone = intent.getStringExtra("Phone").toString()
+        val email = intent.getStringExtra("Email").toString()
+
+        val userType = intent.getStringExtra("User Type").toString()
+        val lastName = intent.getStringExtra("Last Name").toString()
+        val phone = intent.getStringExtra("Phone").toString()
 
         // Get the TextView reference
         val textView: TextView = findViewById(R.id.welcome)
