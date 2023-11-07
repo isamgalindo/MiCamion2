@@ -1,9 +1,11 @@
 package com.example.micamion2
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.micamion2.databinding.ActivityMainBinding
@@ -15,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var logButton: Button
     private lateinit var viewModel: DarkModeViewModel
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -54,15 +57,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             }
 
-        val networkConnection = NetworkConnection(applicationContext)
-        networkConnection.observe(this){
-            if (it){
-                Toast.makeText(this, "Connected to Internet", Toast.LENGTH_SHORT).show()
-                setContentView(R.layout.activity_main)
-            } else {
-                Toast.makeText(this, "Not connected to Internet", Toast.LENGTH_SHORT).show()
-                setContentView(R.layout.activity_network_error_layout)
-            }
-        }
+
     }
 }
