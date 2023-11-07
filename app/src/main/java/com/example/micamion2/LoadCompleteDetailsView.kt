@@ -22,6 +22,8 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         val dropOff = sharedPref.getString("dropOffLocation", "") ?: ""
         val recipientName = sharedPref.getString("recipientName", "") ?: ""
         val recipientPhone = sharedPref.getString("recipientPhone", "") ?: ""
+        val pickUpDate = sharedPref.getString("pickUpDate", "") ?: ""
+        val dropOffDate = sharedPref.getString("dropOffDate", "") ?: ""
 
         // Get the TextView reference
         val loadNameTextView: TextView = findViewById(R.id.loadNameReview)
@@ -32,8 +34,8 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         val loadDropOffTextView: TextView = findViewById(R.id.loadDropOffReview)
         val recipientNameTextView: TextView = findViewById(R.id.recipientNameReview)
         val recipientPhoneTextView: TextView = findViewById(R.id.phoneNumber)
-        //val loadpickUpDateTextView: TextView = findViewById(R.id.pickUpDateReview)
-        //val loadDropOffDateTextView: TextView = findViewById(R.id.loadDropOffReview)
+        val loadpickUpDateTextView: TextView = findViewById(R.id.pickUpDateReview)
+        val loadDropOffDateTextView: TextView = findViewById(R.id.dropoffDate)
         // Set the text using the string resource with placeholder
 
         loadNameTextView.text = name
@@ -44,6 +46,8 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         loadDropOffTextView.text = dropOff
         recipientNameTextView.text = recipientName
         recipientPhoneTextView.text = recipientPhone
+        loadpickUpDateTextView.text = pickUpDate
+        loadDropOffDateTextView.text = dropOffDate
 
         val buttonOK = findViewById<Button>(R.id.okButton)
         buttonOK.setOnClickListener {
