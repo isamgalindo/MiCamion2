@@ -1,17 +1,12 @@
 package com.example.micamion2
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import com.example.micamion2.databinding.ActivityMainBinding
-import android.text.method.LinkMovementMethod
 import android.content.Intent
+import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.ViewModelProvider
+import com.example.micamion2.databinding.ActivityMainBinding
 import java.time.LocalTime
 
 
@@ -19,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var logButton: Button
     private lateinit var viewModel: DarkModeViewModel
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +54,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             }
 
-
+        val networkConnection = NetworkConnection(applicationContext)
+        networkConnection.observe(this){
+            if (it){
+                Toast.makeText(this, "Connected to Internet", Toast.LENGTH_SHORT).show()
+                setContentView(R.layout.activity_main)
+            } else {
+                Toast.makeText(this, "Not connected to Internet", Toast.LENGTH_SHORT).show()
+                setContentView(R.layout.activity_network_error_layout)
+            }
+        }
     }
 }
