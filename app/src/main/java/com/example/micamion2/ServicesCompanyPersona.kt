@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,6 +16,13 @@ class ServicesCompanyPersona : AppCompatActivity() {
 
         val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
+        val intent = intent
+
+        val email = intent.getStringExtra("Email").toString()
+
+        val userType = intent.getStringExtra("User Type").toString()
+        val lastName = intent.getStringExtra("Last Name").toString()
+        val phone = intent.getStringExtra("Phone").toString()
 
         // Get the TextView reference
         val textView: TextView = findViewById(R.id.welcome)
@@ -53,9 +61,13 @@ class ServicesCompanyPersona : AppCompatActivity() {
         // Set an OnClickListener
         cardView.setOnClickListener {
             val intent = Intent(this, SendView::class.java)
-            // If you need to pass data to the new view, you can use intent.putExtra()
-            // intent.putExtra("key", value)
+            intent.putExtra("Name", name)
+            intent.putExtra("Email", email)
+            intent.putExtra("User Type", userType)
+            intent.putExtra("Last Name", lastName)
+            intent.putExtra("Phone", phone)
             startActivity(intent)
+            finish()
         }
 
 
