@@ -64,5 +64,6 @@ class MainActivity : AppCompatActivity() {
                 setContentView(R.layout.activity_network_error_layout)
             }
         }
+
     }
 }
