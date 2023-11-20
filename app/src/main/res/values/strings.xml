@@ -17,6 +17,7 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="welcome_message">Welcome! %1$s</string>
+    <string name="location_format">Lat: %1$.4f, Lng: %2$.4f</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -55,4 +56,5 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_main2">MainActivity2</string>
+    <string name="network_error" />
 </resources>

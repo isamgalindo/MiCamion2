@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CreateLoadDetailsView">
+    tools:context=".TruckCompleteDetails">
 
 
     <LinearLayout
@@ -20,7 +20,7 @@
 
         >
         <TextView
-            android:id="@+id/createLoadText"
+            android:id="@+id/TruckDetailsText"
             style="@style/Titles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/loadNameReview"
+            android:id="@+id/modelReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/loadTypeReview"
+            android:id="@+id/driverReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/loadWeightReview"
+            android:id="@+id/weightReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/loadVolumeReview"
+            android:id="@+id/volumeReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,56 +78,41 @@
             android:textSize="25dp" />
 
         <TextView
-            android:id="@+id/loadPickUpReview"
+            android:id="@+id/truckPickUpReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18dp" />
         <TextView
-            android:id="@+id/loadDropOffReview"
+            android:id="@+id/truckDropOffReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18dp" />
         <TextView
-            android:id="@+id/recipientNameReview"
-            style="@style/Texts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="18dp" />
-        <TextView
-            android:id="@+id/phoneNumber"
-            style="@style/Texts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="18dp" />
-        <TextView
-            android:id="@+id/loadDateReview"
+            android:id="@+id/dateReview"
             style="@style/Titles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Date"
-            android:textSize="18dp" />
+            android:textSize="25dp" />
         <TextView
-            android:id="@+id/pickUpDateReview"
+            android:id="@+id/startDateReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18dp" />
         <TextView
-            android:id="@+id/dropoffDate"
+            android:id="@+id/endDateReview"
             style="@style/Texts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18dp" />
-
 
         <Button
             android:id="@+id/okButton"

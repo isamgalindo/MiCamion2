@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".CreateTruckLocation">
+
+
+
+    <LinearLayout
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        >
+
+        <TextView
+            android:id="@+id/createTruckText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Create Truck"
+            style="@style/Texts"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_bold"
+            />
+
+        <TextView
+            android:id="@+id/detailsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Location"
+            style="@style/Titles"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:radius="8dp"
+            android:scaleY="2"
+            android:theme="@style/ProgressBarStyle" />
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/pickUpLocation"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/custom_edittext"
+                style="@style/EditTexts"
+                android:drawablePadding="8dp"
+                android:hint="Preferred pick up"
+                android:paddingStart="32dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:padding="8dp"
+                />
+            <ImageView
+                android:id="@+id/searchIcon1"
+                android:layout_width="40dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:layout_alignStart="@id/pickUpLocation"
+                android:layout_alignTop="@id/pickUpLocation"
+                android:layout_alignBottom="@id/pickUpLocation"
+                android:src="@drawable/baseline_search_24"
+                android:clickable="true"
+                android:contentDescription="Search"
+                android:padding="8dp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/destination"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                style="@style/EditTexts"
+                android:drawablePadding="8dp"
+                android:hint="Preferred destination"
+                android:paddingStart="32dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:padding="8dp"
+
+                />
+            <ImageView
+                android:id="@+id/searchIcon2"
+                android:layout_width="40dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:layout_alignStart="@id/destination"
+                android:layout_alignTop="@id/destination"
+                android:layout_alignBottom="@id/destination"
+                android:src="@drawable/baseline_search_24"
+                android:clickable="true"
+                android:contentDescription="Search"
+                android:padding="8dp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="44dp"
+        style="@style/Buttons"
+        android:text="Next"
+        android:textSize="18sp"
+        app:cornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,14 +41,6 @@ class SendView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_send_view)
 
-        val intent = intent
-        name = intent.getStringExtra("Name").toString()
-        email = intent.getStringExtra("Email").toString()
-        userType = intent.getStringExtra("User Type").toString()
-        lastName = intent.getStringExtra("Last Name").toString()
-        phone = intent.getStringExtra("Phone").toString()
-
-
 
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
@@ -60,22 +52,12 @@ class SendView : AppCompatActivity() {
                 }
                 R.id.home ->{
                     val intent = Intent(this@SendView, ServicesCompanyPersona::class.java)
-                    intent.putExtra("Name", name)
-                    intent.putExtra("Email", email)
-                    intent.putExtra("User Type", userType)
-                    intent.putExtra("Last Name", lastName)
-                    intent.putExtra("Phone", phone)
                     startActivity(intent)
                     finish()
                     true
                 }
                 R.id.profile ->{
                     val intent = Intent(this@SendView, ProfileView::class.java)
-                    intent.putExtra("Name", name)
-                    intent.putExtra("Email", email)
-                    intent.putExtra("User Type", userType)
-                    intent.putExtra("Last Name", lastName)
-                    intent.putExtra("Phone", phone)
                     startActivity(intent)
                     finish()
                     true
@@ -197,8 +179,8 @@ class SendView : AppCompatActivity() {
                             tripCard.findViewById<TextView>(R.id.Name).text = trip.loadOwner.toString() // Assuming 'productName' is a field in the 'Trip' class
                             tripCard.findViewById<TextView>(R.id.weight).text = trip.trailer.toString()// Adapt as per your Trip class
                             tripCard.findViewById<TextView>(R.id.pickUpDate).text = trip.status
-                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = trip.pickUp.toString()
-                            tripCard.findViewById<TextView>(R.id.dropOffDate).text = trip.dropOff.toString()
+                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = trip.pickup.toString()
+                            tripCard.findViewById<TextView>(R.id.dropOffDate).text = trip.dropoff.toString()
 
                             // Add the populated card view to the container
                             container.addView(tripCard)

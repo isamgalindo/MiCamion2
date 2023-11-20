@@ -2,12 +2,9 @@ package com.example.micamion2
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Rect
-import android.graphics.drawable.Drawable
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -16,10 +13,10 @@ import android.widget.Toast
 import java.io.IOException
 import java.util.Locale
 
-class CreateLoadDestinationView : AppCompatActivity() {
+class CreateTruckLocation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_load_destination_view)
+        setContentView(R.layout.activity_create_truck_location)
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 50
@@ -29,26 +26,20 @@ class CreateLoadDestinationView : AppCompatActivity() {
         buttonNext.setOnClickListener {
             val pickUpEditText = findViewById<EditText>(R.id.pickUpLocation)
             val dropOffEditText = findViewById<EditText>(R.id.destination)
-            val recipientNameEditText = findViewById<EditText>(R.id.recipientName)
-            val recipientPhoneEditText = findViewById<EditText>(R.id.recipientPhone)
 
             val pickUpLocation = pickUpEditText.text.toString()
             val dropOffLocation = dropOffEditText.text.toString()
-            val recipientName = recipientNameEditText.text.toString()
-            val recipientPhone = recipientPhoneEditText.text.toString()
 
-            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
             editor.putString("pickUpLocation", pickUpLocation)
             editor.putString("dropOffLocation", dropOffLocation)
-            editor.putString("recipientName", recipientName)
-            editor.putString("recipientPhone", recipientPhone)
             editor.apply()
 
-
-            val intent = Intent(this, CreateLoadDateView::class.java)
+            val intent = Intent(this, CreateTruckDate::class.java)
             startActivity(intent)
         }
+
         val searchIcon = findViewById<ImageView>(R.id.searchIcon1)
         val searchIcon2 = findViewById<ImageView>(R.id.searchIcon2)
         val pickUpEditText = findViewById<EditText>(R.id.pickUpLocation)
@@ -85,6 +76,7 @@ class CreateLoadDestinationView : AppCompatActivity() {
             }
         }
 
+
         searchIcon.setOnClickListener {
             val intent = Intent(this, FuncAF::class.java)
             startActivity(intent)
@@ -111,7 +103,6 @@ class CreateLoadDestinationView : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "No location saved", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 }

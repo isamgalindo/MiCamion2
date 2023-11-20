@@ -11,44 +11,45 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 
-class CreateLoadDateView : AppCompatActivity() {
+class CreateTruckDate : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_load_date_view)
+        setContentView(R.layout.activity_create_truck_date)
+
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 100
         progressbar.setProgress(currentprogress)
         progressbar.max = 100
 
-        val buttonNext = findViewById<Button>(R.id.saveButton)
-        buttonNext.setOnClickListener {
-            val startDateEditText = findViewById<EditText>(R.id.pickUpDate)
-            val endDateEditText = findViewById<EditText>(R.id.deliveryDate)
+        val buttonSave = findViewById<Button>(R.id.saveButton)
+        buttonSave.setOnClickListener {
+            val startDateEditText = findViewById<EditText>(R.id.startDate)
+            val endDateEditText = findViewById<EditText>(R.id.endDate)
+
             val startDate = startDateEditText.text.toString()
             val endDate = endDateEditText.text.toString()
-            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.putString("pickUpDate", startDate)
-            editor.putString("dropOffDate", endDate)
+            editor.putString("startDate", startDate)
+            editor.putString("endDate", endDate)
             editor.apply()
-            val intent = Intent(this, LoadCompleteDetailsView::class.java)
+            val intent = Intent(this, TruckCompleteDetails::class.java)
             startActivity(intent)
         }
 
-        val dateIcon1 = findViewById<ImageView>(R.id.pickUpDateIcon)
+        val startDate = findViewById<ImageView>(R.id.startDateIcon)
 
-        dateIcon1.setOnClickListener {
+        startDate.setOnClickListener {
             showDatePickerDialog()
         }
 
-        val dateIcon2 = findViewById<ImageView>(R.id.deliveryDateIcon)
+        val endDate = findViewById<ImageView>(R.id.endDateIcon)
 
-        dateIcon2.setOnClickListener {
+        endDate.setOnClickListener {
             showDatePickerDialogDelivery()
         }
     }
-
     private fun showDatePickerDialog() {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -60,8 +61,9 @@ class CreateLoadDateView : AppCompatActivity() {
                 // Handle the date selected by the user here
                 // monthOfYear starts from 0 (0 for January, 1 for February, and so on)
                 val selectedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
-                val dateEditText: EditText = findViewById(R.id.pickUpDate)
+                val dateEditText: EditText = findViewById(R.id.startDate)
                 dateEditText.setText(selectedDate)
+
             },
             year, month, day
         )
@@ -80,7 +82,7 @@ class CreateLoadDateView : AppCompatActivity() {
                 // Handle the date selected by the user here
                 // monthOfYear starts from 0 (0 for January, 1 for February, and so on)
                 val selectedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
-                val dateEditText: EditText = findViewById(R.id.deliveryDate)
+                val dateEditText: EditText = findViewById(R.id.endDate)
                 dateEditText.setText(selectedDate)
             },
             year, month, day

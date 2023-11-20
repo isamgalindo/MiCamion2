@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "89634817696",
+    "project_id": "tucamion-501d5",
+    "storage_bucket": "tucamion-501d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89634817696:android:8d69550be6a3e8e9ccabc5",
+        "android_client_info": {
+          "package_name": "com.example.micamion2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAau_DudpYp7mGzd4Vi0lVJhqVT0kuvFms"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

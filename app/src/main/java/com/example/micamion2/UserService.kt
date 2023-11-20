@@ -36,6 +36,16 @@ interface UserService {
     @GET("/trips")
     fun getAllTrips(): Call<List<Trip>>
 
+    @GET("loads/{id}")
+    fun getLoadById(@Path("id") id: Int): Call<Load>
+    @GET("accesspoints/{id}")
+    fun getAccessPointById(@Path("id") id: Int): Call<AccessPoint>
+
+    @GET("accesspoints")
+    fun getAllAccessPoints(): Call<List<AccessPoint>>
+
+    @GET("trailers")
+    fun getAllTrailers(): Call<List<Trailer>>
     @GET("/trips/loadOwner/{loadOwnerId}")
     fun getTripsByLoadOwner(@Path("loadOwnerId") loadOwnerId: String): Call<List<Trip>>
 }

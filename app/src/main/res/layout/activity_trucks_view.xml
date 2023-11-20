@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".SendView">
+    tools:context=".TrucksView">
 
 
 
@@ -15,29 +15,29 @@
         android:layout_height= "0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-       >
+        >
 
 
         <TextView
-            android:id="@+id/send"
+            android:id="@+id/Trucks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingTop="15dp"
             android:paddingEnd="16dp"
             android:paddingBottom="20dp"
-            android:text="Send"
+            android:text="Trucks"
             style="@style/Titles"
             android:textSize="30sp"
             android:textStyle="bold" />
 
 
         <Button
-            android:id="@+id/createLoadButton"
+            android:id="@+id/createTruckButton"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             style="@style/Buttons"
-            android:text="Create load"
+            android:text="Create Truck"
             android:textSize="18sp"
             app:cornerRadius="30dp" />
 
@@ -89,6 +89,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/navbar_truck_owner" />
 
 </LinearLayout>

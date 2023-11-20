@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ProfileView : AppCompatActivity() {
+class ProfileTruckOwner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_view)
+        setContentView(R.layout.activity_profile_truck_owner)
 
         val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
@@ -37,14 +37,14 @@ class ProfileView : AppCompatActivity() {
                 R.id.profile -> {
                     true
                 }
-                R.id.loadmenu ->{
-                    val intent = Intent(this@ProfileView, SendView::class.java)
+                R.id.truckMenu->{
+                    val intent = Intent(this@ProfileTruckOwner, TrucksView::class.java)
                     startActivity(intent)
                     finish()
                     true
                 }
                 R.id.home ->{
-                    val intent = Intent(this@ProfileView, ServicesCompanyPersona::class.java)
+                    val intent = Intent(this@ProfileTruckOwner, ServicesTruckOwner::class.java)
                     startActivity(intent)
                     finish()
                     true
