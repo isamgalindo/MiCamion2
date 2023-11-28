@@ -25,7 +25,12 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Locale
+import java.util.TimeZone
 
 class HistoryView : AppCompatActivity() {
     private lateinit var searchView: SearchView
@@ -120,6 +125,24 @@ class HistoryView : AppCompatActivity() {
             tripCard.findViewById<TextView>(R.id.dropOffAddress).text =
                 "${dropOffAddress.address}, ${dropOffAddress.city}, ${dropOffAddress.country}"
 
+            val beforeDateText = try {
+                val zonedDateTime = ZonedDateTime.parse(pickUpAddress.before)
+                val outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
+                zonedDateTime.format(outputFormatter)
+            } catch (e: Exception) {
+                pickUpAddress.before // Return the original string if parsing fails
+            }
+            val afterDateText = try {
+                val zonedDateTime = ZonedDateTime.parse(dropOffAddress.before)
+                val outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
+                zonedDateTime.format(outputFormatter)
+            } catch (e: Exception) {
+                dropOffAddress.before // Return the original string if parsing fails
+            }
+
+            tripCard.findViewById<TextView>(R.id.pickUpDate).text = beforeDateText
+            tripCard.findViewById<TextView>(R.id.dropOffDate).text = afterDateText
+
             tripCard.setOnClickListener {
                 Intent(this@HistoryView, HistoryTripsDetailed::class.java).apply {
                     putExtra("pickUpAddress", pickUpAddress.address)
@@ -128,6 +151,12 @@ class HistoryView : AppCompatActivity() {
                     putExtra("dropOffAddress", dropOffAddress.address)
                     putExtra("dropOffCity", dropOffAddress.city)
                     putExtra("dropOffCountry", dropOffAddress.country)
+                    putExtra("pickUpDate", beforeDateText)
+                    putExtra("dropOffDate", afterDateText)
+                    load?.let {
+                        putExtra("loadType", it.type)
+                        putExtra("loadWeight", it.weight.toString())
+                    }
                     startActivity(this)
                 }
             }

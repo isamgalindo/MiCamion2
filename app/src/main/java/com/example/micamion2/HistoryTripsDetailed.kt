@@ -3,6 +3,7 @@ package com.example.micamion2
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -32,6 +33,30 @@ class HistoryTripsDetailed : AppCompatActivity(), OnMapReadyCallback {
         val address = intent.getStringExtra("pickUpAddress")
         val city = intent.getStringExtra("pickUpCity")
         val country = intent.getStringExtra("pickUpCountry")
+        val dropOffAddress = intent.getStringExtra("dropOffAddress")
+        val dropOffCity = intent.getStringExtra("dropOffCity")
+        val dropOffCountry = intent.getStringExtra("dropOffCountry")
+        val loadType = intent.getStringExtra("loadType")
+        val loadWeight = intent.getStringExtra("loadWeight")
+        val pickUpDate = intent.getStringExtra("pickUpDate")
+        val dropOffDate = intent.getStringExtra("dropOffDate")
+
+
+        val loadTypeTextView: TextView = findViewById(R.id.loadTypeDetail)
+        val loadWeightTextView: TextView = findViewById(R.id.weightDetail)
+        val loadpickUpTextView: TextView = findViewById(R.id.pickUpLocationDetail)
+        val loadDropOffTextView: TextView = findViewById(R.id.dropOffLocationDetail)
+        val pickUpDateTextView: TextView = findViewById(R.id.pickUpDateDetail)
+        val dropOffDateTextView: TextView = findViewById(R.id.dropOffDateDetail)
+        // Set the text using the string resource with placeholder
+
+        loadTypeTextView.text = loadType
+        loadWeightTextView.text = loadWeight
+        loadpickUpTextView.text = "${address}, ${city}, $country"
+        loadDropOffTextView.text = "${dropOffAddress}, ${dropOffCity}, $dropOffCountry"
+        pickUpDateTextView.text = pickUpDate
+        dropOffDateTextView.text = dropOffDate
+
 
 
         pickUpLocation = "${address}, ${city}, $country" // Replace with actual address
