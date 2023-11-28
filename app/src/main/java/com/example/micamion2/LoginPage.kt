@@ -1,6 +1,7 @@
 package com.example.micamion2
 
 import android.content.Context
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -18,6 +19,8 @@ import com.example.micamion2.databinding.ActivityMainBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlinx.coroutines.*
+
 
 class LoginPage : AppCompatActivity() {
 
@@ -85,82 +88,97 @@ class LoginPage : AppCompatActivity() {
 
 
 
-
     private fun authenticateUser(username: String, password: String) {
+        val progressDialog = ProgressDialog(this@LoginPage)
+        progressDialog.setMessage("Authenticating...")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
 
-        val call = userService.authenticate(username, password)
+        CoroutineScope(Dispatchers.IO).launch {
+            val call = userService.authenticate(username, password)
+            try {
+                val response = call.execute()
 
-        val request = call.request()
-        val url = request.url().toString()
-        call.enqueue(object : Callback<AuthenticationResponse> {
-            override fun onResponse(call: Call<AuthenticationResponse>, response: Response<AuthenticationResponse>) {
                 if (response.isSuccessful) {
                     val authenticationResponse = response.body()
                     if (authenticationResponse != null) {
                         val token = authenticationResponse.token
                         // Save the token or handle authentication success
-                        // For example, you can save it to SharedPreferences for later use
-                        // Then proceed to the next screen
-                        userService.getUserByEmail(username).enqueue(object : Callback<User> {
-                            override fun onResponse(call: Call<User>, response: Response<User>) {
-                                if (response.isSuccessful) {
-                                    val user = response.body()
-                                    if (user != null) {
-                                        val userType = user.userType
-                                        val name = user.name
-                                        val email = user.email
-                                        val lastName = user.lastName
-                                        val phone = user.phone
-                                        val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
-                                        with(sharedPref.edit()) {
-                                            putString("userType", user.userType)
-                                            putString("name", user.name)
-                                            putString("email", user.email)
-                                            putString("lastName", user.lastName)
-                                            putString("phone", user.phone)
-                                            apply()  // Or use commit() if you need synchronous storage
-                                        }
+                        // ...
+                        // Proceed to next screen
+                        withContext(Dispatchers.Main) {
+                            userService.getUserByEmail(username).enqueue(object : Callback<User> {
+                                override fun onResponse(call: Call<User>, response: Response<User>) {
+                                    progressDialog.dismiss()
+                                    if (response.isSuccessful) {
 
-                                        if (userType == "LO"){
-                                            val intent = Intent(this@LoginPage, ServicesCompanyPersona::class.java)
-                                            startActivity(intent)
-                                        }
-                                        if (userType == "TO"){
-                                            val intent = Intent(this@LoginPage, ServicesTruckOwner::class.java)
-                                            intent.putExtra("Name", name)
-                                            startActivity(intent)
+                                        val user = response.body()
 
-                                        }
-                                        if (userType == "DR"){
-                                            val intent = Intent(this@LoginPage, ServicesTruckOwner::class.java)
-                                            intent.putExtra("Name", name)
-                                            startActivity(intent)
+                                        if (user != null) {
+
+                                            val userType = user.userType
+                                            val name = user.name
+                                            val email = user.email
+                                            val lastName = user.lastName
+                                            val phone = user.phone
+                                            val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+                                            with(sharedPref.edit()) {
+                                                putString("userType", user.userType)
+                                                putString("name", user.name)
+                                                putString("email", user.email)
+                                                putString("lastName", user.lastName)
+                                                putString("phone", user.phone)
+                                                apply()  // Or use commit() if you need synchronous storage
+                                            }
+                                            if (userType == "LO"){
+                                                val intent = Intent(this@LoginPage, ServicesCompanyPersona::class.java)
+                                                startActivity(intent)
+                                            }
+                                            if (userType == "TO"){
+                                                val intent = Intent(this@LoginPage, ServicesTruckOwner::class.java)
+                                                startActivity(intent)
+
+                                            }
+                                            else{
+                                                Toast.makeText(applicationContext, "Truck driver view", Toast.LENGTH_SHORT).show()
+                                            }
+
+                                        } else {
+                                            Toast.makeText(applicationContext, "No user found with email: $username", Toast.LENGTH_SHORT).show()
                                         }
                                     } else {
-                                        Toast.makeText(applicationContext, "No user found with email: $username", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Error: ${response.code()}",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
-                                } else {
-                                    Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
                                 }
-                            }
-
-                            override fun onFailure(call: Call<User>, t: Throwable) {
-                                Toast.makeText(applicationContext, "Failure: ${t.message}", Toast.LENGTH_SHORT).show()
-                            }
-                        })
-
+                                override fun onFailure(call: Call<User>, t: Throwable) {
+                                    progressDialog.dismiss()
+                                    Toast.makeText(applicationContext, "Failure: ${t.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+                        }
                     } else {
-                        Toast.makeText(this@LoginPage, "Authentication failed", Toast.LENGTH_SHORT).show()
+                        withContext(Dispatchers.Main) {
+                            progressDialog.dismiss()
+                            Toast.makeText(this@LoginPage, "Authentication failed", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 } else {
-                    Toast.makeText(this@LoginPage, "Authentication failed", Toast.LENGTH_SHORT).show()
+                    withContext(Dispatchers.Main) {
+                        progressDialog.dismiss()
+                        Toast.makeText(this@LoginPage, "Authentication failed", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    progressDialog.dismiss()
+                    Toast.makeText(this@LoginPage, "Error connecting to the server", Toast.LENGTH_SHORT).show()
                 }
             }
-
-            override fun onFailure(call: Call<AuthenticationResponse>, t: Throwable) {
-                Toast.makeText(this@LoginPage, "Authentication failed", Toast.LENGTH_SHORT).show()
-            }
-        })
+        }
     }
 }
 
