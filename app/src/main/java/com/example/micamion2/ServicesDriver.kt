@@ -18,13 +18,13 @@ class ServicesDriver : AppCompatActivity() {
                     true
                 }
                 R.id.history ->{
-                    val intent = Intent(this@ServicesDriver, TrucksView::class.java)
+                    val intent = Intent(this@ServicesDriver, HistoryView::class.java)
                     startActivity(intent)
                     finish()
                     true
                 }
                 R.id.profile ->{
-                    val intent = Intent(this@ServicesDriver, ProfileTruckOwner::class.java)
+                    val intent = Intent(this@ServicesDriver, ProfileDriver::class.java)
                     startActivity(intent)
                     finish()
                     true
