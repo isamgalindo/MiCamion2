@@ -139,8 +139,10 @@ class LoginPage : AppCompatActivity() {
                                                 startActivity(intent)
 
                                             }
-                                            else{
-                                                Toast.makeText(applicationContext, "Truck driver view", Toast.LENGTH_SHORT).show()
+                                            if (userType == "DR"){
+                                                val intent = Intent(this@LoginPage, ServicesDriver::class.java)
+                                                startActivity(intent)
+
                                             }
 
                                         } else {
