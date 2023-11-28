@@ -136,7 +136,6 @@ class LoginPage : AppCompatActivity() {
                                             }
                                             if (userType == "TO"){
                                                 val intent = Intent(this@LoginPage, ServicesTruckOwner::class.java)
-                                                intent.putExtra("Name", name)
                                                 startActivity(intent)
 
                                             }
