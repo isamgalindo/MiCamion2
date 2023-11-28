@@ -26,7 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.Locale
 
-class SendView : AppCompatActivity() {
+class HistoryView : AppCompatActivity() {
     private lateinit var searchView: SearchView
     private lateinit var container: LinearLayout
     private lateinit var allCardViews: List<CardView>
@@ -39,25 +39,25 @@ class SendView : AppCompatActivity() {
     private val userService = RetrofitInstance.apiUsuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_send_view)
+        setContentView(R.layout.activity_history_view)
 
 
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
-        bottomNavigation.selectedItemId = R.id.loadmenu
+        bottomNavigation.selectedItemId = R.id.history
         bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.loadmenu -> {
+                R.id.history -> {
                     true
                 }
                 R.id.home ->{
-                    val intent = Intent(this@SendView, ServicesCompanyPersona::class.java)
+                    val intent = Intent(this@HistoryView, ServicesDriver::class.java)
                     startActivity(intent)
                     finish()
                     true
                 }
                 R.id.profile ->{
-                    val intent = Intent(this@SendView, ProfileView::class.java)
+                    val intent = Intent(this@HistoryView, ProfileDriver::class.java)
                     startActivity(intent)
                     finish()
                     true
@@ -67,13 +67,6 @@ class SendView : AppCompatActivity() {
             }
         }
 
-
-
-        val button = findViewById<Button>(R.id.createLoadButton)
-        button.setOnClickListener {
-            val intent = Intent(this, CreateLoadDetailsView::class.java)
-            startActivity(intent)
-        }
         val searchView = findViewById<SearchView>(R.id.searchView)
 
         // Initialize the list of CardViews by searching through the entire view hierarchy
@@ -102,7 +95,7 @@ class SendView : AppCompatActivity() {
                         val container = findViewById<LinearLayout>(R.id.linearLayout)
 
                         trips.forEach { trip ->
-                            val inflater = LayoutInflater.from(this@SendView)
+                            val inflater = LayoutInflater.from(this@HistoryView)
                             val tripCard = inflater.inflate(R.layout.trip_card, container, false).apply {
                                 findViewById<TextView>(R.id.status).text = trip.status
                                 container.addView(this)
