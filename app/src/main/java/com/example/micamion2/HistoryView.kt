@@ -97,7 +97,18 @@ class HistoryView : AppCompatActivity() {
                         trips.forEach { trip ->
                             val inflater = LayoutInflater.from(this@HistoryView)
                             val tripCard = inflater.inflate(R.layout.trip_card, container, false).apply {
-                                findViewById<TextView>(R.id.status).text = trip.status
+                                if (trip.status == "DE") {
+                                    findViewById<TextView>(R.id.status).text = "Delivered"
+                                }
+                                if (trip.status == "IP") {
+                                    findViewById<TextView>(R.id.status).text = "In Progress"
+                                }
+                                if (trip.status == "TA") {
+                                    findViewById<TextView>(R.id.status).text = "To Assign"
+                                }
+                                if (trip.status == "CA") {
+                                    findViewById<TextView>(R.id.status).text = "Cancelled"
+                                }
                                 container.addView(this)
                             }
                             //Takes the type and weight from load
