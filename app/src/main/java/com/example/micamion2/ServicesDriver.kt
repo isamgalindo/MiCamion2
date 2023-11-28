@@ -3,6 +3,7 @@ package com.example.micamion2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ServicesDriver : AppCompatActivity() {
@@ -32,6 +33,24 @@ class ServicesDriver : AppCompatActivity() {
                 // Add other menu items here...
                 else -> false
             }
+        }
+
+        val cardViewHistory = findViewById<CardView>(R.id.historyCard)
+
+        // Set an OnClickListener
+        cardViewHistory.setOnClickListener {
+            val intent = Intent(this, HistoryView::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        val cardViewCurrentTrip = findViewById<CardView>(R.id.currentTrip)
+
+        // Set an OnClickListener
+        cardViewCurrentTrip.setOnClickListener {
+            val intent = Intent(this, HistoryTripsDetailed::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }
