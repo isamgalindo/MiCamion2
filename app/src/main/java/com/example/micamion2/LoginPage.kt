@@ -121,23 +121,28 @@ class LoginPage : AppCompatActivity() {
                                             val email = user.email
                                             val lastName = user.lastName
                                             val phone = user.phone
+                                            val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+                                            with(sharedPref.edit()) {
+                                                putString("userType", user.userType)
+                                                putString("name", user.name)
+                                                putString("email", user.email)
+                                                putString("lastName", user.lastName)
+                                                putString("phone", user.phone)
+                                                apply()  // Or use commit() if you need synchronous storage
+                                            }
                                             if (userType == "LO"){
                                                 val intent = Intent(this@LoginPage, ServicesCompanyPersona::class.java)
-                                                intent.putExtra("Name", name)
-                                                intent.putExtra("Email", email)
-                                                intent.putExtra("User Type", userType)
-                                                intent.putExtra("Last Name", lastName)
-                                                intent.putExtra("Phone", phone)
                                                 startActivity(intent)
                                             }
                                             if (userType == "TO"){
                                                 val intent = Intent(this@LoginPage, ServicesTruckOwner::class.java)
-                                                intent.putExtra("Name", name)
                                                 startActivity(intent)
 
                                             }
-                                            else{
-                                                Toast.makeText(applicationContext, "Truck driver view", Toast.LENGTH_SHORT).show()
+                                            if (userType == "DR"){
+                                                val intent = Intent(this@LoginPage, ServicesDriver::class.java)
+                                                startActivity(intent)
+
                                             }
 
                                         } else {

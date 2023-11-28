@@ -67,6 +67,7 @@ class CreateTruckDate : AppCompatActivity() {
             },
             year, month, day
         )
+        datePickerDialog.datePicker.minDate = c.timeInMillis
         datePickerDialog.show()
 
     }
@@ -87,6 +88,7 @@ class CreateTruckDate : AppCompatActivity() {
             },
             year, month, day
         )
+        datePickerDialog.datePicker.minDate = c.timeInMillis
         datePickerDialog.show()
     }
 }

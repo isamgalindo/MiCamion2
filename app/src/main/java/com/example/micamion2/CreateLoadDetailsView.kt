@@ -21,6 +21,13 @@ class CreateLoadDetailsView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_load_details_view)
 
+        val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        // Set an OnClickListener on the button
+        backButton.setOnClickListener {
+            // Finish the current activity
+            finish()
+        }
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 20
