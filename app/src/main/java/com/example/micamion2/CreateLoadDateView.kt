@@ -65,6 +65,7 @@ class CreateLoadDateView : AppCompatActivity() {
             },
             year, month, day
         )
+        datePickerDialog.datePicker.minDate = c.timeInMillis
         datePickerDialog.show()
 
     }
@@ -85,6 +86,7 @@ class CreateLoadDateView : AppCompatActivity() {
             },
             year, month, day
         )
+        datePickerDialog.datePicker.minDate = c.timeInMillis
         datePickerDialog.show()
     }
 }

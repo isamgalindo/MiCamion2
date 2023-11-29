@@ -44,6 +44,7 @@
         android:inputType="textPassword"
         android:padding="8dp"
         style="@style/EditTexts"
+        android:drawableEnd="@drawable/baseline_visibility_24"
         />
 
     <Button

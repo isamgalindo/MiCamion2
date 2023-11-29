@@ -91,11 +91,102 @@ class SendView : AppCompatActivity() {
             }
         })
 
-        getUserID()
+        //getUserID()
+        //Takes all the trips to put it in the Loads view
+        userService.getAllTrips().enqueue(object : Callback<List<Trip>> {
+            override fun onResponse(call: Call<List<Trip>>, response: Response<List<Trip>>) {
+                if (response.isSuccessful) {
+                    val trips = response.body()
+                    if (trips != null) {
+                        // Get reference to the LinearLayout container
+                        val container = findViewById<LinearLayout>(R.id.linearLayout)
 
+                        trips.forEach { trip ->
+                            val inflater = LayoutInflater.from(this@SendView)
+                            val tripCard = inflater.inflate(R.layout.trip_card, container, false).apply {
+                                if (trip.status == "DE") {
+                                    findViewById<TextView>(R.id.status).text = "Delivered"
+                                }
+                                if (trip.status == "IP") {
+                                    findViewById<TextView>(R.id.status).text = "In Progress"
+                                }
+                                if (trip.status == "TA") {
+                                    findViewById<TextView>(R.id.status).text = "To Assign"
+                                }
+                                if (trip.status == "CA") {
+                                    findViewById<TextView>(R.id.status).text = "Cancelled"
+                                }
+                                container.addView(this)
+                            }
+                            //Takes the type and weight from load
+                            userService.getLoadById(trip.load).enqueue(object : Callback<Load> {
+                                override fun onResponse(call: Call<Load>, response: Response<Load>) {
+                                    if (response.isSuccessful) {
+                                        val load = response.body()
+                                        if (load != null) {
+                                            tripCard.findViewById<TextView>(R.id.Name).text = load.type
+                                            tripCard.findViewById<TextView>(R.id.weight).text = load.weight.toString()
+                                        } else {
+                                            Toast.makeText(applicationContext, "LOADS!", Toast.LENGTH_SHORT).show()
+                                        }
+                                    } else {
+                                        Toast.makeText(applicationContext, "loadsErr: ${response.code()}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
 
+                                override fun onFailure(call: Call<Load>, t: Throwable) {
+                                    Toast.makeText(applicationContext, "loadsFailure: ${t.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+                            //Takes the city, address and country from access points
+                            userService.getAccessPointById(trip.pickup).enqueue(object : Callback<AccessPoint> {
+                                override fun onResponse(call: Call<AccessPoint>, response: Response<AccessPoint>) {
+                                    if (response.isSuccessful) {
+                                        val ap = response.body()
+                                        if (ap != null) {
+                                            tripCard.findViewById<TextView>(R.id.pickUpAddress).text = "${ap.address}, ${ap.city}, ${ap.country}"
+                                        } else {
+                                            Toast.makeText(applicationContext, "AP vacio", Toast.LENGTH_SHORT).show()
+                                        }
+                                    } else {
+                                        Toast.makeText(applicationContext, "${trip.pickup}: ${response.code()}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
 
+                                override fun onFailure(call: Call<AccessPoint>, t: Throwable) {
+                                    Toast.makeText(applicationContext, "APFailure: ${t.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+                            userService.getAccessPointById(trip.dropoff).enqueue(object : Callback<AccessPoint> {
+                                override fun onResponse(call: Call<AccessPoint>, response: Response<AccessPoint>) {
+                                    if (response.isSuccessful) {
+                                        val ap = response.body()
+                                        if (ap != null) {
+                                            tripCard.findViewById<TextView>(R.id.dropOffAddress).text = "${ap.address}, ${ap.city}, ${ap.country}"
+                                        } else {
+                                            Toast.makeText(applicationContext, "AP vacio", Toast.LENGTH_SHORT).show()
+                                        }
+                                    } else {
+                                        Toast.makeText(applicationContext, "${trip.dropoff}: ${response.code()}", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
 
+                                override fun onFailure(call: Call<AccessPoint>, t: Throwable) {
+                                    Toast.makeText(applicationContext, "APFailure: ${t.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+
+                        }
+                    } else {
+                        Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<List<Trip>>, t: Throwable) {
+                Toast.makeText(applicationContext, "Failure: ${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
 
     }
 
@@ -139,6 +230,8 @@ class SendView : AppCompatActivity() {
         return textViews
     }
 
+    /*
+
 
     private fun getUserID() {
         userService.getUserIdByEmail(email).enqueue(object : Callback<JsonObject> {
@@ -161,7 +254,7 @@ class SendView : AppCompatActivity() {
     }
 
     private fun getTrips(userId: String) {
-        userService.getTripsByLoadOwner(userId).enqueue(object : Callback<List<Trip>> {
+        userService.getAllTrips().enqueue(object : Callback<List<Trip>> {
             override fun onResponse(call: Call<List<Trip>>, response: Response<List<Trip>>) {
                 if (response.isSuccessful) {
                     val trips = response.body()
@@ -186,7 +279,7 @@ class SendView : AppCompatActivity() {
                             container.addView(tripCard)
                         }
 
-                        Toast.makeText(applicationContext, "Succesful", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Successful", Toast.LENGTH_SHORT).show()
                     } else {
                         // Handle unsuccessful response
                     }
@@ -200,5 +293,6 @@ class SendView : AppCompatActivity() {
             }
         })
     }
+     */
 
 }
