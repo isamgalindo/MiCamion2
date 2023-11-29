@@ -17,6 +17,7 @@ class ProfileDriver : AppCompatActivity() {
         val userType = sharedPref.getString("userType", "DefaultUserType")
         val email = sharedPref.getString("email", "DefaultEmail")
         val phone = sharedPref.getString("phone", "DefaultPhone")
+        val lastName = sharedPref.getString("lastName", "DefaultLastName")
 
 
         // Get the TextView reference
@@ -25,10 +26,21 @@ class ProfileDriver : AppCompatActivity() {
         val emailProfileTextView: TextView = findViewById(R.id.emailProfile)
         val phoneTypeProfileTextView: TextView = findViewById(R.id.phoneProfile)
         // Set the text using the string resource with placeholder
-        nameProfileTextView.text = name
-        roleProfileTextView.text = userType
+        nameProfileTextView.text = "$name $lastName"
+
         emailProfileTextView.text = email
         phoneTypeProfileTextView.text = phone
+
+        if (userType == "LO"){
+            roleProfileTextView.text = "Load Owner"
+        }
+        if (userType == "TO"){
+            roleProfileTextView.text = "Truck Owner"
+
+        }
+        if (userType == "DR"){
+            roleProfileTextView.text = "Driver"
+        }
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.selectedItemId = R.id.profile

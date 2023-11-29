@@ -33,4 +33,9 @@
     <style name="Cards">
         <item name="backgroundTint">@color/LightGray</item>
     </style>
+
+    <style name="BackButton">
+        <item name="backgroundTint">@color/Deepblue</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
 </resources>

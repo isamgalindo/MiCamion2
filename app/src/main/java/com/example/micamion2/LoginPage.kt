@@ -119,14 +119,14 @@ class LoginPage : AppCompatActivity() {
                                             val userType = user.userType
                                             val name = user.name
                                             val email = user.email
-                                            val lastName = user.lastName
+                                            val lastName = user.last_name
                                             val phone = user.phone
                                             val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
                                             with(sharedPref.edit()) {
                                                 putString("userType", user.userType)
                                                 putString("name", user.name)
                                                 putString("email", user.email)
-                                                putString("lastName", user.lastName)
+                                                putString("lastName", user.last_name)
                                                 putString("phone", user.phone)
                                                 apply()  // Or use commit() if you need synchronous storage
                                             }
