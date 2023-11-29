@@ -6,8 +6,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.method.HideReturnsTransformationMethod
 import android.text.method.LinkMovementMethod
+import android.text.method.PasswordTransformationMethod
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -33,6 +36,8 @@ class LoginPage : AppCompatActivity() {
 
 
 
+
+
 // Create a Retrofit instance
 
 
@@ -41,11 +46,33 @@ class LoginPage : AppCompatActivity() {
         val usernameEditText = findViewById<EditText>(R.id.username)
         val passwordEditText = findViewById<EditText>(R.id.password)
 
+// Set up touch listener for non-text box views to hide keyboard.
+        passwordEditText.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (passwordEditText.right - passwordEditText.compoundDrawables[2].bounds.width())) {
+                    // Toggle password visibility
+                    if (passwordEditText.transformationMethod == PasswordTransformationMethod.getInstance()) {
+                        passwordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_24, 0)
+                    } else {
+                        passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off_24, 0)
+                    }
+                    // Move the cursor to the end of the text
+                    passwordEditText.setSelection(passwordEditText.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
+
 
         buttonLogin.setOnClickListener {
 
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
+
+
 
             if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
                 // One or both input fields are empty, display an error message or handle it as needed
