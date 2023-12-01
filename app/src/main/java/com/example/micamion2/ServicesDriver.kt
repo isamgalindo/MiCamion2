@@ -44,16 +44,13 @@ class ServicesDriver : AppCompatActivity() {
             finish()
         }
 
-
-/*
         val cardViewCurrentTrip = findViewById<CardView>(R.id.currentTrip)
 
         // Set an OnClickListener
         cardViewCurrentTrip.setOnClickListener {
-            val intent = Intent(this, HistoryTripsDetailed::class.java)
+            val intent = Intent(this, CurrentTripDriver::class.java)
             startActivity(intent)
-            finish()
         }
-        */
+
     }
 }
