@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,6 +27,13 @@ class AssignTrailerDriver : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_assign_trailer_driver)
+
+        val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+        // Set an OnClickListener on the button
+        backButton.setOnClickListener {
+            // Finish the current activity
+            finish()
+        }
 
         val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
         val id = sharedPref.getString("id", "DefaultId") ?: "DefaultIdFallback"
