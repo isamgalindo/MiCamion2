@@ -38,14 +38,30 @@ interface UserService {
 
     @GET("loads/{id}")
     fun getLoadById(@Path("id") id: Int): Call<Load>
+
+
     @GET("accesspoints/{id}")
     fun getAccessPointById(@Path("id") id: Int): Call<AccessPoint>
 
     @GET("accesspoints")
     fun getAllAccessPoints(): Call<List<AccessPoint>>
 
+    // POST a Trip
+    @POST("/trips")
+    fun createTrip(@Body trip: Trip): Call<Trip>
+
+    // POST a Load
+    @POST("/loads")
+    fun createLoad(@Body load: Load): Call<Load>
+
+    // POST an AccessPoint
+    @POST("/accesspoints")
+    fun createAccessPoint(@Body accessPoint: AccessPoint): Call<AccessPoint>
+
     @GET("trailers")
     fun getAllTrailers(): Call<List<Trailer>>
     @GET("/trips/loadOwner/{loadOwnerId}")
     fun getTripsByLoadOwner(@Path("loadOwnerId") loadOwnerId: String): Call<List<Trip>>
+
+
 }

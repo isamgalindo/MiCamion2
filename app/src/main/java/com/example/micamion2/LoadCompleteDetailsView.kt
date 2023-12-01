@@ -14,6 +14,9 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         setContentView(R.layout.activity_load_complete_details_view)
         val sharedPref = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
 
+        val userId = getSharedPreferences("id", Context.MODE_PRIVATE)
+
+
         val name = sharedPref.getString("nameLoad", "") ?: ""
         val type = sharedPref.getString("typeLoad", "") ?: ""
         val weight = sharedPref.getString("weightLoad", "") ?: ""

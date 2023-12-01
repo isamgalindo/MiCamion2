@@ -141,15 +141,19 @@ class LoginPage : AppCompatActivity() {
 
                                         val user = response.body()
 
+
                                         if (user != null) {
 
                                             val userType = user.userType
+                                            val id = user.id
+
                                             val name = user.name
                                             val email = user.email
                                             val lastName = user.last_name
                                             val phone = user.phone
                                             val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
                                             with(sharedPref.edit()) {
+                                                putInt("id",user.id)
                                                 putString("userType", user.userType)
                                                 putString("name", user.name)
                                                 putString("email", user.email)

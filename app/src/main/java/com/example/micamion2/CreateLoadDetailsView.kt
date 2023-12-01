@@ -48,7 +48,6 @@ class CreateLoadDetailsView : AppCompatActivity() {
 
             val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
             val editor = sharedPreferences.edit()
-            editor.putString("nameLoad", nameLoad)
             editor.putString("typeLoad", typeLoad)
             editor.putString("weightLoad", weightLoad)
             editor.putString("volumeLoad", volumeLoad)
@@ -87,6 +86,7 @@ class CreateLoadDetailsView : AppCompatActivity() {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
                 Toast.makeText(this@CreateLoadDetailsView, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
+
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
 
