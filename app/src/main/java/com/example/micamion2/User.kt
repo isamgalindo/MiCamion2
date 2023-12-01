@@ -14,7 +14,7 @@ class User {
 
     var username: String? = null
     var name: String = ""
-    var lastName: String = ""
+    var last_name: String = ""
     var email: String = ""
     var password: String = ""
     var phone: String = ""
@@ -22,6 +22,6 @@ class User {
     var userType: String = LOAD_OWNER
 
     override fun toString(): String {
-        return "$name $lastName $email $phone $userType"
+        return "$name $last_name $email $phone $userType"
     }
 }
