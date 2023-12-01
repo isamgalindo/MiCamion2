@@ -95,7 +95,7 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
                     setUpMap()
 
                 } ?: run {
-                    Toast.makeText(applicationContext, "No IP trips available", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "No trip in progress available", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(applicationContext, "Error: ${tripsResponse.code()}", Toast.LENGTH_SHORT).show()

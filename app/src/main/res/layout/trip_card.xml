@@ -38,16 +38,22 @@
                 style="@style/Titles"
 
                 />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="0dp">
+
             <TextView
                 android:id="@+id/status"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/custom_state"
-                android:backgroundTint="@color/yellow"
-                android:paddingStart="25dp"
+                android:paddingStart="20dp"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+        </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
 
