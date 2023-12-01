@@ -3,8 +3,13 @@ package com.example.micamion2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ServicesDriver : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,13 +23,15 @@ class ServicesDriver : AppCompatActivity() {
                 R.id.home -> {
                     true
                 }
-                R.id.history ->{
+
+                R.id.history -> {
                     val intent = Intent(this@ServicesDriver, HistoryView::class.java)
                     startActivity(intent)
                     finish()
                     true
                 }
-                R.id.profile ->{
+
+                R.id.profile -> {
                     val intent = Intent(this@ServicesDriver, ProfileDriver::class.java)
                     startActivity(intent)
                     finish()
@@ -39,21 +46,19 @@ class ServicesDriver : AppCompatActivity() {
 
         // Set an OnClickListener
         cardViewHistory.setOnClickListener {
-            val intent = Intent(this, HistoryView::class.java)
+            val intent = Intent(this, AssignTrailerDriver::class.java)
             startActivity(intent)
             finish()
-        }
+            }
 
-
-/*
         val cardViewCurrentTrip = findViewById<CardView>(R.id.currentTrip)
 
-        // Set an OnClickListener
+            // Set an OnClickListener
         cardViewCurrentTrip.setOnClickListener {
-            val intent = Intent(this, HistoryTripsDetailed::class.java)
-            startActivity(intent)
-            finish()
+                val intent = Intent(this, CurrentTripDriver::class.java)
+                startActivity(intent)
+            }
+
         }
-        */
-    }
+
 }

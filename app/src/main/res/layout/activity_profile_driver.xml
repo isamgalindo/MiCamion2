@@ -25,6 +25,15 @@
             />
 
         <TextView
+            android:id="@+id/nameProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            style="@style/Texts"
+            android:textSize="25sp" />
+
+        <TextView
             android:id="@+id/emailProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,14 +51,6 @@
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/nameProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textAlignment="center"
-            style="@style/Texts"
-            android:textSize="25sp" />
-        <TextView
             android:id="@+id/phoneProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,6 +58,16 @@
             android:textAlignment="center"
             style="@style/Texts"
             android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/logOut"
+            style="@style/Buttons"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="100dp"
+            android:text="Log out"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
 
 
     </LinearLayout>

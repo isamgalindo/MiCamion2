@@ -48,4 +48,11 @@ interface UserService {
     fun getAllTrailers(): Call<List<Trailer>>
     @GET("/trips/loadOwner/{loadOwnerId}")
     fun getTripsByLoadOwner(@Path("loadOwnerId") loadOwnerId: String): Call<List<Trip>>
+
+    @GET("/trailers/driver/{driverId}/")
+    fun getTrailerByDriver(@Path("driverId") driverId: String): Call<List<Trailer>>
+
+    @PUT("/assignTrailer")
+    fun assignTrailer(@Body request: AssignDriverRequest): Call<Void> // Replace Void with your response type
 }
+data class AssignDriverRequest(val user_id: String)

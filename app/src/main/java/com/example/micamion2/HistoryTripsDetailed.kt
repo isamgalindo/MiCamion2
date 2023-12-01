@@ -1,5 +1,6 @@
 package com.example.micamion2
 
+import android.graphics.Color
 import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -19,6 +21,7 @@ import java.io.IOException
 class HistoryTripsDetailed : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var pickUpLocation: String
+    private lateinit var dropOffLocation: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_trips_detailed)
@@ -60,6 +63,8 @@ class HistoryTripsDetailed : AppCompatActivity(), OnMapReadyCallback {
 
 
         pickUpLocation = "${address}, ${city}, $country" // Replace with actual address
+        dropOffLocation = "${dropOffAddress}, ${dropOffCity}, $dropOffCountry"
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
@@ -72,25 +77,39 @@ class HistoryTripsDetailed : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setUpMap() {
-        if (pickUpLocation.isNotBlank()) {
-            val geocoder = Geocoder(this)
-            try {
-                val addressList = geocoder.getFromLocationName(pickUpLocation, 1)
-                if (addressList != null) {
-                    if (addressList.isNotEmpty()) {
-                        val address = addressList[0]
-                        val latLng = LatLng(address.latitude, address.longitude)
-                        mMap.addMarker(MarkerOptions().position(latLng).title("Pick Up Location"))
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12f))
+        val geocoder = Geocoder(this)
+        try {
+            val pickUpAddressList = geocoder.getFromLocationName(pickUpLocation, 1)
+            val dropOffAddressList = geocoder.getFromLocationName(dropOffLocation, 1)
+
+            if (pickUpAddressList != null) {
+                if (dropOffAddressList != null) {
+                    if (pickUpAddressList.isNotEmpty() && dropOffAddressList.isNotEmpty()) {
+                        val pickUpAddress = pickUpAddressList[0]
+                        val dropOffAddress = dropOffAddressList[0]
+
+                        val pickUpLatLng = LatLng(pickUpAddress.latitude, pickUpAddress.longitude)
+                        val dropOffLatLng = LatLng(dropOffAddress.latitude, dropOffAddress.longitude)
+
+                        mMap.addMarker(MarkerOptions().position(dropOffLatLng).title("Drop Off Location"))
+
+                        // Draw a line between pickup and dropoff
+                        mMap.addPolyline(
+                            PolylineOptions()
+                                .add(pickUpLatLng, dropOffLatLng)
+                                .width(5f)
+                                .color(Color.RED)
+                        )
+
+                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pickUpLatLng, 12f))
                     }
                 }
-            } catch (e: IOException) {
-                e.printStackTrace()
-                // Handle the exception
             }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            // Handle the exception
         }
 
-        // Setup additional map settings if needed
         mMap.uiSettings.isZoomControlsEnabled = true
         // ... other map settings ...
     }
