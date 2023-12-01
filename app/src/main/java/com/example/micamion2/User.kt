@@ -12,6 +12,7 @@ class User {
         const val TRAILER_OWNER = "TO"
     }
 
+    var id: Int = -1
     var username: String? = null
     var name: String = ""
     var last_name: String = ""

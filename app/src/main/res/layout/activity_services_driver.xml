@@ -127,6 +127,7 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
