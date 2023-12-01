@@ -128,6 +128,15 @@ tools:context=".AssignTrailerDriver"
 
             android:textStyle="normal" />
 
+        <Button
+            android:id="@+id/AssignButton"
+            style="@style/Buttons"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="Assign"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
