@@ -43,7 +43,6 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         val dropOffCity = sharedPref.getString("destinationCity", "") ?: ""
         val dropOffCountry = sharedPref.getString("destinationCountry", "") ?: ""
 
-        val recipientMail = sharedPref.getString("recipientMail", "") ?: ""
         val pickUpDate = sharedPref.getString("pickUpDate", "") ?: ""
         val dropOffDate = sharedPref.getString("dropOffDate", "") ?: ""
 
@@ -52,14 +51,16 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         val loadTypeTextView: TextView = findViewById(R.id.loadTypeReview)
         val loadWeightTextView: TextView = findViewById(R.id.loadWeightReview)
         val loadVolumeTextView: TextView = findViewById(R.id.loadVolumeReview)
+        val loadOriginAdressTextView: TextView = findViewById(R.id.loadPickUpReview)
+        val loadDestinationAdressTextView: TextView = findViewById(R.id.loadDropOffReview)
         val loadpickUpTextView: TextView = findViewById(R.id.loadPickUpReview)
         val loadDropOffTextView: TextView = findViewById(R.id.loadDropOffReview)
-        val recipientNameTextView: TextView = findViewById(R.id.recipientNameReview)
-        val recipientPhoneTextView: TextView = findViewById(R.id.phoneNumber)
         val loadpickUpDateTextView: TextView = findViewById(R.id.pickUpDateReview)
         val loadDropOffDateTextView: TextView = findViewById(R.id.dropoffDate)
         // Set the text using the string resource with placeholder
 
+        loadOriginAdressTextView.text=pickUpAddress
+        loadDestinationAdressTextView.text=dropOffAddress
         loadTypeTextView.text = type
         loadWeightTextView.text = weight
         loadVolumeTextView.text = volume
@@ -69,7 +70,7 @@ class LoadCompleteDetailsView : AppCompatActivity() {
         val buttonOK = findViewById<Button>(R.id.okButton)
         buttonOK.setOnClickListener {
 
-            getLoad(userId, type, weight.toInt(), volume.toInt(), pickUpAddress, pickUpCity, pickUpCountry, dropOffAddress, dropOffCity, dropOffCountry, recipientMail, pickUpDate, dropOffDate)
+            getLoad(userId, type, weight.toInt(), volume.toInt(), pickUpAddress, pickUpCity, pickUpCountry, dropOffAddress, dropOffCity, dropOffCountry, pickUpDate, dropOffDate)
 
 
             val intent = Intent(this, SendView::class.java)
@@ -89,7 +90,6 @@ class LoadCompleteDetailsView : AppCompatActivity() {
                         dropOffAddress: String,
                         dropOffCity: String,
                         dropOffCountry: String,
-                        recipientMail: String,
                         pickUpDate: String,
                         dropOffDate: String){
 
