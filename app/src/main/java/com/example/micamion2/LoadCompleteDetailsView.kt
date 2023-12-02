@@ -1,3 +1,4 @@
+
 package com.example.micamion2
 
 import android.content.Context
@@ -108,7 +109,6 @@ class LoadCompleteDetailsView : AppCompatActivity() {
 
                     getOrigin(pickUpDate, dropOffDate, pickUpAddress, pickUpCity, pickUpCountry, dropOffAddress, dropOffCity, dropOffCountry, userId)
 
-                    Toast.makeText(this@LoadCompleteDetailsView, "Load created successfully", Toast.LENGTH_SHORT).show()
 
                 } else {
                     val errorBody = response.errorBody()?.string()
@@ -142,11 +142,7 @@ class LoadCompleteDetailsView : AppCompatActivity() {
                 if (response.isSuccessful) {
                     createdOriginId = response.body()?.id!!
                     getDestination(pickUpDate,dropOffDate,dropOffAddress,dropOffCity,dropOffCountry,userId)
-                    Toast.makeText(
-                        this@LoadCompleteDetailsView,
-                        "Origin created successfully",
-                        Toast.LENGTH_SHORT
-                    ).show()
+
 
                 } else {
                     val errorBody = response.errorBody()?.string()
@@ -189,7 +185,7 @@ class LoadCompleteDetailsView : AppCompatActivity() {
 
                     getTrip(userId)
 
-                    Toast.makeText(this@LoadCompleteDetailsView, "destination created successfully", Toast.LENGTH_SHORT).show()
+
 
                 } else {
                     val errorBody = response.errorBody()?.string()
