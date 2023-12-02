@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -65,5 +66,27 @@ class ProfileDriver : AppCompatActivity() {
                 else -> false
             }
         }
+
+        val logOutButton = findViewById<Button>(R.id.logOut)
+        logOutButton.setOnClickListener {
+            clearSharedPreferences()
+            logOut()
+        }
+
+
+    }
+
+    private fun clearSharedPreferences() {
+        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.clear()
+        editor.apply() // or editor.commit() for synchronous removal
+    }
+
+    private fun logOut() {
+        val intent = Intent(this, LoginPage::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish() // This will finish the current activity
     }
 }
