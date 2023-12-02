@@ -59,7 +59,7 @@ class CreateLoadDateView : AppCompatActivity() {
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Handle the date selected by the user here
                 // monthOfYear starts from 0 (0 for January, 1 for February, and so on)
-                val selectedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
+                val selectedDate = "$year-${monthOfYear + 1}-${dayOfMonth}T00:00"
                 val dateEditText: EditText = findViewById(R.id.pickUpDate)
                 dateEditText.setText(selectedDate)
             },
@@ -80,7 +80,7 @@ class CreateLoadDateView : AppCompatActivity() {
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 // Handle the date selected by the user here
                 // monthOfYear starts from 0 (0 for January, 1 for February, and so on)
-                val selectedDate = "${dayOfMonth}/${monthOfYear + 1}/$year"
+                val selectedDate = "$year-${monthOfYear + 1}-${dayOfMonth}T00:00"
                 val dateEditText: EditText = findViewById(R.id.deliveryDate)
                 dateEditText.setText(selectedDate)
             },

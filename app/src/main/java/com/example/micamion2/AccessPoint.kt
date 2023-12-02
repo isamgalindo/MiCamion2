@@ -9,6 +9,8 @@ import java.util.Locale
 
 class AccessPoint {
 
+
+    var id:Int?=null
     var country: String = ""
     var city: String = ""
     var address: String = ""
