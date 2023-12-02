@@ -3,6 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <!-- Add specific domains that are allowed to be accessed via cleartext -->
         <!-- For example, if your server is "example.com" -->
-        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">127.0.0.1</domain>
     </domain-config>
 </network-security-config>

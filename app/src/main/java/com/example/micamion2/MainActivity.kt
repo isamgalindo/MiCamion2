@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -57,6 +56,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             }
 
+        /*
         val networkConnection = NetworkConnection(applicationContext)
         networkConnection.observe(this){
             if (it){
@@ -67,5 +67,6 @@ class MainActivity : AppCompatActivity() {
                 setContentView(R.layout.activity_network_error_layout)
             }
         }
+        */
     }
 }
