@@ -50,6 +50,9 @@ interface UserService {
     @POST("/trips")
     fun createTrip(@Body trip: Trip): Call<Trip>
 
+    @POST("/trailers")
+    fun createTrailer(@Body trailer: Trailer): Call<Trailer>
+
     // POST a Load
     @POST("/loads")
     fun createLoad(@Body load: Load): Call<Load>

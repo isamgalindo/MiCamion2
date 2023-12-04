@@ -23,7 +23,7 @@ class CreateTruckDetails : AppCompatActivity() {
     private val userService = RetrofitInstance.apiUsuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_create_truck_details)
         val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
 
         // Set an OnClickListener on the button
@@ -31,7 +31,7 @@ class CreateTruckDetails : AppCompatActivity() {
             // Finish the current activity
             finish()
         }
-        setContentView(R.layout.activity_create_truck_details)
+
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 20
@@ -124,40 +124,38 @@ class CreateTruckDetails : AppCompatActivity() {
         spinner.adapter = adapter
 
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        """spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
-                Toast.makeText(this@CreateTruckDetails, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }
+        }"""
 
         val itemsVol = arrayOf("Lt", "cm3", "m3")
         val adapterVol = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsVol)
         val spinnerVol: Spinner = findViewById(R.id.volumeSpinner)
         spinnerVol.adapter = adapterVol
-
+"""
         spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
-                Toast.makeText(this@CreateTruckDetails, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }
+        }"""
 
         val itemsType = arrayOf("Flatbed", "Dry Van", "Reefer", "Lowboy","Stepdeck", "Other", "Any")
         val adapterType = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsType)
         val spinnerType: Spinner = findViewById(R.id.typeSpinner)
         spinnerType.adapter = adapterType
 
-        spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        """spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
@@ -169,6 +167,6 @@ class CreateTruckDetails : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }
+        }"""
     }
 }

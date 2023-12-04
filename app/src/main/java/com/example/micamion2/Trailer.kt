@@ -21,7 +21,7 @@ class Trailer {
     }
     var plates: String = ""
     var capacity: Int = 0
-    var volume: Int? = null
+    var volume: Int = 0
     var pickup: String = ""
     var dropoff: String = ""
     var driver: Int? = null

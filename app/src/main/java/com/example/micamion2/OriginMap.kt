@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.Marker
 
 class OriginMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraMoveListener {
 
+
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityFuncAfBinding
     private lateinit var lastLocation: LatLng
@@ -45,6 +46,8 @@ class OriginMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraMov
         binding = ActivityFuncAfBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         // Find the button in the layout
         saveLocationButton = findViewById(R.id.confirmLocationButton)
 
@@ -58,9 +61,21 @@ class OriginMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraMov
         // Set a click listener for the button
         saveLocationButton.setOnClickListener {
             saveLocationInfo()
-            val intent = Intent(this, CreateLoadDestinationView::class.java)
-            startActivity(intent)
-            finish()
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val userType = sharedPreferences.getString("userType","")
+
+            if (userType=="LO") {
+                val intent = Intent(this, CreateLoadDestinationView::class.java)
+
+                startActivity(intent)
+                finish()
+            }
+            else {
+                val intent = Intent(this, CreateTruckLocation::class.java)
+
+                startActivity(intent)
+                finish()
+            }
 
         }
     }
@@ -134,8 +149,15 @@ class OriginMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraMov
                     putString("originCountry", country)
                     apply()
                 }
+                    val sharedTruckPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+                    with(sharedPreferences.edit()) {
+                        putString("originAddress", address)
 
-            }
+                        apply()
+                    }
+                }
+
+
         }
     }
 }
