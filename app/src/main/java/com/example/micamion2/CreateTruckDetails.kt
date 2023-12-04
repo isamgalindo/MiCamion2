@@ -1,5 +1,6 @@
 package com.example.micamion2
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,11 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CreateTruckDetails : AppCompatActivity() {
     private val userService = RetrofitInstance.apiUsuario
@@ -75,8 +81,41 @@ class CreateTruckDetails : AppCompatActivity() {
                                     editor.putInt("driverTruck", driver.id)
                                     editor.apply()  // Or use commit() if you need synchronous storage
 
-            val intent = Intent(this, CreateTruckLocation::class.java)
-            startActivity(intent)
+                                    val intent = Intent(this@CreateTruckDetails, CreateTruckLocation::class.java)
+                                    startActivity(intent)
+
+
+                                }
+                            } else {
+                                withContext(Dispatchers.Main) {
+                                    progressDialog.dismiss()
+                                    Toast.makeText(this@CreateTruckDetails, "This driver user doesn't exist", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            withContext(Dispatchers.Main) {
+                                progressDialog.dismiss()
+                                Toast.makeText(this@CreateTruckDetails, "This driver user doesn't exist", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            progressDialog.dismiss()
+                            Toast.makeText(this@CreateTruckDetails, "Error connecting to the server", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                // All fields are filled, and the plates field is 6 characters long
+
+            } else {
+                // Show toast if any field is empty or plates field length is not 6 characters
+                if (plates.length != 6) {
+                    Toast.makeText(this@CreateTruckDetails, "Please enter 6 characters for Plates", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@CreateTruckDetails, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         val items = arrayOf("Kg", "g", "Lb","Tons")
@@ -124,9 +163,8 @@ class CreateTruckDetails : AppCompatActivity() {
                 // Do something with selected item
                 val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
-                editor.putString("typeTrcuk", selectedItem)
-                editor.apply()  // Or use commit() if you need synchronous storage
-                Toast.makeText(this@CreateTruckDetails, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
+                editor.putString("typeTruck", selectedItem)
+                editor.apply()
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
 
