@@ -91,28 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18dp" />
-        <TextView
-            android:id="@+id/dateReview"
-            style="@style/Titles"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Date"
-            android:textSize="25dp" />
-        <TextView
-            android:id="@+id/startDateReview"
-            style="@style/Texts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="18dp" />
-        <TextView
-            android:id="@+id/endDateReview"
-            style="@style/Texts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="18dp" />
+
 
         <Button
             android:id="@+id/okButton"
@@ -121,7 +100,8 @@
             android:layout_height="60dp"
             android:text="OK"
             android:textSize="18sp"
-            app:cornerRadius="30dp" />
+            app:cornerRadius="30dp"
+            />
 
     </LinearLayout>
 
