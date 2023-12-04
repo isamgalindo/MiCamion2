@@ -13,7 +13,7 @@ class ProfileView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_view)
 
-        val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
         val userType = sharedPref.getString("userType", "DefaultUserType")
         val email = sharedPref.getString("email", "DefaultEmail")
