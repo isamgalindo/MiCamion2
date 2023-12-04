@@ -54,5 +54,9 @@ interface UserService {
 
     @PUT("/assignTrailer")
     fun assignTrailer(@Body request: AssignDriverRequest): Call<Void> // Replace Void with your response type
+
+    @PUT("/updateTripStatusToDE")
+    fun updateTripStatusToDE(@Body request: ChangeStatusRequest): Call<Void>
 }
 data class AssignDriverRequest(val user_id: String)
+data class ChangeStatusRequest(val trip_id: String)

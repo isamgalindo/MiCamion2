@@ -14,6 +14,7 @@ class Trip {
 
     }
 
+    var id: Int = -1
     var loadOwner: Int = -1
     var trailer: Int = -1
     var load: Int = -1

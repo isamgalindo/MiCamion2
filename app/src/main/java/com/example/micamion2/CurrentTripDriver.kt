@@ -5,6 +5,7 @@ import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -44,6 +45,10 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
             // Finish the current activity
             finish()
         }
+
+        val complete = findViewById<Button>(R.id.CompleteButton)
+        // Set an OnClickListener on the button
+
 
         val loadCache = mutableMapOf<String, Load>()
         val accessPointCache = mutableMapOf<String, AccessPoint>()
@@ -93,6 +98,26 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
                     pickUpLocation = "${pickUpAccessPoint.address}, ${pickUpAccessPoint.city}, ${pickUpAccessPoint.country}"
                     dropOffLocation = "${dropOffAccessPoint.address}, ${dropOffAccessPoint.city}, ${dropOffAccessPoint.country}"
                     setUpMap()
+
+                    complete.setOnClickListener {
+                        val idTrip = trip.id
+                        val request = ChangeStatusRequest(idTrip.toString())
+                        userService.updateTripStatusToDE(request).enqueue(object : Callback<Void> {
+                            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                if (response.isSuccessful) {
+                                    Toast.makeText(applicationContext, "Bien", Toast.LENGTH_SHORT).show()
+                                } else {
+                                    val errorBody = response.errorBody()?.string()
+                                    // The server responded with a status code that isn't in the range 200-299
+                                    Toast.makeText(applicationContext, "${trip.id}: ${tripsResponse.code()}", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+
+                            override fun onFailure(call: Call<Void>, t: Throwable) {
+                                Toast.makeText(applicationContext, "Mal", Toast.LENGTH_SHORT).show()
+                            }
+                        })
+                    }
 
                 } ?: run {
                     Toast.makeText(applicationContext, "No trip in progress available", Toast.LENGTH_SHORT).show()
