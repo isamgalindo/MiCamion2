@@ -144,6 +144,8 @@ class LoginPage : AppCompatActivity() {
 
                                         if (user != null) {
 
+
+
                                             val userType = user.userType
                                             val id = user.id
 
@@ -159,6 +161,7 @@ class LoginPage : AppCompatActivity() {
                                                 putString("email", user.email)
                                                 putString("lastName", user.last_name)
                                                 putString("phone", user.phone)
+                                                putString("id", user.id.toString())
                                                 apply()  // Or use commit() if you need synchronous storage
                                             }
                                             if (userType == "LO"){
