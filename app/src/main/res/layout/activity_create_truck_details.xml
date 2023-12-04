@@ -219,7 +219,7 @@
             android:background="@drawable/custom_edittext"
             style="@style/EditTexts"
             android:drawablePadding="8dp"
-            android:hint="Driver"
+            android:hint="Driver email"
             android:padding="8dp"
             />
 

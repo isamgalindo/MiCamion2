@@ -27,6 +27,7 @@ class CreateTruckLocation : AppCompatActivity() {
             finish()
         }
 
+
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 50
         progressbar.setProgress(currentprogress)
@@ -45,7 +46,7 @@ class CreateTruckLocation : AppCompatActivity() {
             editor.putString("dropOffLocation", dropOffLocation)
             editor.apply()
 
-            val intent = Intent(this, CreateTruckDate::class.java)
+            val intent = Intent(this, TruckCompleteDetails::class.java)
             startActivity(intent)
         }
 
@@ -53,65 +54,22 @@ class CreateTruckLocation : AppCompatActivity() {
         val searchIcon2 = findViewById<ImageView>(R.id.searchIcon2)
         val pickUpEditText = findViewById<EditText>(R.id.pickUpLocation)
         val dropOffEditText = findViewById<EditText>(R.id.destination)
+        val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+        pickUpEditText.setText(""+sharedPreferences.getString("originAddress",""))
+        dropOffEditText.setText(""+sharedPreferences.getString("destinationAddress",""))
 
-        fun getAddressFromLocation(latitude: Double, longitude: Double, editText: EditText) {
-            val geocoder = Geocoder(this, Locale.getDefault())
-            try {
-                val addresses = geocoder.getFromLocation(latitude, longitude, 1)
-                addresses?.let {
-                    if (it.isNotEmpty()) {
-                        val address = it[0]
-                        val addressFragments = (0..address.maxAddressLineIndex).map(address::getAddressLine)
-
-                        // Combine the address fragments into a single string
-                        val fullAddress = addressFragments.joinToString(separator = "\n")
-
-                        // Now you have a full address string, you can set it to your EditText
-                        runOnUiThread {
-                            editText.setText(fullAddress)
-                        }
-                    } else {
-                        // Handle case where no address was found.
-                        runOnUiThread {
-                            Toast.makeText(this, "No address found", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-            } catch (e: IOException) {
-                // Handle the IO exception
-                runOnUiThread {
-                    Toast.makeText(this, "Geocoder service not available", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }
 
 
         searchIcon.setOnClickListener {
             val intent = Intent(this, OriginMap::class.java)
             startActivity(intent)
-            val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-            val latitude = sharedPreferences.getFloat("location_lat", 0f)
-            val longitude = sharedPreferences.getFloat("location_lng", 0f)
-            // Check if we actually have a location saved (i.e., not 0f for both)
-            if (latitude.toDouble() != 0.0 && longitude.toDouble() != 0.0) {
-                getAddressFromLocation(latitude.toDouble(), longitude.toDouble(), pickUpEditText)
-            } else {
-                Toast.makeText(this, "No location saved", Toast.LENGTH_SHORT).show()
-            }
+
         }
 
         searchIcon2.setOnClickListener {
-            val intent = Intent(this, OriginMap::class.java)
+            val intent = Intent(this, DestinationMap::class.java)
             startActivity(intent)
-            val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
-            val latitude = sharedPreferences.getFloat("location_lat", 0f)
-            val longitude = sharedPreferences.getFloat("location_lng", 0f)
-            // Check if we actually have a location saved (i.e., not 0f for both)
-            if (latitude.toDouble() != 0.0 && longitude.toDouble() != 0.0) {
-                getAddressFromLocation(latitude.toDouble(), longitude.toDouble(), dropOffEditText)
-            } else {
-                Toast.makeText(this, "No location saved", Toast.LENGTH_SHORT).show()
-            }
+
         }
     }
 }

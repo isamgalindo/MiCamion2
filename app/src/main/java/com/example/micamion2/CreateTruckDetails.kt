@@ -1,5 +1,6 @@
 package com.example.micamion2
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,11 +14,16 @@ import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CreateTruckDetails : AppCompatActivity() {
+    private val userService = RetrofitInstance.apiUsuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_create_truck_details)
         val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
 
         // Set an OnClickListener on the button
@@ -25,7 +31,7 @@ class CreateTruckDetails : AppCompatActivity() {
             // Finish the current activity
             finish()
         }
-        setContentView(R.layout.activity_create_truck_details)
+
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 20
@@ -48,18 +54,68 @@ class CreateTruckDetails : AppCompatActivity() {
             val volume = volumeEditText.text.toString()
             val driver = driverEditText.text.toString()
 
-            val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
-            editor.putString("modelTruck", model)
-            editor.putString("brandTruck", brand)
-            editor.putString("platesTruck", plates)
-            editor.putString("weightTruck", weight)
-            editor.putString("volumeTruck", volume)
-            editor.putString("driverTruck", driver)
-            editor.apply()  // Or use commit() if you need synchronous storage
+            if (model.isNotBlank() && brand.isNotBlank() && plates.length == 6 && weight.isNotBlank()
+                && volume.isNotBlank() && driver.isNotBlank()) {
 
-            val intent = Intent(this, CreateTruckLocation::class.java)
-            startActivity(intent)
+                val progressDialog = ProgressDialog(this@CreateTruckDetails)
+                progressDialog.setMessage("Getting driver...")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+
+                CoroutineScope(Dispatchers.IO).launch {
+                    val call = userService.getUserByEmail(driver)
+                    try {
+                        val response = call.execute()
+
+                        if (response.isSuccessful) {
+                            val driver = response.body()
+                            if (driver != null) {
+                                withContext(Dispatchers.Main) {
+                                    val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+                                    val editor = sharedPreferences.edit()
+                                    editor.putString("modelTruck", model)
+                                    editor.putString("brandTruck", brand)
+                                    editor.putString("platesTruck", plates)
+                                    editor.putString("weightTruck", weight)
+                                    editor.putString("volumeTruck", volume)
+                                    editor.putInt("driverTruck", driver.id)
+                                    editor.apply()  // Or use commit() if you need synchronous storage
+
+                                    val intent = Intent(this@CreateTruckDetails, CreateTruckLocation::class.java)
+                                    startActivity(intent)
+
+
+                                }
+                            } else {
+                                withContext(Dispatchers.Main) {
+                                    progressDialog.dismiss()
+                                    Toast.makeText(this@CreateTruckDetails, "This driver user doesn't exist", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        } else {
+                            withContext(Dispatchers.Main) {
+                                progressDialog.dismiss()
+                                Toast.makeText(this@CreateTruckDetails, "This driver user doesn't exist", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            progressDialog.dismiss()
+                            Toast.makeText(this@CreateTruckDetails, "Error connecting to the server", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+                // All fields are filled, and the plates field is 6 characters long
+
+            } else {
+                // Show toast if any field is empty or plates field length is not 6 characters
+                if (plates.length != 6) {
+                    Toast.makeText(this@CreateTruckDetails, "Please enter 6 characters for Plates", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@CreateTruckDetails, "Please fill all fields", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         val items = arrayOf("Kg", "g", "Lb","Tons")
@@ -68,48 +124,49 @@ class CreateTruckDetails : AppCompatActivity() {
         spinner.adapter = adapter
 
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        """spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
-                Toast.makeText(this@CreateTruckDetails, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }
+        }"""
 
         val itemsVol = arrayOf("Lt", "cm3", "m3")
         val adapterVol = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsVol)
         val spinnerVol: Spinner = findViewById(R.id.volumeSpinner)
         spinnerVol.adapter = adapterVol
-
+"""
         spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
-                Toast.makeText(this@CreateTruckDetails, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }
+        }"""
 
         val itemsType = arrayOf("Flatbed", "Dry Van", "Reefer", "Lowboy","Stepdeck", "Other", "Any")
         val adapterType = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsType)
         val spinnerType: Spinner = findViewById(R.id.typeSpinner)
         spinnerType.adapter = adapterType
 
-        spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        """spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
-                Toast.makeText(this@CreateTruckDetails, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
+                val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putString("typeTruck", selectedItem)
+                editor.apply()
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }
+        }"""
     }
 }

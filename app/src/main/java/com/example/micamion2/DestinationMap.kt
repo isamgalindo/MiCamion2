@@ -57,9 +57,20 @@ class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCame
         // Set a click listener for the button
         saveLocationButton.setOnClickListener {
             saveLocationInfo()
-            val intent = Intent(this, CreateLoadDestinationView::class.java)
-            startActivity(intent)
-            finish()
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val userType = sharedPreferences.getString("userType","")
+            if (userType=="LO") {
+                val intent = Intent(this, CreateLoadDestinationView::class.java)
+
+                startActivity(intent)
+                finish()
+            }
+            else {
+                val intent = Intent(this, CreateTruckLocation::class.java)
+
+                startActivity(intent)
+                finish()
+            }
         }
     }
 
@@ -128,6 +139,11 @@ class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCame
                     putString("destinationAddress", address)
                     putString("destinationCity", city)
                     putString("destinationCountry", country)
+                    apply()
+                }
+                val sharedTruckPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+                with(sharedPreferences.edit()) {
+                    putString("destinationAddress", address)
                     apply()
                 }
             }
