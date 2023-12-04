@@ -13,6 +13,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.JsonObject
 import kotlinx.coroutines.CoroutineScope
@@ -101,6 +102,14 @@ class HistoryView : AppCompatActivity() {
                 "CA" -> "Cancelled"
                 else -> "Unknown Status"
             }
+
+            tripCard.findViewById<TextView>(R.id.status).setBackgroundColor(when (trip.status) {
+                "DE" -> ContextCompat.getColor(this@HistoryView, R.color.green) // Replace with your color resource
+                "IP" -> ContextCompat.getColor(this@HistoryView, R.color.Deepblue) // Replace with your color resource
+                "TA" -> ContextCompat.getColor(this@HistoryView, R.color.yellow) // Replace with your color resource
+                "CA" -> ContextCompat.getColor(this@HistoryView, R.color.red) // Replace with your color resource
+                else -> ContextCompat.getColor(this@HistoryView, R.color.Gray) // Replace with your color resource
+            })
 
             // Fetch Load details
             val load = withContext(Dispatchers.IO) {
