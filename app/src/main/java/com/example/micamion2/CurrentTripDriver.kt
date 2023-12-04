@@ -101,22 +101,25 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
 
                     complete.setOnClickListener {
                         val idTrip = trip.id
-                        val request = ChangeStatusRequest(idTrip.toString())
-                        userService.updateTripStatusToDE(request).enqueue(object : Callback<Void> {
-                            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                                if (response.isSuccessful) {
-                                    Toast.makeText(applicationContext, "Bien", Toast.LENGTH_SHORT).show()
-                                } else {
-                                    val errorBody = response.errorBody()?.string()
-                                    // The server responded with a status code that isn't in the range 200-299
-                                    Toast.makeText(applicationContext, "${trip.id}: ${tripsResponse.code()}", Toast.LENGTH_SHORT).show()
+                        if (idTrip != null) {
+                            val call = userService.updateTripStatusToDE(idTrip)
+                            call.enqueue(object : Callback<Void> {
+                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                                    if (response.isSuccessful) {
+                                        Toast.makeText(applicationContext, "Update successful", Toast.LENGTH_SHORT).show()
+                                    } else {
+                                        Toast.makeText(applicationContext, "Update failed: ${response.code()}", Toast.LENGTH_SHORT).show()
+                                    }
                                 }
-                            }
 
-                            override fun onFailure(call: Call<Void>, t: Throwable) {
-                                Toast.makeText(applicationContext, "Mal", Toast.LENGTH_SHORT).show()
-                            }
-                        })
+                                override fun onFailure(call: Call<Void>, t: Throwable) {
+                                    Toast.makeText(applicationContext, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
+                                }
+                            })
+                        }else {
+                            // Handle the null case, maybe show an error message
+                            Toast.makeText(applicationContext, "Trip ID is null", Toast.LENGTH_SHORT).show()
+                        }
                     }
 
                 } ?: run {
