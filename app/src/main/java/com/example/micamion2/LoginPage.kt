@@ -200,11 +200,11 @@ class LoginPage : AppCompatActivity() {
                             progressDialog.dismiss()
                             Toast.makeText(this@LoginPage, "Your email and password doesn't match", Toast.LENGTH_SHORT).show()
                         }
-                    }
+                    }xs
                 } else {
                     withContext(Dispatchers.Main) {
                         progressDialog.dismiss()
-                        Toast.makeText(this@LoginPage, "Your email and password doesn't match", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginPage, "The email isn't registered", Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
