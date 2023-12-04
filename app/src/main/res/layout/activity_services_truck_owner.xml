@@ -29,7 +29,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/Send"
+            android:id="@+id/addTruck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -80,6 +80,8 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/manageTrucks"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

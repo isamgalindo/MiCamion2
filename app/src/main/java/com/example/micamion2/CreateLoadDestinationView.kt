@@ -49,8 +49,11 @@ class CreateLoadDestinationView : AppCompatActivity() {
             val recipientNameEditText = findViewById<EditText>(R.id.recipientName)
             val recipientPhoneEditText = findViewById<EditText>(R.id.recipientPhone)
 
-            val recipientMail = recipientNameEditText.text.toString()
+
             val recipientPhone = recipientPhoneEditText.text.toString()
+
+
+            val recipientMail = recipientNameEditText.text.toString()
 
             val progressDialog = ProgressDialog(this@CreateLoadDestinationView)
             progressDialog.setMessage("Getting recepient...")
