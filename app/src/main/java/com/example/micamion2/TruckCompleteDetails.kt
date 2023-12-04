@@ -43,8 +43,7 @@ class TruckCompleteDetails : AppCompatActivity() {
         val volumeTextView: TextView = findViewById(R.id.volumeReview)
         val pickUpTextView: TextView = findViewById(R.id.truckPickUpReview)
         val dropOffTextView: TextView = findViewById(R.id.truckDropOffReview)
-        val startDateTextView: TextView = findViewById(R.id.startDateReview)
-        val endDateTextView: TextView = findViewById(R.id.endDateReview)
+
         // Set the text using the string resource with placeholder
 
         modelTextView.text = "$brand $model $plates"
@@ -53,8 +52,7 @@ class TruckCompleteDetails : AppCompatActivity() {
         volumeTextView.text = volume
         pickUpTextView.text = pickUp
         dropOffTextView.text = dropOff
-        startDateTextView.text = startDate
-        endDateTextView.text = endDate
+
 
         val buttonOK = findViewById<Button>(R.id.okButton)
         buttonOK.setOnClickListener {

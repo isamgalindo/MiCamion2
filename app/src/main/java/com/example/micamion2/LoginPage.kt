@@ -138,17 +138,11 @@ class LoginPage : AppCompatActivity() {
                                 override fun onResponse(call: Call<User>, response: Response<User>) {
                                     progressDialog.dismiss()
                                     if (response.isSuccessful) {
-
                                         val user = response.body()
-
-
                                         if (user != null) {
-
-
 
                                             val userType = user.userType
                                             val id = user.id
-
                                             val name = user.name
                                             val email = user.email
                                             val lastName = user.last_name
@@ -201,6 +195,9 @@ class LoginPage : AppCompatActivity() {
                             Toast.makeText(this@LoginPage, "Your email and password doesn't match", Toast.LENGTH_SHORT).show()
                         }
                     }
+                } else if (response.code() == 401 || response.code() == 403) {
+                    // 401 Unauthorized or 403 Forbidden - credentials didn't match
+                    Toast.makeText(this@LoginPage, "Incorrect email or password.", Toast.LENGTH_SHORT).show()
                 } else {
                     withContext(Dispatchers.Main) {
                         progressDialog.dismiss()
