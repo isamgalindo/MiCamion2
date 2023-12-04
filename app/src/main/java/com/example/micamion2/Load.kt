@@ -17,6 +17,7 @@ class Load {
 
     }
 
+    var id:Int? = null
     var type: String = ""
     var weight: Int = 0
     var volume: Int = 0
@@ -24,6 +25,6 @@ class Load {
     var trailerType: String = FLATBED
 
     override fun toString(): String {
-        return "$type $weight $volume $trailerType"
+        return "$type $weight $volume $trailerType $id"
         }
 }
