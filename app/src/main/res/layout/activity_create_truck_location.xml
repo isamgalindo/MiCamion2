@@ -8,8 +8,6 @@
     android:gravity="center"
     tools:context=".CreateTruckLocation">
 
-
-
     <LinearLayout
         android:layout_width="380dp"
         android:layout_height="wrap_content"
@@ -21,6 +19,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0"
         >
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:backgroundTint="@color/Deepblue"
+            app:tint="@color/white"
+            app:srcCompat="@drawable/baseline_keyboard_backspace_24"
+            android:layout_gravity="start|top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
 
         <TextView
             android:id="@+id/createTruckText"

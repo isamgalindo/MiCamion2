@@ -13,7 +13,7 @@ class ProfileView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_view)
 
-        val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
         val userType = sharedPref.getString("userType", "DefaultUserType")
         val email = sharedPref.getString("email", "DefaultEmail")
@@ -74,7 +74,7 @@ class ProfileView : AppCompatActivity() {
         }
     }
     private fun clearSharedPreferences() {
-        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply() // or editor.commit() for synchronous removal
@@ -85,7 +85,7 @@ class ProfileView : AppCompatActivity() {
         val intent = Intent(this, LoginPage::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish() // This will finish the current activity
+        finish()
     }
 
 }
