@@ -200,7 +200,7 @@ class LoginPage : AppCompatActivity() {
                             progressDialog.dismiss()
                             Toast.makeText(this@LoginPage, "Your email and password doesn't match", Toast.LENGTH_SHORT).show()
                         }
-                    }xs
+                    }
                 } else {
                     withContext(Dispatchers.Main) {
                         progressDialog.dismiss()
