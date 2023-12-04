@@ -1,6 +1,5 @@
 package com.example.micamion2
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,15 +12,19 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.Toast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class CreateTruckDetails : AppCompatActivity() {
     private val userService = RetrofitInstance.apiUsuario
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        // Set an OnClickListener on the button
+        backButton.setOnClickListener {
+            // Finish the current activity
+            finish()
+        }
         setContentView(R.layout.activity_create_truck_details)
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
@@ -72,43 +75,9 @@ class CreateTruckDetails : AppCompatActivity() {
                                     editor.putInt("driverTruck", driver.id)
                                     editor.apply()  // Or use commit() if you need synchronous storage
 
-                                    val intent = Intent(this@CreateTruckDetails, CreateTruckLocation::class.java)
-                                    startActivity(intent)
-
-
-                                }
-                            } else {
-                                withContext(Dispatchers.Main) {
-                                    progressDialog.dismiss()
-                                    Toast.makeText(this@CreateTruckDetails, "This driver user doesn't exist", Toast.LENGTH_SHORT).show()
-                                }
-                            }
-                        } else {
-                            withContext(Dispatchers.Main) {
-                                progressDialog.dismiss()
-                                Toast.makeText(this@CreateTruckDetails, "This driver user doesn't exist", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    } catch (e: Exception) {
-                        withContext(Dispatchers.Main) {
-                            progressDialog.dismiss()
-                            Toast.makeText(this@CreateTruckDetails, "Error connecting to the server", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
-
-                // All fields are filled, and the plates field is 6 characters long
-
-            } else {
-                // Show toast if any field is empty or plates field length is not 6 characters
-                if (plates.length != 6) {
-                    Toast.makeText(this@CreateTruckDetails, "Please enter 6 characters for Plates", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this@CreateTruckDetails, "Please fill all fields", Toast.LENGTH_SHORT).show()
-                }
-            }
+            val intent = Intent(this, CreateTruckLocation::class.java)
+            startActivity(intent)
         }
-
 
         val items = arrayOf("Kg", "g", "Lb","Tons")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)

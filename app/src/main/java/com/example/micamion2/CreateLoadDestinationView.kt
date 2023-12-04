@@ -36,8 +36,6 @@ class CreateLoadDestinationView : AppCompatActivity() {
             finish()
         }
 
-
-
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 50
         progressbar.setProgress(currentprogress)
