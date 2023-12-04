@@ -137,7 +137,7 @@
                 android:background="@drawable/custom_edittext"
                 style="@style/EditTexts"
                 android:drawablePadding="8dp"
-                android:hint="Recipient email"
+                android:hint="Recipient name"
                 android:padding="8dp"
                  />
 

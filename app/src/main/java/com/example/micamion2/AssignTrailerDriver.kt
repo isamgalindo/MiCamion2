@@ -42,7 +42,7 @@ class AssignTrailerDriver : AppCompatActivity() {
         val buttonOK = findViewById<Button>(R.id.AssignButton)
         buttonOK.setOnClickListener {
             if (id != null) {
-                val request = AssignDriverRequest(id)
+                val request = AssignDriverRequest("5")
                 userService.assignTrailer(request).enqueue(object : Callback<Void>  {
                 override fun onResponse(call: Call<Void>, response: Response<Void>) {
                     if (response.isSuccessful) {

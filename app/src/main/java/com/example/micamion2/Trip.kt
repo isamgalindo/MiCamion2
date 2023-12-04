@@ -14,9 +14,8 @@ class Trip {
 
     }
 
-    var id:Int? = null
     var loadOwner: Int = -1
-    var trailer: Int? = null
+    var trailer: Int = -1
     var load: Int = -1
     var pickup: Int = -1
     var dropoff: Int = -1

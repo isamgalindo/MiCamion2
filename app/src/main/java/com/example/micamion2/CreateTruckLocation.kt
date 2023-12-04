@@ -78,7 +78,7 @@ class CreateTruckLocation : AppCompatActivity() {
 
 
         searchIcon.setOnClickListener {
-            val intent = Intent(this, OriginMap::class.java)
+            val intent = Intent(this, FuncAF::class.java)
             startActivity(intent)
             val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
             val latitude = sharedPreferences.getFloat("location_lat", 0f)
@@ -92,7 +92,7 @@ class CreateTruckLocation : AppCompatActivity() {
         }
 
         searchIcon2.setOnClickListener {
-            val intent = Intent(this, OriginMap::class.java)
+            val intent = Intent(this, FuncAF::class.java)
             startActivity(intent)
             val sharedPreferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
             val latitude = sharedPreferences.getFloat("location_lat", 0f)

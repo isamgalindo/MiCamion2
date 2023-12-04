@@ -48,6 +48,7 @@ class ServicesDriver : AppCompatActivity() {
         cardViewHistory.setOnClickListener {
             val intent = Intent(this, AssignTrailerDriver::class.java)
             startActivity(intent)
+            finish()
             }
 
         val cardViewCurrentTrip = findViewById<CardView>(R.id.currentTrip)

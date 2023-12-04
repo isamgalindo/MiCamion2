@@ -104,7 +104,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Trailer"
+                    android:text="History"
                     android:id="@+id/track"
                     style="@style/Titles"
                     android:textSize="25sp"
@@ -115,7 +115,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="See the trailer assigned or assign one automatically"
+                    android:text="See the history of your trips"
                     android:id="@+id/descriptionRentYourTruck"
                     style="@style/Texts"
                     android:textSize="18sp"

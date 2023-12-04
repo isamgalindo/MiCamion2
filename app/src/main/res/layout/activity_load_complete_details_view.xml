@@ -91,7 +91,20 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:textSize="18dp" />
-
+        <TextView
+            android:id="@+id/recipientNameReview"
+            style="@style/Texts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18dp" />
+        <TextView
+            android:id="@+id/phoneNumber"
+            style="@style/Texts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18dp" />
         <TextView
             android:id="@+id/loadDateReview"
             style="@style/Titles"
@@ -99,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Date"
-            android:textSize="25dp" />
+            android:textSize="18dp" />
         <TextView
             android:id="@+id/pickUpDateReview"
             style="@style/Texts"
@@ -123,8 +136,7 @@
             android:layout_height="60dp"
             android:text="OK"
             android:textSize="18sp"
-            app:cornerRadius="30dp"
-            android:layout_gravity="center_horizontal" />
+            app:cornerRadius="30dp" />
 
     </LinearLayout>
 

@@ -46,30 +46,18 @@ class CreateLoadDetailsView : AppCompatActivity() {
             val weightLoad = weightTypeEditText.text.toString()
             val volumeLoad = volumeTypeEditText.text.toString()
 
-            // Check if any field is empty
-            if (nameLoad.isEmpty() || typeLoad.isEmpty() || weightLoad.isEmpty() || volumeLoad.isEmpty()) {
-                // Show a toast message indicating that all fields are required
-                Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
-            } else {
-                // Check if weight and volume fields contain numeric values
-                if (weightLoad.toDoubleOrNull() != null && volumeLoad.toDoubleOrNull() != null) {
-                    // All validations passed, save data and start the new activity
-                    val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
-                    val editor = sharedPreferences.edit()
-                    editor.putString("loadType", typeLoad)
-                    editor.putString("loadWeight", weightLoad)
-                    editor.putString("loadVolume", volumeLoad)
-                    editor.apply()
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val editor = sharedPreferences.edit()
+            editor.putString("nameLoad", nameLoad)
+            editor.putString("typeLoad", typeLoad)
+            editor.putString("weightLoad", weightLoad)
+            editor.putString("volumeLoad", volumeLoad)
+            editor.apply()  // Or use commit() if you need synchronous storage
 
-                    val intent = Intent(this, CreateLoadDestinationView::class.java)
-                    startActivity(intent)
-                } else {
-                    // Show a toast message indicating that weight and volume should be numeric
-                    Toast.makeText(this, "Weight and Volume must be numbers", Toast.LENGTH_SHORT).show()
-                }
-            }
+
+            val intent = Intent(this, CreateLoadDestinationView::class.java)
+            startActivity(intent)
         }
-
 
         val items = arrayOf("Kg", "g", "Lb","Tons")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
@@ -99,7 +87,6 @@ class CreateLoadDetailsView : AppCompatActivity() {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
                 Toast.makeText(this@CreateLoadDetailsView, "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
-
             }
             override fun onNothingSelected(parent: AdapterView<*>) {
 

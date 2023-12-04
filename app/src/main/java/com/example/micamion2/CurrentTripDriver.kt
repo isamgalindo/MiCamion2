@@ -5,7 +5,6 @@ import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -45,10 +44,6 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
             // Finish the current activity
             finish()
         }
-
-        val complete = findViewById<Button>(R.id.CompleteButton)
-        // Set an OnClickListener on the button
-
 
         val loadCache = mutableMapOf<String, Load>()
         val accessPointCache = mutableMapOf<String, AccessPoint>()
@@ -98,29 +93,6 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
                     pickUpLocation = "${pickUpAccessPoint.address}, ${pickUpAccessPoint.city}, ${pickUpAccessPoint.country}"
                     dropOffLocation = "${dropOffAccessPoint.address}, ${dropOffAccessPoint.city}, ${dropOffAccessPoint.country}"
                     setUpMap()
-
-                    complete.setOnClickListener {
-                        val idTrip = trip.id
-                        if (idTrip != null) {
-                            val call = userService.updateTripStatusToDE(idTrip)
-                            call.enqueue(object : Callback<Void> {
-                                override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                                    if (response.isSuccessful) {
-                                        Toast.makeText(applicationContext, "Update successful", Toast.LENGTH_SHORT).show()
-                                    } else {
-                                        Toast.makeText(applicationContext, "Update failed: ${response.code()}", Toast.LENGTH_SHORT).show()
-                                    }
-                                }
-
-                                override fun onFailure(call: Call<Void>, t: Throwable) {
-                                    Toast.makeText(applicationContext, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
-                                }
-                            })
-                        }else {
-                            // Handle the null case, maybe show an error message
-                            Toast.makeText(applicationContext, "Trip ID is null", Toast.LENGTH_SHORT).show()
-                        }
-                    }
 
                 } ?: run {
                     Toast.makeText(applicationContext, "No trip in progress available", Toast.LENGTH_SHORT).show()
