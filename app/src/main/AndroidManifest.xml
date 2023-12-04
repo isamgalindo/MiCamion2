@@ -56,9 +56,6 @@
             android:name=".TrucksView"
             android:exported="false" />
         <activity
-            android:name=".ManageTrucks"
-            android:exported="false" />
-        <activity
             android:name=".ServicesTruckOwner"
             android:exported="false" />
         <activity
@@ -97,7 +94,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".FuncAF"
+            android:name=".OriginMap"
+            android:exported="false"
+            android:label="@string/title_activity_func_af" />
+        <activity
+            android:name=".DestinationMap"
             android:exported="false"
             android:label="@string/title_activity_func_af" />
         <activity
@@ -115,6 +116,7 @@
         <activity
             android:name=".ForgotPasswordView"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

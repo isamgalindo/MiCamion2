@@ -9,17 +9,20 @@ import java.util.Locale
 
 class AccessPoint {
 
+
+    var id:Int?=null
     var country: String = ""
     var city: String = ""
     var address: String = ""
     var before: String = "" // "dd/mm/yyyy" format
+    var after:String=""
 
 
 
 
 
     override fun toString(): String {
-        return "$country $city $address $before"
+        return "$country $city $address $before $after"
 
     }
 }
