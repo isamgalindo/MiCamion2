@@ -20,6 +20,22 @@
         app:layout_constraintVertical_bias="0"
         >
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="24dp"
+            android:clickable="true"
+            android:backgroundTint="@color/Deepblue"
+            app:tint="@color/white"
+            app:srcCompat="@drawable/baseline_keyboard_backspace_24"
+            android:layout_gravity="start|top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
         <TextView
             android:id="@+id/createLoadText"
             android:layout_width="match_parent"

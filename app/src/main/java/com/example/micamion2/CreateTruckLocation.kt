@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.io.IOException
 import java.util.Locale
 
@@ -17,6 +18,14 @@ class CreateTruckLocation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_truck_location)
+
+        val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        // Set an OnClickListener on the button
+        backButton.setOnClickListener {
+            // Finish the current activity
+            finish()
+        }
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 50

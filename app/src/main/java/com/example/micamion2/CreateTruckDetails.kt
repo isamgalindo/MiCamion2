@@ -12,10 +12,19 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Spinner
 import android.widget.Toast
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CreateTruckDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)
+
+        // Set an OnClickListener on the button
+        backButton.setOnClickListener {
+            // Finish the current activity
+            finish()
+        }
         setContentView(R.layout.activity_create_truck_details)
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
