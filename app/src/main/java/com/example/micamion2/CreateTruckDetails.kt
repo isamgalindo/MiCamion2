@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +17,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import android.widget.AdapterView
 
 class CreateTruckDetails : AppCompatActivity() {
     private val userService = RetrofitInstance.apiUsuario
@@ -125,7 +127,7 @@ class CreateTruckDetails : AppCompatActivity() {
         }
 
         val items = arrayOf("Kg", "g", "Lb","Tons")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, items)
+        val adapter = ArrayAdapter(this@CreateTruckDetails, android.R.layout.simple_spinner_dropdown_item, items)
         val spinner: Spinner = findViewById(R.id.weightSpinner)
         spinner.adapter = adapter
 
@@ -142,7 +144,7 @@ class CreateTruckDetails : AppCompatActivity() {
         }
 
         val itemsVol = arrayOf("Lt", "cm3", "m3")
-        val adapterVol = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsVol)
+        val adapterVol = ArrayAdapter(this@CreateTruckDetails, android.R.layout.simple_spinner_dropdown_item, itemsVol)
         val spinnerVol: Spinner = findViewById(R.id.volumeSpinner)
         spinnerVol.adapter = adapterVol
 
@@ -157,7 +159,7 @@ class CreateTruckDetails : AppCompatActivity() {
         }
 
         val itemsType = arrayOf("Flatbed", "Dry Van", "Reefer", "Lowboy","Stepdeck", "Other", "Any")
-        val adapterType = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsType)
+        val adapterType = ArrayAdapter(this@CreateTruckDetails, android.R.layout.simple_spinner_dropdown_item, itemsType)
         val spinnerType: Spinner = findViewById(R.id.typeSpinner)
         spinnerType.adapter = adapterType
 
