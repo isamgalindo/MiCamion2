@@ -29,7 +29,7 @@ class CreateTruckLocation : AppCompatActivity() {
 
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
-        val currentprogress = 50
+        val currentprogress = 66
         progressbar.setProgress(currentprogress)
         progressbar.max = 100
         val buttonNext = findViewById<Button>(R.id.nextButton)
@@ -54,9 +54,7 @@ class CreateTruckLocation : AppCompatActivity() {
         val searchIcon2 = findViewById<ImageView>(R.id.searchIcon2)
         val pickUpEditText = findViewById<EditText>(R.id.pickUpLocation)
         val dropOffEditText = findViewById<EditText>(R.id.destination)
-        val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
-        pickUpEditText.setText(""+sharedPreferences.getString("originAddress",""))
-        dropOffEditText.setText(""+sharedPreferences.getString("destinationAddress",""))
+
 
 
 
@@ -71,5 +69,10 @@ class CreateTruckLocation : AppCompatActivity() {
             startActivity(intent)
 
         }
+        val sharedPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+        pickUpEditText.setText(""+ ((sharedPreferences.getString("originAddress",""))?.split(",")
+            ?.get(0) ?:null))
+        dropOffEditText.setText(""+ ((sharedPreferences.getString("destinationAddress",""))?.split(",")
+            ?.get(0) ?:null))
     }
 }

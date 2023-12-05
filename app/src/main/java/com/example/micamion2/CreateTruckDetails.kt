@@ -34,7 +34,7 @@ class CreateTruckDetails : AppCompatActivity() {
 
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
-        val currentprogress = 20
+        val currentprogress = 33
         progressbar.setProgress(currentprogress)
         progressbar.max = 100
 
@@ -54,8 +54,11 @@ class CreateTruckDetails : AppCompatActivity() {
             val volume = volumeEditText.text.toString()
             val driver = driverEditText.text.toString()
 
+            val isWeightNumeric = weight.toDoubleOrNull() != null
+            val isVolumeNumeric = volume.toDoubleOrNull() != null
+
             if (model.isNotBlank() && brand.isNotBlank() && plates.length == 6 && weight.isNotBlank()
-                && volume.isNotBlank() && driver.isNotBlank()) {
+                && volume.isNotBlank() && driver.isNotBlank() && isWeightNumeric && isVolumeNumeric) {
 
                 val progressDialog = ProgressDialog(this@CreateTruckDetails)
                 progressDialog.setMessage("Getting driver...")
@@ -112,6 +115,8 @@ class CreateTruckDetails : AppCompatActivity() {
                 // Show toast if any field is empty or plates field length is not 6 characters
                 if (plates.length != 6) {
                     Toast.makeText(this@CreateTruckDetails, "Please enter 6 characters for Plates", Toast.LENGTH_SHORT).show()
+                } else if (!isWeightNumeric || !isVolumeNumeric) {
+                    Toast.makeText(this@CreateTruckDetails, "Please enter numeric values for Weight and Volume", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this@CreateTruckDetails, "Please fill all fields", Toast.LENGTH_SHORT).show()
                 }
@@ -124,7 +129,7 @@ class CreateTruckDetails : AppCompatActivity() {
         spinner.adapter = adapter
 
 
-        """spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
@@ -133,13 +138,13 @@ class CreateTruckDetails : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }"""
+        }
 
         val itemsVol = arrayOf("Lt", "cm3", "m3")
         val adapterVol = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsVol)
         val spinnerVol: Spinner = findViewById(R.id.volumeSpinner)
         spinnerVol.adapter = adapterVol
-"""
+
         spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
@@ -148,14 +153,14 @@ class CreateTruckDetails : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }"""
+        }
 
         val itemsType = arrayOf("Flatbed", "Dry Van", "Reefer", "Lowboy","Stepdeck", "Other", "Any")
         val adapterType = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, itemsType)
         val spinnerType: Spinner = findViewById(R.id.typeSpinner)
         spinnerType.adapter = adapterType
 
-        """spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerVol.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 // Do something with selected item
@@ -167,6 +172,6 @@ class CreateTruckDetails : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
-        }"""
+        }
     }
 }

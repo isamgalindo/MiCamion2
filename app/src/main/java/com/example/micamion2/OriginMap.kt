@@ -150,7 +150,7 @@ class OriginMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraMov
                     apply()
                 }
                     val sharedTruckPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
-                    with(sharedPreferences.edit()) {
+                    with(sharedTruckPreferences.edit()) {
                         putString("originAddress", address)
 
                         apply()

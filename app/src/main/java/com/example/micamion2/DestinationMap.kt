@@ -142,7 +142,7 @@ class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCame
                     apply()
                 }
                 val sharedTruckPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
-                with(sharedPreferences.edit()) {
+                with(sharedTruckPreferences.edit()) {
                     putString("destinationAddress", address)
                     apply()
                 }
