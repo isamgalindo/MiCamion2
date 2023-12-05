@@ -20,6 +20,15 @@
         android:theme="@style/Theme.MiCamion2"
         tools:targetApi="31">
         <activity
+            android:name=".TruckDetailed"
+            android:exported="false" />
+        <activity
+            android:name=".AssignTrailerDriver"
+            android:exported="false" />
+        <activity
+            android:name=".CurrentTripDriver"
+            android:exported="false" />
+        <activity
             android:name=".HistoryTripsDetailed"
             android:exported="false" />
         <activity
@@ -48,9 +57,6 @@
             android:exported="false" />
         <activity
             android:name=".TrucksView"
-            android:exported="false" />
-        <activity
-            android:name=".ManageTrucks"
             android:exported="false" />
         <activity
             android:name=".ServicesTruckOwner"
@@ -91,7 +97,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".FuncAF"
+            android:name=".OriginMap"
+            android:exported="false"
+            android:label="@string/title_activity_func_af" />
+        <activity
+            android:name=".DestinationMap"
             android:exported="false"
             android:label="@string/title_activity_func_af" />
         <activity

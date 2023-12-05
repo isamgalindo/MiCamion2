@@ -13,12 +13,12 @@ class ProfileView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_view)
 
-        val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
         val userType = sharedPref.getString("userType", "DefaultUserType")
         val email = sharedPref.getString("email", "DefaultEmail")
         val phone = sharedPref.getString("phone", "DefaultPhone")
-
+        val lastName = sharedPref.getString("lastName", "DefaultLastName")
 
         // Get the TextView reference
         val nameProfileTextView: TextView = findViewById(R.id.nameProfile)
@@ -26,10 +26,23 @@ class ProfileView : AppCompatActivity() {
         val emailProfileTextView: TextView = findViewById(R.id.emailProfile)
         val phoneTypeProfileTextView: TextView = findViewById(R.id.phoneProfile)
         // Set the text using the string resource with placeholder
-        nameProfileTextView.text = name
+        nameProfileTextView.text = "$name $lastName"
         roleProfileTextView.text = userType
         emailProfileTextView.text = email
         phoneTypeProfileTextView.text = phone
+
+        if (userType == "LO"){
+            roleProfileTextView.text = "Load Owner"
+        }
+        if (userType == "TO"){
+            roleProfileTextView.text = "Truck Owner"
+
+        }
+        if (userType == "DR"){
+            roleProfileTextView.text = "Driver"
+        }
+
+
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.selectedItemId = R.id.profile
@@ -61,7 +74,7 @@ class ProfileView : AppCompatActivity() {
         }
     }
     private fun clearSharedPreferences() {
-        val sharedPreferences = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.clear()
         editor.apply() // or editor.commit() for synchronous removal
@@ -72,7 +85,7 @@ class ProfileView : AppCompatActivity() {
         val intent = Intent(this, LoginPage::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish() // This will finish the current activity
+        finish()
     }
 
 }

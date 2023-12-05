@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".AssignTrailerDriver"
     >
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:clickable="true"
+        android:backgroundTint="@color/Deepblue"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/baseline_keyboard_backspace_24"
+        android:layout_gravity="start|top"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 <androidx.cardview.widget.CardView
     android:id="@+id/cardTrip"
     android:layout_width="match_parent"
@@ -29,7 +47,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/Name"
+                android:id="@+id/platesTrailer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -45,21 +63,21 @@
                 app:cardCornerRadius="30dp"
                 app:cardElevation="0dp">
 
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:id="@+id/statusTrailer"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
 
 
         <TextView
-            android:id="@+id/weight"
+            android:id="@+id/capacityTrailer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Texts"
@@ -79,15 +97,6 @@
 
             />
 
-        <TextView
-            android:id="@+id/pickUpDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            style="@style/Texts"
-            android:textSize="18sp"
-
-            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/pickUpAddress"
@@ -109,15 +118,6 @@
             />
 
         <TextView
-            android:id="@+id/dropOffDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Texts"
-            android:textSize="18sp"
-
-            android:textStyle="normal" />
-
-        <TextView
             android:id="@+id/dropOffAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,7 +126,16 @@
 
             android:textStyle="normal" />
 
+        <Button
+            android:id="@+id/AssignButton"
+            style="@style/Buttons"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:text="Assign"
+            android:textSize="18sp"
+            app:cornerRadius="30dp" />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
-    </LinearLayout>
+</LinearLayout>

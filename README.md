@@ -6,8 +6,12 @@ isa@gmail.com
 password: pepe2020
 
 To enter as a Truck Owner you can use these credentials:
-pepito@gmail.com
-password: JoseLibardo2020
+gonza@gmail.com
+password: uniandes2023
+
+To enter as a Driver you can use these credentials:
+tommy@gmail.com
+password: uniandes2023
 
 ## Connection to the back
 - If you are using a virtual device, the IP that you should use is 10.0.2.2 in this files:

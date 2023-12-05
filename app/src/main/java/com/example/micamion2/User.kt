@@ -12,6 +12,7 @@ class User {
         const val TRAILER_OWNER = "TO"
     }
 
+    var id: Int=0
     var username: String? = null
     var name: String = ""
     var last_name: String = ""
@@ -22,6 +23,6 @@ class User {
     var userType: String = LOAD_OWNER
 
     override fun toString(): String {
-        return "$name $last_name $email $phone $userType"
+        return " $id $name $last_name $email $phone $userType"
     }
 }
