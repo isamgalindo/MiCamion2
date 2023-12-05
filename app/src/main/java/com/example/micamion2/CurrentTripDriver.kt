@@ -175,7 +175,6 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
             }
         } catch (e: IOException) {
             e.printStackTrace()
-            Toast.makeText(this@CurrentTripDriver, "No internet connection", Toast.LENGTH_SHORT).show()
             // Handle the exception
         }
 

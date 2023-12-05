@@ -205,7 +205,7 @@ class LoginPage : AppCompatActivity() {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     progressDialog.dismiss()
-                    Toast.makeText(this@LoginPage, "No internet connection", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginPage, "Can't connect to the server", Toast.LENGTH_SHORT).show()
                 }
             }
         }
