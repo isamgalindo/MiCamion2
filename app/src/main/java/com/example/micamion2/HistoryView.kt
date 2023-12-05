@@ -1,36 +1,27 @@
 package com.example.micamion2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.gson.JsonObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
-import java.util.TimeZone
 
 class HistoryView : AppCompatActivity() {
     private lateinit var searchView: SearchView
@@ -73,6 +64,7 @@ class HistoryView : AppCompatActivity() {
     }
 
     private fun loadTrips() {
+
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 val trips = withContext(Dispatchers.IO) {
@@ -88,11 +80,13 @@ class HistoryView : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(applicationContext, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
                 Log.e("HistoryView", "Failed to load trips", e)
+                Toast.makeText(this@HistoryView, "No internet connection", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
     private fun setupTripCard(tripCard: View, trip: Trip) {
+
         CoroutineScope(Dispatchers.Main).launch {
             tripCard.findViewById<TextView>(R.id.status).text = when (trip.status) {
                 "DE" -> "Delivered"
@@ -102,14 +96,24 @@ class HistoryView : AppCompatActivity() {
                 else -> "Unknown Status"
             }
 
+            tripCard.findViewById<TextView>(R.id.status).setBackgroundColor(when (trip.status) {
+                "DE" -> ContextCompat.getColor(this@HistoryView, R.color.green) // Replace with your color resource
+                "IP" -> ContextCompat.getColor(this@HistoryView, R.color.Deepblue) // Replace with your color resource
+                "TA" -> ContextCompat.getColor(this@HistoryView, R.color.yellow) // Replace with your color resource
+                "CA" -> ContextCompat.getColor(this@HistoryView, R.color.red) // Replace with your color resource
+                else -> ContextCompat.getColor(this@HistoryView, R.color.Gray) // Replace with your color resource
+            })
+
             // Fetch Load details
-            val load = withContext(Dispatchers.IO) {
-                try {
+            val load = try {
+                withContext(Dispatchers.IO) {
                     userService.getLoadById(trip.load).execute().body()
-                } catch (e: Exception) {
-                    null
                 }
+            } catch (e: Exception) {
+                Toast.makeText(this@HistoryView, "No internet connection", Toast.LENGTH_SHORT).show()
+                null
             }
+
             load?.let {
                 tripCard.findViewById<TextView>(R.id.Name).text = it.type
                 tripCard.findViewById<TextView>(R.id.weight).text = it.weight.toString()
@@ -164,6 +168,7 @@ class HistoryView : AppCompatActivity() {
     }
 
     private suspend fun getAccessPoint(id: Int): AccessPoint {
+
         return withContext(Dispatchers.IO) {
             userService.getAccessPointById(id).execute().body()
                 ?: throw Exception("Access point not found")

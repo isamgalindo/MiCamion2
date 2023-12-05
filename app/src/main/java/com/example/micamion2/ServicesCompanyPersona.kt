@@ -2,19 +2,23 @@ package com.example.micamion2
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ServicesCompanyPersona : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services_company_persona)
 
-        val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
         val intent = intent
 
@@ -26,8 +30,8 @@ class ServicesCompanyPersona : AppCompatActivity() {
 
         // Get the TextView reference
         val textView: TextView = findViewById(R.id.welcome)
+        textView.text = "Welcome $name!"
         // Set the text using the string resource with placeholder
-        textView.text = getString(R.string.welcome_message, name)
 
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.selectedItemId = R.id.home

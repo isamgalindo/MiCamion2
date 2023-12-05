@@ -6,22 +6,20 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-
+import com.example.micamion2.databinding.ActivityFuncAfBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import com.example.micamion2.databinding.ActivityFuncAfBinding
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 
 class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCameraMoveListener {
 
@@ -57,9 +55,20 @@ class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCame
         // Set a click listener for the button
         saveLocationButton.setOnClickListener {
             saveLocationInfo()
-            val intent = Intent(this, CreateLoadDestinationView::class.java)
-            startActivity(intent)
-            finish()
+            val sharedPreferences = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
+            val userType = sharedPreferences.getString("userType","")
+            if (userType=="LO") {
+                val intent = Intent(this, CreateLoadDestinationView::class.java)
+
+                startActivity(intent)
+                finish()
+            }
+            else {
+                val intent = Intent(this, CreateTruckLocation::class.java)
+
+                startActivity(intent)
+                finish()
+            }
         }
     }
 
@@ -73,6 +82,7 @@ class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCame
     }
 
     private fun setUpMap() {
+
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -114,6 +124,7 @@ class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCame
     }
 
     private fun saveLocationInfo() {
+
         val center = mMap.cameraPosition.target
         val addresses: MutableList<Address>? = geocoder.getFromLocation(center.latitude, center.longitude, 1)
         if (addresses != null) {
@@ -128,6 +139,11 @@ class DestinationMap : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnCame
                     putString("destinationAddress", address)
                     putString("destinationCity", city)
                     putString("destinationCountry", country)
+                    apply()
+                }
+                val sharedTruckPreferences = getSharedPreferences("TruckDetails", Context.MODE_PRIVATE)
+                with(sharedTruckPreferences.edit()) {
+                    putString("destinationAddress", address)
                     apply()
                 }
             }

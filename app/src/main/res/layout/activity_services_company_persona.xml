@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:text="Welcome!"
         android:paddingStart="20dp"
         android:paddingTop="15dp"
         android:paddingEnd="16dp"

@@ -2,18 +2,22 @@ package com.example.micamion2
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProfileTruckOwner : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_truck_owner)
 
-        val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)
         val name = sharedPref.getString("name", "DefaultName")
         val userType = sharedPref.getString("userType", "DefaultUserType")
         val email = sharedPref.getString("email", "DefaultEmail")

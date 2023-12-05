@@ -1,14 +1,16 @@
 package com.example.micamion2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
 import android.text.method.LinkMovementMethod
-import android.util.Log
+import android.text.method.PasswordTransformationMethod
+import android.view.MotionEvent
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,8 +18,55 @@ class CreateAccount : AppCompatActivity() {
 
     private var userType =""
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_account)
+
+        val passwordEditText = findViewById<EditText>(R.id.password)
+
+// Set up touch listener for non-text box views to hide keyboard.
+        passwordEditText.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (passwordEditText.right - passwordEditText.compoundDrawables[2].bounds.width())) {
+                    // Toggle password visibility
+                    if (passwordEditText.transformationMethod == PasswordTransformationMethod.getInstance()) {
+                        passwordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_24, 0)
+                    } else {
+                        passwordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
+                        passwordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off_24, 0)
+                    }
+                    // Move the cursor to the end of the text
+                    passwordEditText.setSelection(passwordEditText.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
+
+        val confirmPasswordEditText = findViewById<EditText>(R.id.confirmPassword)
+
+// Set up touch listener for non-text box views to hide keyboard.
+        confirmPasswordEditText.setOnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= (confirmPasswordEditText.right - confirmPasswordEditText.compoundDrawables[2].bounds.width())) {
+                    // Toggle password visibility
+                    if (confirmPasswordEditText.transformationMethod == PasswordTransformationMethod.getInstance()) {
+                        confirmPasswordEditText.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_24, 0)
+                    } else {
+                        confirmPasswordEditText.transformationMethod = PasswordTransformationMethod.getInstance()
+                        confirmPasswordEditText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off_24, 0)
+                    }
+                    // Move the cursor to the end of the text
+                    confirmPasswordEditText.setSelection(confirmPasswordEditText.text.length)
+                    return@setOnTouchListener true
+                }
+            }
+            false
+        }
 
         val intent = intent
         userType = intent.getStringExtra("User Type").toString() // Replace "key" with the key you used in putExtra()

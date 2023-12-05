@@ -3,29 +3,26 @@ package com.example.micamion2
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
-import android.location.Geocoder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.io.IOException
-import java.util.Locale
 
 class CreateLoadDestinationView : AppCompatActivity() {
 
     private val userService = RetrofitInstance.apiUsuario
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_load_destination_view)
 
@@ -35,8 +32,6 @@ class CreateLoadDestinationView : AppCompatActivity() {
             // Finish the current activity
             finish()
         }
-
-
 
         val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         val currentprogress = 50
@@ -49,8 +44,11 @@ class CreateLoadDestinationView : AppCompatActivity() {
             val recipientNameEditText = findViewById<EditText>(R.id.recipientName)
             val recipientPhoneEditText = findViewById<EditText>(R.id.recipientPhone)
 
-            val recipientMail = recipientNameEditText.text.toString()
+
             val recipientPhone = recipientPhoneEditText.text.toString()
+
+
+            val recipientMail = recipientNameEditText.text.toString()
 
             val progressDialog = ProgressDialog(this@CreateLoadDestinationView)
             progressDialog.setMessage("Getting recepient...")
@@ -93,7 +91,7 @@ class CreateLoadDestinationView : AppCompatActivity() {
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
                         progressDialog.dismiss()
-                        Toast.makeText(this@CreateLoadDestinationView, "Error connecting to the server", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@CreateLoadDestinationView, "No internet connection", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

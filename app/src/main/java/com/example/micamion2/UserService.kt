@@ -50,6 +50,9 @@ interface UserService {
     @POST("/trips")
     fun createTrip(@Body trip: Trip): Call<Trip>
 
+    @POST("/trailers")
+    fun createTrailer(@Body trailer: Trailer): Call<Trailer>
+
     // POST a Load
     @POST("/loads")
     fun createLoad(@Body load: Load): Call<Load>
@@ -63,8 +66,8 @@ interface UserService {
     @GET("/trips/loadOwner/{loadOwnerId}")
     fun getTripsByLoadOwner(@Path("loadOwnerId") loadOwnerId: String): Call<List<Trip>>
 
-    @GET("/trailers/driver/{driverId}/")
-    fun getTrailerByDriver(@Path("driverId") driverId: String): Call<List<Trailer>>
+    @GET("/trailers/driver/{driver}")
+    fun getTrailerByDriver(@Path("driver") driverId: String): Call<List<Trailer>>
 
     @PUT("/assignTrailer")
     fun assignTrailer(@Body request: AssignDriverRequest): Call<Void> // Replace Void with your response type
