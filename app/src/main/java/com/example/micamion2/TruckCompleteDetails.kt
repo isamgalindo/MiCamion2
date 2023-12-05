@@ -33,8 +33,7 @@ class TruckCompleteDetails : AppCompatActivity() {
         val driver = sharedPref.getInt("driverTruck", 0)
         val pickUp = sharedPref.getString("pickUpLocation", "") ?: ""
         val dropOff = sharedPref.getString("dropOffLocation", "") ?: ""
-        val startDate = sharedPref.getString("startDate", "") ?: ""
-        val endDate = sharedPref.getString("endDate", "") ?: ""
+
 
         // Get the TextView reference
         val modelTextView: TextView = findViewById(R.id.modelReview)
