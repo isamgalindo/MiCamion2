@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -74,8 +75,59 @@ class AssignTrailerDriver : AppCompatActivity() {
                         val trailer = trailers.first()
                         runOnUiThread {
                             findViewById<TextView>(R.id.platesTrailer).text = trailer.plates
-                            findViewById<TextView>(R.id.capacityTrailer).text = trailer.capacity.toString()
-                            findViewById<TextView>(R.id.statusTrailer).text = trailer.status
+                            val partsPickUp = trailer.pickup.split(", ")
+                            if (partsPickUp.size >= 3) {
+                                val address = partsPickUp.subList(2, partsPickUp.size).joinToString(", ")
+                                findViewById<TextView>(R.id.pickUpAddress).text = address
+                            } else {
+                                // Handle cases where the string format is not as expected
+                                findViewById<TextView>(R.id.pickUpAddress).text = "Address format not recognized"
+                            }
+                            val partsDropOff = trailer.dropoff.split(", ")
+                            if (partsDropOff.size >= 3) {
+                                val address = partsDropOff.subList(2, partsDropOff.size).joinToString(", ")
+                                findViewById<TextView>(R.id.dropOffAddress).text = address
+                            } else {
+                                // Handle cases where the string format is not as expected
+                                findViewById<TextView>(R.id.dropOffAddress).text = "Address format not recognized"
+                            }
+                            if (trailer.status == "AV") {
+                                findViewById<TextView>(R.id.statusTrailer).text = "Available"
+                            }
+                            if (trailer.status == "IT") {
+                                findViewById<TextView>(R.id.statusTrailer).text = "In transit"
+                            }
+                            if (trailer.status == "UN") {
+                                findViewById<TextView>(R.id.statusTrailer).text = "Unavailable"
+                            }
+                            findViewById<TextView>(R.id.statusTrailer).setBackgroundColor(when (trailer.status) {
+                                "AV" -> ContextCompat.getColor(this@AssignTrailerDriver, R.color.green) // Replace with your color resource
+                                "IT" -> ContextCompat.getColor(this@AssignTrailerDriver, R.color.yellow) // Replace with your color resource
+                                "UN" -> ContextCompat.getColor(this@AssignTrailerDriver, R.color.red) // Replace with your color resource
+                                else -> ContextCompat.getColor(this@AssignTrailerDriver, R.color.Gray) // Replace with your color resource
+                            })
+                            findViewById<TextView>(R.id.platesTrailer).text = trailer.plates
+                            if (trailer.type == "AN") {
+                                findViewById<TextView>(R.id.capacityTrailer).text = "${trailer.capacity} - Any"
+                            }
+                            if (trailer.type == "FB") {
+                                findViewById<TextView>(R.id.capacityTrailer).text = "${trailer.capacity} - Flatbed"
+                            }
+                            if (trailer.type == "DV") {
+                                findViewById<TextView>(R.id.capacityTrailer).text = "${trailer.capacity} - Dry Van"
+                            }
+                            if (trailer.type == "RF") {
+                                findViewById<TextView>(R.id.capacityTrailer).text = "${trailer.capacity} - Reefer"
+                            }
+                            if (trailer.type == "LB") {
+                                findViewById<TextView>(R.id.capacityTrailer).text = "${trailer.capacity} - Lowboy"
+                            }
+                            if (trailer.type == "SD") {
+                                findViewById<TextView>(R.id.capacityTrailer).text = "${trailer.capacity} - Stepdeck"
+                            }
+                            if (trailer.type == "OT") {
+                                findViewById<TextView>(R.id.capacityTrailer).text = "${trailer.capacity} - Other"
+                            }
                         }
                     } else {
                         runOnUiThread {

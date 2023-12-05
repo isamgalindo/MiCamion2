@@ -97,15 +97,6 @@ tools:context=".AssignTrailerDriver"
 
             />
 
-        <TextView
-            android:id="@+id/pickUpDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            style="@style/Texts"
-            android:textSize="18sp"
-
-            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/pickUpAddress"
@@ -125,15 +116,6 @@ tools:context=".AssignTrailerDriver"
             android:fontFamily="@font/montserrat_bold"
 
             />
-
-        <TextView
-            android:id="@+id/dropOffDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Texts"
-            android:textSize="18sp"
-
-            android:textStyle="normal" />
 
         <TextView
             android:id="@+id/dropOffAddress"
