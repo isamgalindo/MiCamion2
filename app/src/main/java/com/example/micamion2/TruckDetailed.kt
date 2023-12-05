@@ -1,10 +1,9 @@
 package com.example.micamion2
 
 import android.graphics.Color
-import android.location.Geocoder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -13,7 +12,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.io.IOException
 import kotlin.properties.Delegates
 
 class TruckDetailed : AppCompatActivity(), OnMapReadyCallback {
@@ -23,6 +21,10 @@ class TruckDetailed : AppCompatActivity(), OnMapReadyCallback {
     private var dropOffLatitude by Delegates.notNull<Double>()
     private var dropOffLongitude by Delegates.notNull<Double>()
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_truck_detailed)
         val backButton = findViewById<FloatingActionButton>(R.id.floatingActionButton)

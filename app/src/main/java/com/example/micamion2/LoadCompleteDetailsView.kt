@@ -3,13 +3,12 @@ package com.example.micamion2
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,6 +19,7 @@ class LoadCompleteDetailsView : AppCompatActivity() {
     var createdOriginId=0
     var createdDestinationId=0
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_load_complete_details_view)
         val sharedPref = getSharedPreferences("LoadDetails", Context.MODE_PRIVATE)

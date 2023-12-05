@@ -1,7 +1,6 @@
 package com.example.micamion2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +27,6 @@ class TrucksView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_trucks_view)
-
         val bottomNavigation: BottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigation.selectedItemId = R.id.truckMenu
         bottomNavigation.setOnItemSelectedListener { item ->
@@ -154,11 +153,14 @@ class TrucksView : AppCompatActivity() {
                         }
                     } else {
                         Toast.makeText(applicationContext, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@TrucksView, "No internet connection", Toast.LENGTH_SHORT).show()
+
                     }
                 }
             }
             override fun onFailure(call: Call<List<Trailer>>, t: Throwable) {
                 Toast.makeText(applicationContext, "Failure: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "No internet connection", Toast.LENGTH_SHORT).show()
             }
         })
     }

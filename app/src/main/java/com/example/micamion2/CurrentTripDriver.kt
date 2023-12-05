@@ -2,13 +2,11 @@ package com.example.micamion2
 
 import android.graphics.Color
 import android.location.Geocoder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -36,6 +34,7 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
     private var dropOffLocation: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_current_trip_driver)
 
@@ -176,6 +175,7 @@ class CurrentTripDriver : AppCompatActivity(), OnMapReadyCallback {
             }
         } catch (e: IOException) {
             e.printStackTrace()
+            Toast.makeText(this@CurrentTripDriver, "No internet connection", Toast.LENGTH_SHORT).show()
             // Handle the exception
         }
 

@@ -56,17 +56,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             }
 
-        /*
-        val networkConnection = NetworkConnection(applicationContext)
-        networkConnection.observe(this){
-            if (it){
-                Toast.makeText(this, "Connected to Internet", Toast.LENGTH_SHORT).show()
-                setContentView(R.layout.activity_main)
-            } else {
-                Toast.makeText(this, "Not connected to Internet", Toast.LENGTH_SHORT).show()
-                setContentView(R.layout.activity_network_error_layout)
-            }
-        }
-        */
     }
 }
