@@ -1,7 +1,6 @@
 package com.example.micamion2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,20 +11,15 @@ import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.gson.JsonObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -111,7 +105,7 @@ class SendView : AppCompatActivity() {
                     container.addView(tripCard)
                 }
             } catch (e: Exception) {
-                Toast.makeText(applicationContext, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "No internet connection", Toast.LENGTH_SHORT).show()
                 Log.e("HistoryView", "Failed to load trips", e)
             }
         }
@@ -139,12 +133,16 @@ class SendView : AppCompatActivity() {
                 try {
                     userService.getLoadById(trip.load).execute().body()
                 } catch (e: Exception) {
+                    Log.e("SendView", "Failed to fetch Load details", e)
                     null
                 }
             }
             load?.let {
                 tripCard.findViewById<TextView>(R.id.Name).text = it.type
                 tripCard.findViewById<TextView>(R.id.weight).text = it.weight.toString()
+            } ?: run {
+                // Show a toast or update UI for no internet connection
+                Toast.makeText(this@SendView, "No internet connection", Toast.LENGTH_SHORT).show()
             }
             val pickUpAP = async(Dispatchers.IO) { getAccessPoint(trip.pickup) }
             val dropOffAP = async(Dispatchers.IO) { getAccessPoint(trip.dropoff) }

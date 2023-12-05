@@ -2,9 +2,10 @@ package com.example.micamion2
 
 import android.graphics.Color
 import android.location.Geocoder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -13,9 +14,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.io.IOException
 
 class HistoryTripsDetailed : AppCompatActivity(), OnMapReadyCallback {
@@ -23,6 +21,7 @@ class HistoryTripsDetailed : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var pickUpLocation: String
     private lateinit var dropOffLocation: String
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history_trips_detailed)
 
@@ -107,6 +106,7 @@ class HistoryTripsDetailed : AppCompatActivity(), OnMapReadyCallback {
             }
         } catch (e: IOException) {
             e.printStackTrace()
+            Toast.makeText(this@HistoryTripsDetailed, "No internet connection", Toast.LENGTH_SHORT).show()
             // Handle the exception
         }
 

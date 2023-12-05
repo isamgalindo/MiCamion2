@@ -1,20 +1,20 @@
 package com.example.micamion2
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class TruckCompleteDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_truck_complete_details)
 
@@ -62,6 +62,8 @@ class TruckCompleteDetails : AppCompatActivity() {
     }
 
     private fun getTruck(userId:Int, weight: Int, volume: Int, pickUp: String, dropOff: String , driver:Int, plates:String){
+
+
 
         val truck = Trailer()
         truck.owner = userId
